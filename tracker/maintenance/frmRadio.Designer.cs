@@ -48,6 +48,12 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.dgvRadio = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mnc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tracker_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTrackerCode = new System.Windows.Forms.TextBox();
@@ -59,12 +65,6 @@
             this.txtMcc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mnc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tracker_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
@@ -75,7 +75,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(136, 535);
+            this.btnAdd.Location = new System.Drawing.Point(136, 533);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 30);
             this.btnAdd.TabIndex = 9;
@@ -86,7 +86,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(117, 553);
             this.pictureBox1.TabIndex = 14;
@@ -94,7 +94,7 @@
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(379, 535);
+            this.btnFind.Location = new System.Drawing.Point(379, 533);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 30);
             this.btnFind.TabIndex = 12;
@@ -104,7 +104,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(298, 535);
+            this.btnDelete.Location = new System.Drawing.Point(298, 533);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 30);
             this.btnDelete.TabIndex = 11;
@@ -113,7 +113,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(217, 535);
+            this.btnEdit.Location = new System.Drawing.Point(217, 533);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 30);
             this.btnEdit.TabIndex = 10;
@@ -123,7 +123,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(711, 535);
+            this.btnClose.Location = new System.Drawing.Point(711, 533);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 30);
             this.btnClose.TabIndex = 8;
@@ -135,7 +135,7 @@
             // 
             this.groupBox1.Controls.Add(this.bdgNavigator);
             this.groupBox1.Controls.Add(this.dgvRadio);
-            this.groupBox1.Location = new System.Drawing.Point(136, 12);
+            this.groupBox1.Location = new System.Drawing.Point(136, 10);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(648, 368);
             this.groupBox1.TabIndex = 15;
@@ -261,113 +261,6 @@
             this.dgvRadio.Size = new System.Drawing.Size(642, 349);
             this.dgvRadio.TabIndex = 14;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.txtTrackerCode);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.chkActive);
-            this.groupBox2.Controls.Add(this.txtSsi);
-            this.groupBox2.Controls.Add(this.txtMnc);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtMcc);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(136, 386);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(650, 143);
-            this.groupBox2.TabIndex = 23;
-            this.groupBox2.TabStop = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 69);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(21, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Ssi";
-            // 
-            // txtTrackerCode
-            // 
-            this.txtTrackerCode.Enabled = false;
-            this.txtTrackerCode.Location = new System.Drawing.Point(81, 92);
-            this.txtTrackerCode.Name = "txtTrackerCode";
-            this.txtTrackerCode.Size = new System.Drawing.Size(202, 20);
-            this.txtTrackerCode.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 95);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Tracker Code";
-            // 
-            // chkActive
-            // 
-            this.chkActive.AutoSize = true;
-            this.chkActive.Enabled = false;
-            this.chkActive.Location = new System.Drawing.Point(81, 118);
-            this.chkActive.Name = "chkActive";
-            this.chkActive.Size = new System.Drawing.Size(56, 17);
-            this.chkActive.TabIndex = 7;
-            this.chkActive.Text = "Active";
-            this.chkActive.UseVisualStyleBackColor = true;
-            // 
-            // txtSsi
-            // 
-            this.txtSsi.Enabled = false;
-            this.txtSsi.Location = new System.Drawing.Point(81, 66);
-            this.txtSsi.Name = "txtSsi";
-            this.txtSsi.Size = new System.Drawing.Size(553, 20);
-            this.txtSsi.TabIndex = 5;
-            // 
-            // txtMnc
-            // 
-            this.txtMnc.Enabled = false;
-            this.txtMnc.Location = new System.Drawing.Point(81, 40);
-            this.txtMnc.Name = "txtMnc";
-            this.txtMnc.Size = new System.Drawing.Size(202, 20);
-            this.txtMnc.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Mnc";
-            // 
-            // txtMcc
-            // 
-            this.txtMcc.Enabled = false;
-            this.txtMcc.Location = new System.Drawing.Point(81, 14);
-            this.txtMcc.Name = "txtMcc";
-            this.txtMcc.Size = new System.Drawing.Size(202, 20);
-            this.txtMcc.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Mcc";
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(460, 535);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 24;
-            this.btnCancel.Text = "&Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
             // id
             // 
             this.id.DataPropertyName = "id";
@@ -412,11 +305,118 @@
             this.active.Name = "active";
             this.active.ReadOnly = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.txtTrackerCode);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.chkActive);
+            this.groupBox2.Controls.Add(this.txtSsi);
+            this.groupBox2.Controls.Add(this.txtMnc);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtMcc);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Location = new System.Drawing.Point(136, 384);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(650, 143);
+            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(54, 67);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(21, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Ssi";
+            // 
+            // txtTrackerCode
+            // 
+            this.txtTrackerCode.Enabled = false;
+            this.txtTrackerCode.Location = new System.Drawing.Point(81, 90);
+            this.txtTrackerCode.Name = "txtTrackerCode";
+            this.txtTrackerCode.Size = new System.Drawing.Size(202, 20);
+            this.txtTrackerCode.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 93);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Tracker Code";
+            // 
+            // chkActive
+            // 
+            this.chkActive.AutoSize = true;
+            this.chkActive.Enabled = false;
+            this.chkActive.Location = new System.Drawing.Point(81, 116);
+            this.chkActive.Name = "chkActive";
+            this.chkActive.Size = new System.Drawing.Size(56, 17);
+            this.chkActive.TabIndex = 7;
+            this.chkActive.Text = "Active";
+            this.chkActive.UseVisualStyleBackColor = true;
+            // 
+            // txtSsi
+            // 
+            this.txtSsi.Enabled = false;
+            this.txtSsi.Location = new System.Drawing.Point(81, 64);
+            this.txtSsi.Name = "txtSsi";
+            this.txtSsi.Size = new System.Drawing.Size(553, 20);
+            this.txtSsi.TabIndex = 5;
+            // 
+            // txtMnc
+            // 
+            this.txtMnc.Enabled = false;
+            this.txtMnc.Location = new System.Drawing.Point(81, 38);
+            this.txtMnc.Name = "txtMnc";
+            this.txtMnc.Size = new System.Drawing.Size(202, 20);
+            this.txtMnc.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(50, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Mnc";
+            // 
+            // txtMcc
+            // 
+            this.txtMcc.Enabled = false;
+            this.txtMcc.Location = new System.Drawing.Point(81, 12);
+            this.txtMcc.Name = "txtMcc";
+            this.txtMcc.Size = new System.Drawing.Size(202, 20);
+            this.txtMcc.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(47, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Mcc";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Location = new System.Drawing.Point(460, 533);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 30);
+            this.btnCancel.TabIndex = 24;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // frmRadio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 577);
+            this.ClientSize = new System.Drawing.Size(794, 571);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

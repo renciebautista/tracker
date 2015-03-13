@@ -40,5 +40,10 @@ namespace tracker
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

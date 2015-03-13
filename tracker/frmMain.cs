@@ -35,7 +35,10 @@ namespace tracker
 
         private void trainRadioAssignmentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            using (frmTrainRadio trainRadio = new frmTrainRadio())
+            {
+                trainRadio.ShowDialog();
+            }
         }
 
 
