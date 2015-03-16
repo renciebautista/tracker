@@ -18,15 +18,8 @@ namespace tracker.maintenance
         public frmAddTrain()
         {
             InitializeComponent();
-            table1 = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where active = 1");
+            table1 = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where active = 1 AND radios.id NOT IN (SELECT radio_id_1 as radio FROM train_radios union SELECT radio_id_2 as radio FROM train_radios)");
             table2 = table1.Clone();
-            //listBox1.Items.Clear();
-            //listBox2.Items.Clear();
-
-            //foreach (DataRow row in table.Rows) // Loop over the rows.
-            //{
-            //    listBox1.Items.Add(row["id"]+"-"+row["mcc"] +"-"+row["mnc"] +"-"+row["ssi"]);
-            //}
 
             listBox1.ValueMember = "id";
             listBox1.DisplayMember = "ssi";
@@ -38,7 +31,7 @@ namespace tracker.maintenance
 
             cmbTrain.ValueMember = "id";
             cmbTrain.DisplayMember = "train_desc";
-            cmbTrain.DataSource = MysqlHelper.ExecuteDataTable("SELECT * FROM trains where active = 1");
+            cmbTrain.DataSource = MysqlHelper.ExecuteDataTable("SELECT * FROM trains where active = 1 AND trains.id NOT IN (SELECT train_id FROM train_radios)");
         }
 
         private void frmAddTrain_Load(object sender, EventArgs e)
@@ -98,11 +91,6 @@ namespace tracker.maintenance
             table1.AcceptChanges();
             table2.AcceptChanges();
 
-            //if (listBox2.SelectedIndex != -1)
-            //{
-            //    listBox1.Items.Add(listBox2.SelectedItem);
-            //    listBox2.Items.Remove(listBox2.SelectedItem);
-            //}
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -118,7 +106,7 @@ namespace tracker.maintenance
 
                 int train_id = int.Parse(cmbTrain.SelectedValue.ToString());
                 int radio_1 = int.Parse(radio1["id"].ToString());
-                int radio_2 = int.Parse(radio1["id"].ToString());
+                int radio_2 = int.Parse(radio2["id"].ToString());
                 if (addAssignment(train_id,radio_1,radio_2) == 1)
                 {
                     this.Close();

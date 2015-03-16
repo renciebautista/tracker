@@ -214,5 +214,10 @@ namespace tracker.maintenance
             frmFind.Dispose();
             btnAdd.Focus();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
