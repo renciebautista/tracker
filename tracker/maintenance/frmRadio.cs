@@ -217,7 +217,21 @@ namespace tracker.maintenance
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            
+            DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", this.Text,
+               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                int id = Int32.Parse(dgvRadio.CurrentRow.Cells["id"].Value.ToString());
+                int retVal = MysqlHelper.ExecuteNonQuery("DELETE FROM radios where id ='" + id + "'");
+                if (retVal == 1)
+                {
+                    loadGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Erorr deleting record.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
