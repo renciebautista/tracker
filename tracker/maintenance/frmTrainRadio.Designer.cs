@@ -42,13 +42,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dgvTrainRadio = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.head = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radio1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radio2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.train_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radio_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.radio_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -56,6 +49,10 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.train_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.head_ssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
             this.bdgNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrainRadio)).BeginInit();
@@ -177,12 +174,9 @@
             this.dgvTrainRadio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTrainRadio.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
-            this.head,
-            this.radio1,
-            this.radio2,
             this.train_desc,
-            this.radio_1,
-            this.radio_2});
+            this.ssi,
+            this.head_ssi});
             this.dgvTrainRadio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTrainRadio.Location = new System.Drawing.Point(3, 16);
             this.dgvTrainRadio.MultiSelect = false;
@@ -194,62 +188,6 @@
             this.dgvTrainRadio.Size = new System.Drawing.Size(750, 498);
             this.dgvTrainRadio.TabIndex = 14;
             this.dgvTrainRadio.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTrainRadio_CellFormatting);
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // head
-            // 
-            this.head.DataPropertyName = "head_id";
-            this.head.HeaderText = "head";
-            this.head.Name = "head";
-            this.head.ReadOnly = true;
-            this.head.Visible = false;
-            // 
-            // radio1
-            // 
-            this.radio1.DataPropertyName = "radio1_id";
-            this.radio1.HeaderText = "radio1";
-            this.radio1.Name = "radio1";
-            this.radio1.ReadOnly = true;
-            this.radio1.Visible = false;
-            // 
-            // radio2
-            // 
-            this.radio2.DataPropertyName = "radio2_id";
-            this.radio2.HeaderText = "radio2";
-            this.radio2.Name = "radio2";
-            this.radio2.ReadOnly = true;
-            this.radio2.Visible = false;
-            // 
-            // train_desc
-            // 
-            this.train_desc.DataPropertyName = "train_desc";
-            this.train_desc.HeaderText = "Train";
-            this.train_desc.Name = "train_desc";
-            this.train_desc.ReadOnly = true;
-            this.train_desc.Width = 250;
-            // 
-            // radio_1
-            // 
-            this.radio_1.DataPropertyName = "radio_1";
-            this.radio_1.HeaderText = "Radio 1";
-            this.radio_1.Name = "radio_1";
-            this.radio_1.ReadOnly = true;
-            this.radio_1.Width = 250;
-            // 
-            // radio_2
-            // 
-            this.radio_2.DataPropertyName = "radio_2";
-            this.radio_2.HeaderText = "Radio 2";
-            this.radio_2.Name = "radio_2";
-            this.radio_2.ReadOnly = true;
-            this.radio_2.Width = 250;
             // 
             // groupBox1
             // 
@@ -318,6 +256,38 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // train_desc
+            // 
+            this.train_desc.DataPropertyName = "train_desc";
+            this.train_desc.HeaderText = "Train";
+            this.train_desc.Name = "train_desc";
+            this.train_desc.ReadOnly = true;
+            this.train_desc.Width = 250;
+            // 
+            // ssi
+            // 
+            this.ssi.DataPropertyName = "ssi";
+            this.ssi.HeaderText = "Tail";
+            this.ssi.Name = "ssi";
+            this.ssi.ReadOnly = true;
+            this.ssi.Width = 250;
+            // 
+            // head_ssi
+            // 
+            this.head_ssi.DataPropertyName = "head_ssi";
+            this.head_ssi.HeaderText = "Head";
+            this.head_ssi.Name = "head_ssi";
+            this.head_ssi.ReadOnly = true;
+            this.head_ssi.Width = 250;
+            // 
             // frmTrainRadio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,12 +342,9 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn head;
-        private System.Windows.Forms.DataGridViewTextBoxColumn radio1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn radio2;
         private System.Windows.Forms.DataGridViewTextBoxColumn train_desc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn radio_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn radio_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ssi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn head_ssi;
 
     }
 }

@@ -18,7 +18,7 @@ namespace tracker.maintenance
         public frmAddTrain()
         {
             InitializeComponent();
-            table1 = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where active = 1 AND radios.id NOT IN (SELECT radio_id_1 as radio FROM train_radios union SELECT radio_id_2 as radio FROM train_radios)");
+            table1 = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where active = 1 AND radios.id NOT IN (SELECT radio_id FROM train_radios)");
             table2 = table1.Clone();
 
             listBox1.ValueMember = "id";
@@ -101,30 +101,33 @@ namespace tracker.maintenance
             }
             else
             {
-                DataRowView radio1 = listBox2.Items[0] as DataRowView;
-                DataRowView radio2 = listBox2.Items[1] as DataRowView;
-
                 int train_id = int.Parse(cmbTrain.SelectedValue.ToString());
-                int radio_1 = int.Parse(radio1["id"].ToString());
-                int radio_2 = int.Parse(radio2["id"].ToString());
-                if (addAssignment(train_id,radio_1,radio_2) == 1)
-                {
-                    this.Close();
-                }
-                else
-                {
 
+                for (int i = 0; i < listBox2.Items.Count; ++i)
+                {
+                    DataRowView radio = listBox2.Items[i] as DataRowView;
+                    int radio_id = int.Parse(radio["id"].ToString());
+                    if (i == 0)
+                    {
+                        addAssignment(train_id, radio_id, true);
+                    }
+                    else
+                    {
+                        addAssignment(train_id, radio_id, false);
+                    }   
                 }
+
+                this.Close();
+          
             }
         }
 
-        private int addAssignment(int train_id, int radio_id_1, int radio_id_2)
+        private int addAssignment(int train_id, int radio_id, bool head)
         {
-            return MysqlHelper.ExecuteNonQuery("INSERT INTO train_radios (train_id, radio_id_1, radio_id_2, head_id) VALUES(@train_id, @radio_id_1, @radio_id_2, @head_id)",
+            return MysqlHelper.ExecuteNonQuery("INSERT INTO train_radios (train_id, radio_id, head) VALUES(@train_id, @radio_id, @head)",
                 new MySqlParameter("@train_id", train_id),
-                new MySqlParameter("@radio_id_1", radio_id_1),
-                new MySqlParameter("@radio_id_2", radio_id_2),
-                new MySqlParameter("@head_id", radio_id_1));
+                new MySqlParameter("@radio_id", radio_id),
+                new MySqlParameter("@head", head));
         }
     }
 }
