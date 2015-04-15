@@ -14,3 +14,5 @@ D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.maintenance.frmFi
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.csprojResolveAssemblyReference.cache
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.maintenance.frmTrainRadio.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.maintenance.frmAddTrain.resources
+D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.frmTrainlist.resources

@@ -44,17 +44,23 @@ namespace tracker
 
         private void monitoringToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //using (frmMonitoring monitoring = new frmMonitoring())
-            //{
-            //    this.Hide();
-            //    monitoring.ShowDialog();
-            //}
-            //this.Show();
+            using (frmMonitoring monitoring = new frmMonitoring())
+            {
+                this.Hide();
+                monitoring.WindowState = FormWindowState.Maximized;
+                monitoring.ShowDialog();
+            }
+            this.Show();
 
-            frmMonitoring monitoring = new frmMonitoring();
-            monitoring.MdiParent = this;
-            monitoring.Show();
-            monitoring.WindowState = FormWindowState.Maximized;
+            //frmMonitoring monitoring = new frmMonitoring();
+            //monitoring.MdiParent = this;
+            //monitoring.Show();
+            //monitoring.WindowState = FormWindowState.Maximized;
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
