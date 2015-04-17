@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using MySql.Data.MySqlClient;
+using System.Drawing.Imaging;
 
 namespace tracker
 {
@@ -44,6 +45,38 @@ namespace tracker
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void frmTest_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            Image image = new Bitmap("RemapInput.bmp");
+            ImageAttributes imageAttributes = new ImageAttributes();
+            int width = image.Width;
+            int height = image.Height;
+            ColorMap colorMap = new ColorMap();
+
+            colorMap.OldColor = Color.FromArgb(255, 255, 0, 0);  // opaque red
+            colorMap.NewColor = Color.FromArgb(255, 0, 0, 255);  // opaque blue
+
+            ColorMap[] remapTable = { colorMap };
+
+            imageAttributes.SetRemapTable(remapTable, ColorAdjustType.Bitmap);
+
+            e.Graphics.DrawImage(image, 10, 10, width, height);
+
+            e.Graphics.DrawImage(
+               image,
+               new Rectangle(150, 10, width, height),  // destination rectangle 
+               0, 0,        // upper-left corner of source rectangle 
+               width,       // width of source rectangle
+               height,      // height of source rectangle
+               GraphicsUnit.Pixel,
+               imageAttributes);
         }
     }
 }

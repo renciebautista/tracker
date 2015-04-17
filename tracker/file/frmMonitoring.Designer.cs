@@ -1,4 +1,4 @@
-﻿namespace tracker
+﻿namespace tracker.file
 {
     partial class frmMonitoring
     {
@@ -45,7 +45,7 @@
             WeifenLuo.WinFormsUI.Docking.TabGradient tabGradient7 = new WeifenLuo.WinFormsUI.Docking.TabGradient();
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.trainlistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mapSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,19 +113,19 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.trainlistToolStripMenuItem});
+            this.mapSettingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(726, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // trainlistToolStripMenuItem
+            // mapSettingsToolStripMenuItem
             // 
-            this.trainlistToolStripMenuItem.Name = "trainlistToolStripMenuItem";
-            this.trainlistToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.trainlistToolStripMenuItem.Text = "Trainlist";
-            this.trainlistToolStripMenuItem.Click += new System.EventHandler(this.trainlistToolStripMenuItem_Click);
+            this.mapSettingsToolStripMenuItem.Name = "mapSettingsToolStripMenuItem";
+            this.mapSettingsToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
+            this.mapSettingsToolStripMenuItem.Text = "Map Settings";
+            this.mapSettingsToolStripMenuItem.Click += new System.EventHandler(this.mapSettingsToolStripMenuItem_Click);
             // 
             // frmMonitoring
             // 
@@ -154,7 +154,7 @@
 
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem trainlistToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mapSettingsToolStripMenuItem;
 
 
 
