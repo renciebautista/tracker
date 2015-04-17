@@ -41,6 +41,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +63,8 @@
             // monitoringToolStripMenuItem
             // 
             this.monitoringToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.monitoringToolStripMenuItem1});
+            this.monitoringToolStripMenuItem1,
+            this.exitToolStripMenuItem});
             this.monitoringToolStripMenuItem.Name = "monitoringToolStripMenuItem";
             this.monitoringToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.monitoringToolStripMenuItem.Text = "File";
@@ -70,7 +72,7 @@
             // monitoringToolStripMenuItem1
             // 
             this.monitoringToolStripMenuItem1.Name = "monitoringToolStripMenuItem1";
-            this.monitoringToolStripMenuItem1.Size = new System.Drawing.Size(134, 22);
+            this.monitoringToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.monitoringToolStripMenuItem1.Text = "Monitoring";
             this.monitoringToolStripMenuItem1.Click += new System.EventHandler(this.monitoringToolStripMenuItem1_Click);
             // 
@@ -142,6 +144,13 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,6 +190,7 @@
         private System.Windows.Forms.ToolStripMenuItem monitoringToolStripMenuItem1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

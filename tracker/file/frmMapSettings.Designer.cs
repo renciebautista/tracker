@@ -35,6 +35,8 @@
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.cmbMapType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtLimit = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +72,8 @@
             // 
             // groupBox
             // 
+            this.groupBox.Controls.Add(this.txtLimit);
+            this.groupBox.Controls.Add(this.label2);
             this.groupBox.Controls.Add(this.cmbMapType);
             this.groupBox.Controls.Add(this.label1);
             this.groupBox.Location = new System.Drawing.Point(143, 12);
@@ -96,6 +100,24 @@
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Map Type";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Offline Limit (sec)";
+            // 
+            // txtLimit
+            // 
+            this.txtLimit.Enabled = false;
+            this.txtLimit.Location = new System.Drawing.Point(114, 48);
+            this.txtLimit.Name = "txtLimit";
+            this.txtLimit.Size = new System.Drawing.Size(100, 20);
+            this.txtLimit.TabIndex = 3;
+            this.txtLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimit_KeyPress);
             // 
             // frmMapSettings
             // 
@@ -128,5 +150,7 @@
         private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbMapType;
+        private System.Windows.Forms.TextBox txtLimit;
+        private System.Windows.Forms.Label label2;
     }
 }

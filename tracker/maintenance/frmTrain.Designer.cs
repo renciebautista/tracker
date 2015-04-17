@@ -36,12 +36,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnBrowse = new System.Windows.Forms.Button();
+            this.s = new System.Windows.Forms.GroupBox();
+            this.cmbIcon = new System.Windows.Forms.ComboBox();
             this.chkActive = new System.Windows.Forms.CheckBox();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtIcon = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,14 +56,14 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.dgvTrain = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.icon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.s.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
             this.bdgNavigator.SuspendLayout();
@@ -73,7 +72,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(136, 502);
+            this.btnAdd.Location = new System.Drawing.Point(136, 531);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 30);
             this.btnAdd.TabIndex = 16;
@@ -86,13 +85,13 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(10, 11);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(117, 519);
+            this.pictureBox1.Size = new System.Drawing.Size(117, 550);
             this.pictureBox1.TabIndex = 21;
             this.pictureBox1.TabStop = false;
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(379, 502);
+            this.btnFind.Location = new System.Drawing.Point(379, 531);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 30);
             this.btnFind.TabIndex = 19;
@@ -101,7 +100,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(298, 502);
+            this.btnDelete.Location = new System.Drawing.Point(298, 531);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 30);
             this.btnDelete.TabIndex = 18;
@@ -111,7 +110,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(217, 502);
+            this.btnEdit.Location = new System.Drawing.Point(217, 531);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 30);
             this.btnEdit.TabIndex = 17;
@@ -122,7 +121,7 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(460, 502);
+            this.btnCancel.Location = new System.Drawing.Point(460, 531);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 15;
@@ -130,37 +129,37 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // groupBox1
+            // s
             // 
-            this.groupBox1.Controls.Add(this.btnBrowse);
-            this.groupBox1.Controls.Add(this.chkActive);
-            this.groupBox1.Controls.Add(this.txtDesc);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtIcon);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtCode);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(136, 378);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(650, 118);
-            this.groupBox1.TabIndex = 22;
-            this.groupBox1.TabStop = false;
+            this.s.Controls.Add(this.cmbIcon);
+            this.s.Controls.Add(this.chkActive);
+            this.s.Controls.Add(this.txtDesc);
+            this.s.Controls.Add(this.label3);
+            this.s.Controls.Add(this.label2);
+            this.s.Controls.Add(this.txtCode);
+            this.s.Controls.Add(this.label1);
+            this.s.Location = new System.Drawing.Point(136, 396);
+            this.s.Name = "s";
+            this.s.Size = new System.Drawing.Size(650, 129);
+            this.s.TabIndex = 22;
+            this.s.TabStop = false;
             // 
-            // btnBrowse
+            // cmbIcon
             // 
-            this.btnBrowse.Enabled = false;
-            this.btnBrowse.Location = new System.Drawing.Point(569, 36);
-            this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowse.TabIndex = 8;
-            this.btnBrowse.Text = "&Browse";
-            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.cmbIcon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIcon.Enabled = false;
+            this.cmbIcon.Font = new System.Drawing.Font("Arial", 16F);
+            this.cmbIcon.FormattingEnabled = true;
+            this.cmbIcon.Location = new System.Drawing.Point(72, 67);
+            this.cmbIcon.Name = "cmbIcon";
+            this.cmbIcon.Size = new System.Drawing.Size(97, 32);
+            this.cmbIcon.TabIndex = 9;
             // 
             // chkActive
             // 
             this.chkActive.AutoSize = true;
             this.chkActive.Enabled = false;
-            this.chkActive.Location = new System.Drawing.Point(72, 91);
+            this.chkActive.Location = new System.Drawing.Point(72, 105);
             this.chkActive.Name = "chkActive";
             this.chkActive.Size = new System.Drawing.Size(56, 17);
             this.chkActive.TabIndex = 7;
@@ -170,7 +169,7 @@
             // txtDesc
             // 
             this.txtDesc.Enabled = false;
-            this.txtDesc.Location = new System.Drawing.Point(72, 64);
+            this.txtDesc.Location = new System.Drawing.Point(72, 38);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(572, 20);
             this.txtDesc.TabIndex = 5;
@@ -178,24 +177,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 67);
+            this.label3.Location = new System.Drawing.Point(6, 41);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Description";
             // 
-            // txtIcon
-            // 
-            this.txtIcon.Enabled = false;
-            this.txtIcon.Location = new System.Drawing.Point(72, 38);
-            this.txtIcon.Name = "txtIcon";
-            this.txtIcon.Size = new System.Drawing.Size(491, 20);
-            this.txtIcon.TabIndex = 3;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 41);
+            this.label2.Location = new System.Drawing.Point(38, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 2;
@@ -224,7 +215,7 @@
             this.groupBox2.Controls.Add(this.dgvTrain);
             this.groupBox2.Location = new System.Drawing.Point(138, 11);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(648, 361);
+            this.groupBox2.Size = new System.Drawing.Size(648, 379);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             // 
@@ -244,7 +235,7 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2});
-            this.bdgNavigator.Location = new System.Drawing.Point(3, 333);
+            this.bdgNavigator.Location = new System.Drawing.Point(3, 351);
             this.bdgNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bdgNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bdgNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -333,7 +324,7 @@
             this.dgvTrain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.Column2,
-            this.Column1,
+            this.icon,
             this.Column3,
             this.active});
             this.dgvTrain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -344,8 +335,18 @@
             this.dgvTrain.RowHeadersVisible = false;
             this.dgvTrain.RowTemplate.Height = 25;
             this.dgvTrain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTrain.Size = new System.Drawing.Size(642, 342);
+            this.dgvTrain.Size = new System.Drawing.Size(642, 360);
             this.dgvTrain.TabIndex = 21;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(711, 531);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 30);
+            this.btnClose.TabIndex = 24;
+            this.btnClose.Text = "Clos&e";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // id
             // 
@@ -362,12 +363,13 @@
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
-            // Column1
+            // icon
             // 
-            this.Column1.HeaderText = "Icon";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
+            this.icon.DataPropertyName = "icon";
+            this.icon.HeaderText = "Icon";
+            this.icon.Name = "icon";
+            this.icon.ReadOnly = true;
+            this.icon.Width = 50;
             // 
             // Column3
             // 
@@ -379,28 +381,19 @@
             // 
             // active
             // 
+            this.active.DataPropertyName = "active";
             this.active.HeaderText = "Active";
             this.active.Name = "active";
             this.active.ReadOnly = true;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(711, 502);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 30);
-            this.btnClose.TabIndex = 24;
-            this.btnClose.Text = "Clos&e";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // frmTrain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 542);
+            this.ClientSize = new System.Drawing.Size(794, 573);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.s);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnFind);
@@ -416,8 +409,8 @@
             this.Text = "Train Maintenance";
             this.Load += new System.EventHandler(this.frmTrain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.s.ResumeLayout(false);
+            this.s.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).EndInit();
@@ -436,15 +429,13 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox s;
         private System.Windows.Forms.CheckBox chkActive;
         private System.Windows.Forms.TextBox txtDesc;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.TextBox txtIcon;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.BindingNavigator bdgNavigator;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -458,9 +449,10 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.DataGridView dgvTrain;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.ComboBox cmbIcon;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn icon;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn active;
     }

@@ -32,7 +32,12 @@ namespace tracker.file
         {
             // config map         
             List<GMapProvider> List = GMapProviders.List;
-            gMap.MapProvider = List[Properties.Settings.Default.MapProvider];
+            int index = 0;
+            if (Properties.Settings.Default.MapProvider > 0)
+            {
+                index = Properties.Settings.Default.MapProvider;
+            }
+            gMap.MapProvider = List[index];
             gMap.Position = new PointLatLng(Convert.ToDouble(Properties.Settings.Default.Lat), Convert.ToDouble(Properties.Settings.Default.Lng));
             gMap.MinZoom = 0;
             gMap.MaxZoom = 24;
@@ -78,10 +83,11 @@ namespace tracker.file
                //" AND train_id IN(" + String.Join(",", list.ToArray()) +  ") " +
                //" GROUP BY train_id ORDER BY created_at DESC LIMIT 1");
 
-                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM (SELECT  * FROM logs " +
-                    "WHERE head = 1 " +
-                    "AND train_id IN(" + String.Join(",", list.ToArray()) + ") " +
-                    "ORDER BY created_at DESC) as temp " +
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM (SELECT logs.train_code,logs.train_desc,train_id, lat,lng, image_index,created_at FROM logs " +
+                    "JOIN trains ON logs.train_id = trains.id " +
+                    "WHERE logs.head = 1 " +
+                    "AND logs.train_id IN(" + String.Join(",", list.ToArray()) + ") " +
+                    "ORDER BY logs.created_at DESC) as temp " +
                     "GROUP BY train_id");
 
 
@@ -93,7 +99,24 @@ namespace tracker.file
                         Lng = float.Parse(row["lng"].ToString())
                     };
 
-                    Image image_marker = Resources.train_green;
+                    Image[] images = 
+                    {
+                        Properties.Resources.train_green,
+                        Properties.Resources.train_red,
+                        Properties.Resources.train_yellow,
+                        Properties.Resources.train_blue,
+                        Properties.Resources.train_brown,
+                    };
+                    Image image_marker;
+                    if (DateTime.Now.Subtract(Convert.ToDateTime(row["created_at"])).TotalSeconds > (int)Properties.Settings.Default.Limit) 
+                    {
+                        image_marker = Properties.Resources.train_gray;
+                    }
+                    else
+                    {
+                        image_marker = images[(int)row["image_index"]];
+                    }
+                    
 
                     Image markerImage = image_marker;
 

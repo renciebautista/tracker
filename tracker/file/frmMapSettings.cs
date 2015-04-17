@@ -21,6 +21,8 @@ namespace tracker.file
             cmbMapType.DataSource = GMapProviders.List;
             int id = (int)Properties.Settings.Default.MapProvider;
             cmbMapType.SelectedIndex = id;
+
+            txtLimit.Text = Properties.Settings.Default.Limit.ToString();
         }
 
         private void frmMapSettings_Load(object sender, EventArgs e)
@@ -40,13 +42,16 @@ namespace tracker.file
                 btnEdit.Text = "&Update";
                 cmbMapType.Enabled = true;
                 btnClose.Enabled = false;
+                txtLimit.Enabled = true;
             }
             else
             {
                 Properties.Settings.Default.MapProvider = cmbMapType.SelectedIndex;
+                Properties.Settings.Default.Limit = Convert.ToInt32( txtLimit.Text.ToString());
                 Properties.Settings.Default.Save();
 
                 cmbMapType.Enabled = false;
+                txtLimit.Enabled = false;
                 btnEdit.Text = "&Edit";
                 btnClose.Enabled = true;
 
@@ -54,6 +59,11 @@ namespace tracker.file
 
                 this.Close();
             }
+        }
+
+        private void txtLimit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
     }

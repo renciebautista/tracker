@@ -62,7 +62,24 @@ namespace tracker
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            this.Hide();
+            DialogResult dr = new DialogResult();
+            frmLogin logIn = new frmLogin();
+            dr = logIn.ShowDialog();
+           
+            if(dr == DialogResult.OK){
+                this.Show();
+            }else{
+                this.Close();
+            }
+            
+            
 
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

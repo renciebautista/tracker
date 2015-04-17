@@ -8,12 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using tracker.Properties;
+using System.Resources;
+using System.Globalization;
+using System.Collections;
 
 namespace tracker.maintenance
 {
     public partial class frmTrain : Form
     {
-        BindingSource bs = new BindingSource();
+        BindingSource bs = new BindingSource();   
         public frmTrain()
         {
             InitializeComponent();
@@ -22,10 +26,9 @@ namespace tracker.maintenance
         private void toggleInput(bool value)
         {
             txtCode.Enabled = value;
-            txtIcon.Enabled = value;
             txtDesc.Enabled = value;
             chkActive.Enabled = value;
-            btnBrowse.Enabled = value;
+            cmbIcon.Enabled = value;
 
             btnClose.Enabled = !value;
             bdgNavigator.Enabled = !value;
@@ -44,7 +47,6 @@ namespace tracker.maintenance
                 btnCancel.Enabled = true;
 
                 txtCode.Text = "";
-                txtIcon.Text = "";
                 txtDesc.Text = "";
                 txtCode.Focus();
 
@@ -55,10 +57,6 @@ namespace tracker.maintenance
                 {
                     MessageBox.Show("Code is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtCode.Focus();
-                }else if (txtIcon.Text == "")
-                {
-                    MessageBox.Show("Icon is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtIcon.Focus();
                 }else if (txtDesc.Text == "")
                 {
                     MessageBox.Show("Description is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -103,9 +101,10 @@ namespace tracker.maintenance
 
         private int addTrain()
         {
-            return MysqlHelper.ExecuteNonQuery("INSERT INTO trains (train_code,	train_desc) VALUES(@code, @desc)",
+            return MysqlHelper.ExecuteNonQuery("INSERT INTO trains (train_code,	train_desc,image_index) VALUES(@code, @desc, @image_index)",
                 new MySqlParameter("@code",txtCode.Text.Trim()),
-                new MySqlParameter("@desc", txtDesc.Text.Trim()));
+                new MySqlParameter("@desc", txtDesc.Text.Trim()),
+                new MySqlParameter("@image_index", cmbIcon.SelectedIndex));
         }
 
         private void loadGrid()
@@ -122,9 +121,21 @@ namespace tracker.maintenance
         {
             loadGrid();
             txtCode.DataBindings.Add(new Binding("Text", bs, "train_code", true));
-            txtIcon.DataBindings.Add(new Binding("Text", bs, "train_code", true));
             txtDesc.DataBindings.Add(new Binding("Text", bs, "train_desc", true));
-            
+            cmbIcon.DataBindings.Add(new Binding("SelectedIndex", bs, "image_index", true));
+            Image[] images = 
+            {
+                Properties.Resources.train_green,
+                Properties.Resources.train_red,
+                Properties.Resources.train_yellow,
+                Properties.Resources.train_blue,
+                Properties.Resources.train_brown,
+            };
+
+            cmbIcon.DisplayImages(images);
+            cmbIcon.SelectedIndex = 0;
+            cmbIcon.DropDownHeight = 200;
+
         }
 
         private void resetForm()
@@ -156,9 +167,10 @@ namespace tracker.maintenance
             else
             {
 
-                MysqlHelper.ExecuteNonQuery("UPDATE trains SET train_code=@code,train_desc=@desc WHERE id=@id",
+                MysqlHelper.ExecuteNonQuery("UPDATE trains SET train_code=@code,train_desc=@desc, image_index=@image_index WHERE id=@id",
                 new MySqlParameter("@code", txtCode.Text.Trim()),
                 new MySqlParameter("@desc", txtDesc.Text.Trim()),
+                 new MySqlParameter("@image_index", cmbIcon.SelectedIndex),
                 new MySqlParameter("@id", Convert.ToInt32(dgvTrain.CurrentRow.Cells[0].Value.ToString())));
 
                 resetForm();
