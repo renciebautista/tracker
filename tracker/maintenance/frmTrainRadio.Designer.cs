@@ -42,6 +42,10 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dgvTrainRadio = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.train_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.head_ssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -49,10 +53,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.train_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.head_ssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
             this.bdgNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrainRadio)).BeginInit();
@@ -189,6 +189,38 @@
             this.dgvTrainRadio.TabIndex = 14;
             this.dgvTrainRadio.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvTrainRadio_CellFormatting);
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // train_desc
+            // 
+            this.train_desc.DataPropertyName = "train_desc";
+            this.train_desc.HeaderText = "Train";
+            this.train_desc.Name = "train_desc";
+            this.train_desc.ReadOnly = true;
+            this.train_desc.Width = 250;
+            // 
+            // ssi
+            // 
+            this.ssi.DataPropertyName = "ssi";
+            this.ssi.HeaderText = "Tail";
+            this.ssi.Name = "ssi";
+            this.ssi.ReadOnly = true;
+            this.ssi.Width = 250;
+            // 
+            // head_ssi
+            // 
+            this.head_ssi.DataPropertyName = "head_ssi";
+            this.head_ssi.HeaderText = "Head";
+            this.head_ssi.Name = "head_ssi";
+            this.head_ssi.ReadOnly = true;
+            this.head_ssi.Width = 250;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.bdgNavigator);
@@ -226,6 +258,7 @@
             this.btnFind.TabIndex = 29;
             this.btnFind.Text = "&Find";
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
             // 
             // btnDelete
             // 
@@ -245,6 +278,7 @@
             this.btnEdit.TabIndex = 27;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnClose
             // 
@@ -255,38 +289,6 @@
             this.btnClose.Text = "Clos&e";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // train_desc
-            // 
-            this.train_desc.DataPropertyName = "train_desc";
-            this.train_desc.HeaderText = "Train";
-            this.train_desc.Name = "train_desc";
-            this.train_desc.ReadOnly = true;
-            this.train_desc.Width = 250;
-            // 
-            // ssi
-            // 
-            this.ssi.DataPropertyName = "ssi";
-            this.ssi.HeaderText = "Tail";
-            this.ssi.Name = "ssi";
-            this.ssi.ReadOnly = true;
-            this.ssi.Width = 250;
-            // 
-            // head_ssi
-            // 
-            this.head_ssi.DataPropertyName = "head_ssi";
-            this.head_ssi.HeaderText = "Head";
-            this.head_ssi.Name = "head_ssi";
-            this.head_ssi.ReadOnly = true;
-            this.head_ssi.Width = 250;
             // 
             // frmTrainRadio
             // 

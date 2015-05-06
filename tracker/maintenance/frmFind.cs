@@ -145,9 +145,10 @@ namespace tracker.maintenance
         private void Init()
         {
             this.Text = string.Format("Search {0}", strSearch);
+           // dataGridView.AutoGenerateColumns = false;
+            
 
-
-            //dataGridView.AutoGenerateColumns = false;
+          
 
 
             //dataGridView.Columns[0].HeaderText = "Id";
@@ -198,13 +199,14 @@ namespace tracker.maintenance
             dataGridView.DataSource = dtSource;
             for (int i = 0; i < fields.Length; i++)
             {
-                if (i == 0)
-                {
-                    dataGridView.Columns[i].Visible = false;
-                }
+                //if (i == 0)
+                //{
+                //    dataGridView.Columns[i].Visible = false;
+                //}
                 dataGridView.Columns[i].HeaderText = fields[i].ToString();
                 dataGridView.Columns[i].Width = fieldsSize[i];
             }
+            
         }
 
         private void ReturnValue()

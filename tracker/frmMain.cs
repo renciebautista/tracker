@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using tracker.maintenance;
 using tracker.file;
+using MySql.Data.MySqlClient;
+using System.Configuration;
 
 namespace tracker
 {
@@ -63,15 +65,71 @@ namespace tracker
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.Hide();
-            DialogResult dr = new DialogResult();
-            frmLogin logIn = new frmLogin();
-            dr = logIn.ShowDialog();
-           
-            if(dr == DialogResult.OK){
-                this.Show();
-            }else{
-                this.Close();
-            }
+
+            using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
+            {
+                try
+                {
+                        conn.Open();
+                     
+                        conn.Close();
+
+                        if (Properties.Settings.Default.Mode == 1)
+                        {
+                            DialogResult dr = new DialogResult();
+                            frmLogin logIn = new frmLogin();
+                            dr = logIn.ShowDialog();
+
+                            if (dr == DialogResult.OK)
+                            {
+                                this.Show();
+                            }
+                            else
+                            {
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            menuStrip1.Items[1].Visible = false;
+                            menuStrip1.Items[2].Visible = false;
+
+                            this.Show();
+                        }
+                    
+                }
+                catch (MySqlException ex)
+                {
+                    switch (ex.Number)
+                    {
+                        case 0:
+                            MessageBox.Show("Cannot connect to server.  Contact administrator","Database Connection Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                            break;
+                        case 1045:
+                            MessageBox.Show("Invalid username/password, please try again", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        case 1042:
+                            MessageBox.Show("Unable to connect to any of the specified MySQL hosts.", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                        default:
+                            MessageBox.Show("Cannot connect to server.  Contact administrator", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            break;
+                    }
+                    DialogResult dr = new DialogResult();
+                    frmServerSettings settings = new frmServerSettings();
+                    dr = settings.ShowDialog();
+                    if (dr == DialogResult.OK)
+                    {
+                        Application.Restart();
+                    }
+                    else
+                    {
+                        Application.Exit();
+                    }
+                }
+           }
+
+            
             
             
 
@@ -80,6 +138,25 @@ namespace tracker
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAbout about = new frmAbout();
+            about.ShowDialog();
+        }
+
+        private void viewHelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Help.ShowHelp(this, "file://c:\\helpfiles\\help.chm");
+        }
+
+        private void initializeDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmInitDb initDb = new frmInitDb())
+            {
+                initDb.ShowDialog();
+            } 
         }
     }
 }

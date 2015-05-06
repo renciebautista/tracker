@@ -15,28 +15,71 @@ namespace tracker.maintenance
     {
         DataTable table1;
         DataTable table2;
-        public frmAddTrain()
+        private FormMode form_mode;
+        private int train_id;
+        public enum FormMode
+        {
+            Add, Edit
+        };
+        public int TrainId
+        {
+            set { train_id = value; }
+            get { return train_id; }
+        }
+
+        public frmAddTrain(FormMode mode)
         {
             InitializeComponent();
-            table1 = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where active = 1 AND radios.id NOT IN (SELECT radio_id FROM train_radios)");
-            table2 = table1.Clone();
-
-            listBox1.ValueMember = "id";
-            listBox1.DisplayMember = "ssi";
-            listBox1.DataSource = table1;
-
-            listBox2.ValueMember = "id";
-            listBox2.DisplayMember = "ssi";
-            listBox2.DataSource = table2;
-
-            cmbTrain.ValueMember = "id";
-            cmbTrain.DisplayMember = "train_desc";
-            cmbTrain.DataSource = MysqlHelper.ExecuteDataTable("SELECT * FROM trains where active = 1 AND trains.id NOT IN (SELECT train_id FROM train_radios)");
+            form_mode = mode;
+            
         }
 
         private void frmAddTrain_Load(object sender, EventArgs e)
         {
-            
+            //MessageBox.Show(train_id.ToString());
+            if (form_mode == FormMode.Add)
+            {
+                btnSave.Text = "&Save";
+                this.Text = "Add Train - Radio Assignment";
+                table1 = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where active = 1 AND radios.id NOT IN (SELECT radio_id FROM train_radios)");
+                table2 = table1.Clone();
+
+                listBox1.ValueMember = "id";
+                listBox1.DisplayMember = "ssi";
+                listBox1.DataSource = table1;
+
+                listBox2.ValueMember = "id";
+                listBox2.DisplayMember = "ssi";
+                listBox2.DataSource = table2;
+
+                cmbTrain.ValueMember = "id";
+                cmbTrain.DisplayMember = "train_desc";
+                cmbTrain.DataSource = MysqlHelper.ExecuteDataTable("SELECT * FROM trains where active = 1 AND trains.id NOT IN (SELECT distinct(train_id) FROM train_radios)");
+            }
+            else
+            {
+                btnSave.Text = "&Update";
+                this.Text = "Edit Train - Radio Assignment";
+
+                table1 = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where active = 1 AND radios.id NOT IN (SELECT radio_id FROM train_radios)");
+                table2 = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where active = 1 AND radios.id IN (SELECT radio_id FROM train_radios WHERE train_id = '" + train_id + "')");
+
+                listBox1.ValueMember = "id";
+                listBox1.DisplayMember = "ssi";
+                listBox1.DataSource = table1;
+
+                listBox2.ValueMember = "id";
+                listBox2.DisplayMember = "ssi";
+                listBox2.DataSource = table2;
+
+
+                cmbTrain.ValueMember = "id";
+                cmbTrain.DisplayMember = "train_desc";
+                cmbTrain.DataSource = MysqlHelper.ExecuteDataTable("SELECT * FROM trains " +
+                    "WHERE active = 1 " +
+                    "AND trains.id NOT IN (SELECT distinct(train_id) FROM train_radios WHERE train_id != '" + train_id + "')");
+                cmbTrain.SelectedValue = train_id;
+            }
                 
         }
 
@@ -95,12 +138,18 @@ namespace tracker.maintenance
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
             if (listBox2.Items.Count != 2)
             {
                 MessageBox.Show("Please select a radio.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
+                if (btnSave.Text == "&Update")
+                {
+                    MysqlHelper.ExecuteNonQuery("DELETE FROM train_radios WHERE id IN (SELECT cid FROM (SELECT id as cid FROM train_radios WHERE train_id = '" + this.train_id + "') as c)");
+                }
+
                 int train_id = int.Parse(cmbTrain.SelectedValue.ToString());
 
                 for (int i = 0; i < listBox2.Items.Count; ++i)
@@ -109,6 +158,7 @@ namespace tracker.maintenance
                     int radio_id = int.Parse(radio["id"].ToString());
                     if (i == 0)
                     {
+
                         addAssignment(train_id, radio_id, true);
                     }
                     else

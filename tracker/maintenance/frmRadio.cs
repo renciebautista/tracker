@@ -84,6 +84,7 @@ namespace tracker.maintenance
             txtMnc.DataBindings.Add(new Binding("Text", bs, "mnc", true));
             txtSsi.DataBindings.Add(new Binding("Text", bs, "ssi", true));
             txtTrackerCode.DataBindings.Add(new Binding("Text", bs, "tracker_code", true));
+            chkActive.DataBindings.Add(new Binding("Checked", bs, "active", true));
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -172,6 +173,16 @@ namespace tracker.maintenance
                 btnFind.Enabled = false;
                 btnCancel.Enabled = true;
                 txtMcc.Focus();
+                int id = Int32.Parse(dgvRadio.CurrentRow.Cells["id"].Value.ToString());
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM train_radios WHERE radio_id ='" + id + "'");
+                if (dt.Rows.Count > 0)
+                {
+                    chkActive.Enabled = false;
+                }
+                else
+                {
+                    chkActive.Enabled = true;
+                }
             }
             else
             {
@@ -182,7 +193,7 @@ namespace tracker.maintenance
                 }
                 else
                 {
-                    MessageBox.Show("Unable to save transaction!", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Unable to save radio!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtMcc.Focus();
                 }
             }
@@ -222,15 +233,24 @@ namespace tracker.maintenance
             if (result == DialogResult.Yes)
             {
                 int id = Int32.Parse(dgvRadio.CurrentRow.Cells["id"].Value.ToString());
-                int retVal = MysqlHelper.ExecuteNonQuery("DELETE FROM radios where id ='" + id + "'");
-                if (retVal == 1)
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM train_radios WHERE radio_id ='" + id + "'");
+                if (dt.Rows.Count == 0)
                 {
-                    loadGrid();
+                    int retVal = MysqlHelper.ExecuteNonQuery("DELETE FROM radios where id ='" + id + "'");
+                    if (retVal == 1)
+                    {
+                        loadGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erorr deleting record.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Erorr deleting record.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cannot delete radio it is currently assigned to a train.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                
             }
         }
     }

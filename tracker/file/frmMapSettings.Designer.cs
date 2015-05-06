@@ -33,10 +33,14 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.txtLimit = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.cmbMapType = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtLimit = new System.Windows.Forms.TextBox();
+            this.txtLat = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtLng = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +76,10 @@
             // 
             // groupBox
             // 
+            this.groupBox.Controls.Add(this.txtLng);
+            this.groupBox.Controls.Add(this.label4);
+            this.groupBox.Controls.Add(this.txtLat);
+            this.groupBox.Controls.Add(this.label3);
             this.groupBox.Controls.Add(this.txtLimit);
             this.groupBox.Controls.Add(this.label2);
             this.groupBox.Controls.Add(this.cmbMapType);
@@ -81,6 +89,24 @@
             this.groupBox.Size = new System.Drawing.Size(491, 243);
             this.groupBox.TabIndex = 31;
             this.groupBox.TabStop = false;
+            // 
+            // txtLimit
+            // 
+            this.txtLimit.Enabled = false;
+            this.txtLimit.Location = new System.Drawing.Point(114, 94);
+            this.txtLimit.Name = "txtLimit";
+            this.txtLimit.Size = new System.Drawing.Size(100, 20);
+            this.txtLimit.TabIndex = 3;
+            this.txtLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimit_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 97);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Offline Limit (sec)";
             // 
             // cmbMapType
             // 
@@ -101,23 +127,39 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Map Type";
             // 
-            // label2
+            // txtLat
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Offline Limit (sec)";
+            this.txtLat.Enabled = false;
+            this.txtLat.Location = new System.Drawing.Point(114, 42);
+            this.txtLat.Name = "txtLat";
+            this.txtLat.Size = new System.Drawing.Size(100, 20);
+            this.txtLat.TabIndex = 5;
             // 
-            // txtLimit
+            // label3
             // 
-            this.txtLimit.Enabled = false;
-            this.txtLimit.Location = new System.Drawing.Point(114, 48);
-            this.txtLimit.Name = "txtLimit";
-            this.txtLimit.Size = new System.Drawing.Size(100, 20);
-            this.txtLimit.TabIndex = 3;
-            this.txtLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLimit_KeyPress);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(63, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Latitude";
+            // 
+            // txtLng
+            // 
+            this.txtLng.Enabled = false;
+            this.txtLng.Location = new System.Drawing.Point(114, 68);
+            this.txtLng.Name = "txtLng";
+            this.txtLng.Size = new System.Drawing.Size(100, 20);
+            this.txtLng.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(51, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Longtitude";
             // 
             // frmMapSettings
             // 
@@ -152,5 +194,9 @@
         private System.Windows.Forms.ComboBox cmbMapType;
         private System.Windows.Forms.TextBox txtLimit;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtLng;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtLat;
+        private System.Windows.Forms.Label label3;
     }
 }
