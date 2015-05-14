@@ -55,6 +55,10 @@
             this.tracker_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtTo = new System.Windows.Forms.TextBox();
+            this.txtFrom = new System.Windows.Forms.TextBox();
+            this.chkRange = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtTrackerCode = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -308,6 +312,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.txtTo);
+            this.groupBox2.Controls.Add(this.txtFrom);
+            this.groupBox2.Controls.Add(this.chkRange);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.txtTrackerCode);
             this.groupBox2.Controls.Add(this.label4);
@@ -322,6 +330,45 @@
             this.groupBox2.Size = new System.Drawing.Size(650, 143);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(466, 67);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(10, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "-";
+            // 
+            // txtTo
+            // 
+            this.txtTo.Enabled = false;
+            this.txtTo.Location = new System.Drawing.Point(482, 64);
+            this.txtTo.Name = "txtTo";
+            this.txtTo.Size = new System.Drawing.Size(106, 20);
+            this.txtTo.TabIndex = 14;
+            this.txtTo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTo_KeyPress);
+            // 
+            // txtFrom
+            // 
+            this.txtFrom.Enabled = false;
+            this.txtFrom.Location = new System.Drawing.Point(354, 64);
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.Size = new System.Drawing.Size(106, 20);
+            this.txtFrom.TabIndex = 12;
+            this.txtFrom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFrom_KeyPress);
+            // 
+            // chkRange
+            // 
+            this.chkRange.AutoSize = true;
+            this.chkRange.Enabled = false;
+            this.chkRange.Location = new System.Drawing.Point(290, 66);
+            this.chkRange.Name = "chkRange";
+            this.chkRange.Size = new System.Drawing.Size(58, 17);
+            this.chkRange.TabIndex = 11;
+            this.chkRange.Text = "Range";
+            this.chkRange.UseVisualStyleBackColor = true;
+            this.chkRange.CheckedChanged += new System.EventHandler(this.chkRange_CheckedChanged);
             // 
             // label5
             // 
@@ -365,7 +412,7 @@
             this.txtSsi.Enabled = false;
             this.txtSsi.Location = new System.Drawing.Point(81, 64);
             this.txtSsi.Name = "txtSsi";
-            this.txtSsi.Size = new System.Drawing.Size(553, 20);
+            this.txtSsi.Size = new System.Drawing.Size(202, 20);
             this.txtSsi.TabIndex = 2;
             // 
             // txtMnc
@@ -485,5 +532,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ssi;
         private System.Windows.Forms.DataGridViewTextBoxColumn tracker_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn active;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtTo;
+        private System.Windows.Forms.TextBox txtFrom;
+        private System.Windows.Forms.CheckBox chkRange;
     }
 }

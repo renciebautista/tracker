@@ -120,5 +120,17 @@ namespace tracker.Properties {
                 this["Mode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Wallpaper {
+            get {
+                return ((string)(this["Wallpaper"]));
+            }
+            set {
+                this["Wallpaper"] = value;
+            }
+        }
     }
 }

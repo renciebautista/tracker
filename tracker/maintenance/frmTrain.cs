@@ -64,28 +64,38 @@ namespace tracker.maintenance
                 }
                 else
                 {
-                    if (addTrain() == 1)
+                    DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM trains where train_code ='" + txtCode.Text.Trim() + "'");
+                    if (dt.Rows.Count > 0)
                     {
-                        resetForm();
-
-                        dgvTrain.ClearSelection();//If you want
-
-                        int nRowIndex = dgvTrain.Rows.Count - 1;
-                        int nColumnIndex = 3;
-
-                        dgvTrain.Rows[nRowIndex].Selected = true;
-                        dgvTrain.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
-
-                        //In case if you want to scroll down as well.
-                        dgvTrain.FirstDisplayedScrollingRowIndex = nRowIndex;
+                        MessageBox.Show("Train code already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtCode.Focus();
                     }
                     else
                     {
-                        MessageBox.Show("Unable to save transaction!", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtCode.Focus();
+                        if (addTrain() == 1)
+                        {
+                            resetForm();
+
+                            dgvTrain.ClearSelection();//If you want
+
+                            int nRowIndex = dgvTrain.Rows.Count - 1;
+                            int nColumnIndex = 3;
+
+                            dgvTrain.Rows[nRowIndex].Selected = true;
+                            dgvTrain.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
+
+                            //In case if you want to scroll down as well.
+                            dgvTrain.FirstDisplayedScrollingRowIndex = nRowIndex;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Unable to save transaction!", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtCode.Focus();
+                        }
+                        //MessageBox.Show(addTrain().ToString());
+                        resetForm();
                     }
-                    //MessageBox.Show(addTrain().ToString());
-                     resetForm();
+                    
                 }
                 //toggleInput(false);
                 //btnAdd.Text = "&Add";

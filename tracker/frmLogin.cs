@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -24,18 +26,75 @@ namespace tracker
             this.Close();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private int Authenticated(string username, string password)
         {
-            if((txtUsername.Text == "admin") && (txtPassword.Text == "password")){
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM users WHERE username = @username AND pwd = @pwd",
+               new MySqlParameter("@username", username),
+               new MySqlParameter("@pwd", security.GenerateHash(password)));
+
+            if (dt.Rows.Count > 0)
+            {
+                if (!(bool)dt.Rows[0]["active"])
+                {
+                    return -1;
+                }
+                else
+                {
+                    userdetails.ID = Convert.ToInt32(dt.Rows[0]["id"].ToString());
+                    userdetails.Username = dt.Rows[0]["username"].ToString();
+                    userdetails.GroupId = Convert.ToInt32(dt.Rows[0]["group_id"].ToString());
+                    return 1;
+                }
             }
             else
             {
-                MessageBox.Show("Invalid login credentials.", "Log On", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                txtPassword.Text = "";
-                txtUsername.Focus();
+                return 0;
             }
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM users ");
+            if (dt.Rows.Count > 0)
+            {
+                int rtnType = Authenticated(txtUsername.Text.Trim().ToLower(), txtPassword.Text.Trim());
+
+                switch (rtnType)
+                {
+                    case -1:
+                        MessageBox.Show("User access is disabled.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtUsername.Text = "";
+                        txtPassword.Text = "";
+                        txtUsername.Focus();
+                        break;
+                    case 0:
+                        MessageBox.Show("Invalid username or password.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtUsername.Text = "";
+                        txtPassword.Text = "";
+                        txtUsername.Focus();
+                        break;
+                    case 1:
+                        this.DialogResult = DialogResult.OK;
+                        break;
+                }
+            }
+            else
+            {
+                if ((txtUsername.Text == "admin") && (txtPassword.Text == "password"))
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid login credentials.", "Log On", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    txtPassword.Text = "";
+                    txtUsername.Focus();
+                }
+            }
+            
+
+            
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

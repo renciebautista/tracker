@@ -93,6 +93,12 @@
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmBackground.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBackground.Designer.cs">
+      <DependentUpon>frmBackground.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,12 @@
     <Compile Include="maintenance\frmTrainRadio.Designer.cs">
       <DependentUpon>frmTrainRadio.cs</DependentUpon>
     </Compile>
+    <Compile Include="maintenance\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="maintenance\frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="MysqlHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,12 +188,17 @@
     <Compile Include="file\frmTrainlist.Designer.cs">
       <DependentUpon>frmTrainlist.cs</DependentUpon>
     </Compile>
+    <Compile Include="security.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="userdetails.cs" />
     <EmbeddedResource Include="file\frmMapSettings.resx">
       <DependentUpon>frmMapSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBackground.resx">
+      <DependentUpon>frmBackground.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -218,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="maintenance\frmTrainRadio.resx">
       <DependentUpon>frmTrainRadio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="maintenance\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

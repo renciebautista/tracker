@@ -24,3 +24,6 @@ D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.csproj.GenerateRe
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.exe
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.pdb
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.csprojResolveAssemblyReference.cache
+D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.maintenance.frmInitDb.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.maintenance.frmUser.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.frmBackground.resources

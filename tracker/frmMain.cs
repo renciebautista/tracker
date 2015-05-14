@@ -16,6 +16,7 @@ namespace tracker
 {
     public partial class frmMain : Form
     {
+        private Boolean msgShown;
         public frmMain()
         {
             InitializeComponent();
@@ -66,6 +67,12 @@ namespace tracker
         {
             this.Hide();
 
+            string filepath = Properties.Settings.Default.Wallpaper.ToString();
+            if (filepath != "")
+            {
+                pictureBox1.Image = Image.FromFile(filepath);
+            }
+
             using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
             {
                 try
@@ -74,27 +81,22 @@ namespace tracker
                      
                         conn.Close();
 
-                        if (Properties.Settings.Default.Mode == 1)
-                        {
-                            DialogResult dr = new DialogResult();
-                            frmLogin logIn = new frmLogin();
-                            dr = logIn.ShowDialog();
+                        DialogResult dr = new DialogResult();
+                        frmLogin logIn = new frmLogin();
+                        dr = logIn.ShowDialog();
 
-                            if (dr == DialogResult.OK)
+                        if (dr == DialogResult.OK)
+                        {
+                            if (userdetails.GroupId == 2)
                             {
-                                this.Show();
+                                menuStrip1.Items[1].Visible = false;
                             }
-                            else
-                            {
-                                this.Close();
-                            }
+                            this.Show();
+                            msgShown = false;
                         }
                         else
                         {
-                            menuStrip1.Items[1].Visible = false;
-                            menuStrip1.Items[2].Visible = false;
-
-                            this.Show();
+                            this.Close();
                         }
                     
                 }
@@ -157,6 +159,56 @@ namespace tracker
             {
                 initDb.ShowDialog();
             } 
+        }
+
+        private void userMaintenanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmUser user = new frmUser())
+            {
+                user.ShowDialog();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
+            if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
+            {
+                // timer1.Enabled = false;
+                notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
+                notifyIcon1.BalloonTipText = "Please check Tracker System server.";
+                notifyIcon1.BalloonTipTitle = "Tracker service is not running";
+
+                notifyIcon1.ShowBalloonTip(1000);
+
+                //DialogResult result = MessageBox.Show("Tracker service is not running", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //if (result == DialogResult.OK)
+                //{
+                //    timer1.Enabled = true;
+                //}
+                
+            }
+            
+           
+        }
+
+        private void backgroundToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmBackground background = new frmBackground())
+            {
+                background.ShowDialog();
+            }
+
+            string filepath = Properties.Settings.Default.Wallpaper.ToString();
+            if (filepath != "")
+            {
+                pictureBox1.Image = Image.FromFile(filepath);
+            }
+        }
+
+        private void relogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }
