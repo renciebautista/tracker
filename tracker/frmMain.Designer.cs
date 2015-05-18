@@ -33,6 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.monitoringToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.mapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.maintenanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.radioMaintenanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,7 +60,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.relogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -94,6 +94,13 @@
             this.mapToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.mapToolStripMenuItem.Text = "Map View";
             this.mapToolStripMenuItem.Click += new System.EventHandler(this.monitoringToolStripMenuItem1_Click);
+            // 
+            // relogToolStripMenuItem
+            // 
+            this.relogToolStripMenuItem.Name = "relogToolStripMenuItem";
+            this.relogToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.relogToolStripMenuItem.Text = "Relog";
+            this.relogToolStripMenuItem.Click += new System.EventHandler(this.relogToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
@@ -152,7 +159,7 @@
             // backgroundToolStripMenuItem
             // 
             this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
-            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.backgroundToolStripMenuItem.Text = "Background";
             this.backgroundToolStripMenuItem.Click += new System.EventHandler(this.backgroundToolStripMenuItem_Click);
             // 
@@ -288,15 +295,8 @@
             // notifyIcon1
             // 
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "Tracker System";
+            this.notifyIcon1.Text = "10-20 Tracker";
             this.notifyIcon1.Visible = true;
-            // 
-            // relogToolStripMenuItem
-            // 
-            this.relogToolStripMenuItem.Name = "relogToolStripMenuItem";
-            this.relogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.relogToolStripMenuItem.Text = "Relog";
-            this.relogToolStripMenuItem.Click += new System.EventHandler(this.relogToolStripMenuItem_Click);
             // 
             // frmMain
             // 
@@ -306,12 +306,13 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tracker";
+            this.Text = "10-20 Tracker";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);

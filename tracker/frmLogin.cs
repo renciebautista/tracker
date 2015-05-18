@@ -99,7 +99,7 @@ namespace tracker
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            this.Text = "Tracker System";
+            this.Text = "10-20 Tracker";
             lblVersion.Text = String.Format("Version {0}", AssemblyVersion);
         }
 

@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tracker</RootNamespace>
-    <AssemblyName>tracker</AssemblyName>
+    <AssemblyName>10-20 Tracker</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
@@ -47,7 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>1429305259_36556.ico</ApplicationIcon>
+    <ApplicationIcon>10-20LOGO.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -295,7 +295,15 @@
     <None Include="Resources\train_yellow.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="10-20-mobile-icon.ico" />
+    <Content Include="10-20LOGO.ico" />
     <Content Include="1429305259_36556.ico" />
+    <Content Include="images\10-20 tracker background.png" />
+    <Content Include="images\10-20-mobile-icon.ico" />
+    <Content Include="images\10-20LOGO.ico" />
+    <Content Include="Resources\10-20 tracker background.png" />
+    <Content Include="Resources\10-20-mobile-icon.ico" />
+    <Content Include="Resources\10-20LOGO.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

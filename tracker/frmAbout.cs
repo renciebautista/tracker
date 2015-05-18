@@ -101,5 +101,10 @@ namespace tracker
             }
         }
         #endregion
+
+        private void frmAbout_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

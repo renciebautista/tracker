@@ -72,6 +72,11 @@ namespace tracker
             {
                 pictureBox1.Image = Image.FromFile(filepath);
             }
+            else
+            {
+                var path = Application.StartupPath +  @"\images\10-20 tracker background.png";
+                pictureBox1.Image = Image.FromFile(path);
+            }
 
             using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
             {
@@ -176,8 +181,8 @@ namespace tracker
             {
                 // timer1.Enabled = false;
                 notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
-                notifyIcon1.BalloonTipText = "Please check Tracker System server.";
-                notifyIcon1.BalloonTipTitle = "Tracker service is not running";
+                notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
+                notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
 
                 notifyIcon1.ShowBalloonTip(1000);
 
