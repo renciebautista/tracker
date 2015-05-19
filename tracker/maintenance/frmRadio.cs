@@ -40,6 +40,7 @@ namespace tracker.maintenance
             txtSsi.Enabled = value;
             txtTrackerCode.Enabled = value;
             chkActive.Enabled = value;
+            cmbIcon.Enabled = value;
 
             btnClose.Enabled = !value;
             bdgNavigator.Enabled = !value;
@@ -65,22 +66,23 @@ namespace tracker.maintenance
 
         private int addRadio()
         {
-
-            return MysqlHelper.ExecuteNonQuery("INSERT INTO radios (mcc, mnc, ssi, tracker_code, active) VALUES(@mcc, @mnc, @ssi, @tracker_code, @active)",
+            return MysqlHelper.ExecuteNonQuery("INSERT INTO radios (mcc, mnc, ssi, tracker_code, image_index, active) VALUES(@mcc, @mnc, @ssi, @tracker_code, @image_index, @active)",
                 new MySqlParameter("@mcc", txtMcc.Text.Trim()),
                 new MySqlParameter("@mnc", txtMnc.Text.Trim()),
                 new MySqlParameter("@ssi", txtSsi.Text.Trim()),
                 new MySqlParameter("@tracker_code", txtTrackerCode.Text.Trim()),
+                new MySqlParameter("@image_index", cmbIcon.SelectedIndex),
                 new MySqlParameter("@active", chkActive.Checked ? 1 : 0));
         }
 
         private int updateRadio()
         {
-             return MysqlHelper.ExecuteNonQuery("UPDATE radios SET mcc=@mcc,mnc=@mnc,ssi=@ssi,tracker_code=@tracker_code,active=@active WHERE id=@id",
+            return MysqlHelper.ExecuteNonQuery("UPDATE radios SET mcc=@mcc,mnc=@mnc,ssi=@ssi,tracker_code=@tracker_code,image_index=@image_index,active=@active WHERE id=@id",
                 new MySqlParameter("@mcc", txtMcc.Text.Trim()),
                 new MySqlParameter("@mnc", txtMnc.Text.Trim()),
                 new MySqlParameter("@ssi", txtSsi.Text.Trim()),
                 new MySqlParameter("@tracker_code", txtTrackerCode.Text.Trim()),
+                new MySqlParameter("@image_index", cmbIcon.SelectedIndex),
                 new MySqlParameter("@active", chkActive.Checked ? 1 : 0),
                 new MySqlParameter("@id", Convert.ToInt32(dgvRadio.CurrentRow.Cells[0].Value.ToString())));
         }
@@ -93,6 +95,19 @@ namespace tracker.maintenance
             txtSsi.DataBindings.Add(new Binding("Text", bs, "ssi", true));
             txtTrackerCode.DataBindings.Add(new Binding("Text", bs, "tracker_code", true));
             chkActive.DataBindings.Add(new Binding("Checked", bs, "active", true));
+            cmbIcon.DataBindings.Add(new Binding("SelectedIndex", bs, "image_index", true));
+            Image[] images = 
+            {
+                Properties.Resources.train_green,
+                Properties.Resources.train_red,
+                Properties.Resources.train_yellow,
+                Properties.Resources.train_blue,
+                Properties.Resources.train_brown,
+            };
+
+            cmbIcon.DisplayImages(images);
+            cmbIcon.SelectedIndex = 0;
+            cmbIcon.DropDownHeight = 200;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -156,16 +171,17 @@ namespace tracker.maintenance
                             DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where ssi ='" + i.ToString() + "'");
                             if (dt.Rows.Count > 0)
                             {
-                                //MessageBox.Show("Radio Ssi already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Radio Ssi '"+i.ToString()+"' already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 //txtSsi.Focus();
                             }
                             else
                             {
-                                MysqlHelper.ExecuteNonQuery("INSERT INTO radios (mcc, mnc, ssi, tracker_code, active) VALUES(@mcc, @mnc, @ssi, @tracker_code, @active)",
+                                MysqlHelper.ExecuteNonQuery("INSERT INTO radios (mcc, mnc, ssi, tracker_code, image_index, active) VALUES(@mcc, @mnc, @ssi, @tracker_code, @image_index, @active)",
                                new MySqlParameter("@mcc", txtMcc.Text.Trim()),
                                new MySqlParameter("@mnc", txtMnc.Text.Trim()),
                                new MySqlParameter("@ssi", i.ToString()),
                                new MySqlParameter("@tracker_code", ""),
+                               new MySqlParameter("@image_index", cmbIcon.SelectedIndex),
                                new MySqlParameter("@active", chkActive.Checked ? 1 : 0));
                             }
                            

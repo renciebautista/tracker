@@ -15,6 +15,7 @@ namespace tracker.file
     public partial class frmMonitoring : Form
     {
         frmTrainlist m_trainList = new frmTrainlist();
+        frmRadioList m_radioList = new frmRadioList();
         frmMap m_map = new frmMap();
         public frmMonitoring()
         {
@@ -31,8 +32,16 @@ namespace tracker.file
         {
             
             dockPanel.DockLeftPortion = 250;
+
             m_trainList.CloseButtonVisible = false;
+            
             m_trainList.Show(dockPanel, DockState.DockLeft);
+
+            m_radioList.CloseButtonVisible = false;
+            m_radioList.Show(dockPanel, DockState.Float);
+            m_radioList.DockHandler.FloatPane.DockTo(dockPanel.DockWindows[DockState.DockLeft]);
+
+
 
            
             m_map.CloseButtonVisible = false;
@@ -53,6 +62,11 @@ namespace tracker.file
             }
 
             m_map.initMap();
+        }
+
+        private void dockPanel_ActiveContentChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

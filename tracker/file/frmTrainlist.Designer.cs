@@ -32,10 +32,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTrainlist));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.dgvTrains = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.train_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.train_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.train_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrains)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,20 +76,13 @@
             this.dgvTrains.TabIndex = 2;
             this.dgvTrains.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvTrains_CurrentCellDirtyStateChanged);
             // 
-            // id
+            // train_desc
             // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // chk
-            // 
-            this.chk.DataPropertyName = "chk";
-            this.chk.HeaderText = "";
-            this.chk.Name = "chk";
-            this.chk.Width = 20;
+            this.train_desc.DataPropertyName = "train_desc";
+            this.train_desc.HeaderText = "Description";
+            this.train_desc.Name = "train_desc";
+            this.train_desc.ReadOnly = true;
+            this.train_desc.Width = 200;
             // 
             // train_code
             // 
@@ -98,13 +91,20 @@
             this.train_code.Name = "train_code";
             this.train_code.ReadOnly = true;
             // 
-            // train_desc
+            // chk
             // 
-            this.train_desc.DataPropertyName = "train_desc";
-            this.train_desc.HeaderText = "Description";
-            this.train_desc.Name = "train_desc";
-            this.train_desc.ReadOnly = true;
-            this.train_desc.Width = 200;
+            this.chk.DataPropertyName = "chk";
+            this.chk.HeaderText = "";
+            this.chk.Name = "chk";
+            this.chk.Width = 20;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
             // 
             // frmTrainlist
             // 

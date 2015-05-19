@@ -108,7 +108,9 @@
             dockPaneStripSkin1.ToolWindowGradient = dockPaneStripToolWindowGradient1;
             dockPanelSkin1.DockPaneStripSkin = dockPaneStripSkin1;
             this.dockPanel.Skin = dockPanelSkin1;
+            this.dockPanel.SupportDeeplyNestedContent = true;
             this.dockPanel.TabIndex = 2;
+            this.dockPanel.ActiveContentChanged += new System.EventHandler(this.dockPanel_ActiveContentChanged);
             // 
             // menuStrip1
             // 

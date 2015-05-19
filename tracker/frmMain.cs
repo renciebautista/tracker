@@ -65,6 +65,7 @@ namespace tracker
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            //ALTER TABLE `radios` ADD `image_index` INT NOT NULL AFTER `tracker_code`;
             this.Hide();
 
             string filepath = Properties.Settings.Default.Wallpaper.ToString();
@@ -86,23 +87,24 @@ namespace tracker
                      
                         conn.Close();
 
-                        DialogResult dr = new DialogResult();
-                        frmLogin logIn = new frmLogin();
-                        dr = logIn.ShowDialog();
+                        //DialogResult dr = new DialogResult();
+                        //frmLogin logIn = new frmLogin();
+                        //dr = logIn.ShowDialog();
 
-                        if (dr == DialogResult.OK)
-                        {
-                            if (userdetails.GroupId == 2)
-                            {
-                                menuStrip1.Items[1].Visible = false;
-                            }
-                            this.Show();
-                            msgShown = false;
-                        }
-                        else
-                        {
-                            this.Close();
-                        }
+                        //if (dr == DialogResult.OK)
+                        //{
+                        //    if (userdetails.GroupId == 2)
+                        //    {
+                        //        menuStrip1.Items[1].Visible = false;
+                        //    }
+                        //    this.Show();
+                        //    msgShown = false;
+                        //}
+                        //else
+                        //{
+                        //    this.Close();
+                        //}
+                        this.Show();
                     
                 }
                 catch (MySqlException ex)

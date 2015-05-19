@@ -87,6 +87,12 @@
     <Compile Include="file\frmMapSettings.Designer.cs">
       <DependentUpon>frmMapSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="file\frmRadioList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="file\frmRadioList.Designer.cs">
+      <DependentUpon>frmRadioList.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     <Compile Include="userdetails.cs" />
     <EmbeddedResource Include="file\frmMapSettings.resx">
       <DependentUpon>frmMapSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="file\frmRadioList.resx">
+      <DependentUpon>frmRadioList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>

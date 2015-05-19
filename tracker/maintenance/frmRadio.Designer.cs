@@ -69,6 +69,8 @@
             this.txtMcc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.cmbIcon = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
@@ -79,7 +81,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(136, 533);
+            this.btnAdd.Location = new System.Drawing.Point(136, 571);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 30);
             this.btnAdd.TabIndex = 0;
@@ -92,13 +94,13 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(10, 10);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(117, 553);
+            this.pictureBox1.Size = new System.Drawing.Size(117, 591);
             this.pictureBox1.TabIndex = 14;
             this.pictureBox1.TabStop = false;
             // 
             // btnFind
             // 
-            this.btnFind.Location = new System.Drawing.Point(379, 533);
+            this.btnFind.Location = new System.Drawing.Point(379, 571);
             this.btnFind.Name = "btnFind";
             this.btnFind.Size = new System.Drawing.Size(75, 30);
             this.btnFind.TabIndex = 3;
@@ -108,7 +110,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(298, 533);
+            this.btnDelete.Location = new System.Drawing.Point(298, 571);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 30);
             this.btnDelete.TabIndex = 2;
@@ -118,7 +120,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(217, 533);
+            this.btnEdit.Location = new System.Drawing.Point(217, 571);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 30);
             this.btnEdit.TabIndex = 1;
@@ -128,7 +130,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(711, 533);
+            this.btnClose.Location = new System.Drawing.Point(711, 571);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 30);
             this.btnClose.TabIndex = 5;
@@ -312,6 +314,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cmbIcon);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtTo);
             this.groupBox2.Controls.Add(this.txtFrom);
@@ -327,7 +331,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(136, 384);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(650, 143);
+            this.groupBox2.Size = new System.Drawing.Size(650, 181);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             // 
@@ -400,7 +404,7 @@
             // 
             this.chkActive.AutoSize = true;
             this.chkActive.Enabled = false;
-            this.chkActive.Location = new System.Drawing.Point(81, 116);
+            this.chkActive.Location = new System.Drawing.Point(81, 158);
             this.chkActive.Name = "chkActive";
             this.chkActive.Size = new System.Drawing.Size(56, 17);
             this.chkActive.TabIndex = 4;
@@ -452,7 +456,7 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(460, 533);
+            this.btnCancel.Location = new System.Drawing.Point(460, 571);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
             this.btnCancel.TabIndex = 4;
@@ -460,11 +464,31 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // cmbIcon
+            // 
+            this.cmbIcon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbIcon.Enabled = false;
+            this.cmbIcon.Font = new System.Drawing.Font("Arial", 16F);
+            this.cmbIcon.FormattingEnabled = true;
+            this.cmbIcon.Location = new System.Drawing.Point(81, 120);
+            this.cmbIcon.Name = "cmbIcon";
+            this.cmbIcon.Size = new System.Drawing.Size(97, 32);
+            this.cmbIcon.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(47, 131);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Icon";
+            // 
             // frmRadio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 571);
+            this.ClientSize = new System.Drawing.Size(794, 613);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -536,5 +560,7 @@
         private System.Windows.Forms.TextBox txtTo;
         private System.Windows.Forms.TextBox txtFrom;
         private System.Windows.Forms.CheckBox chkRange;
+        private System.Windows.Forms.ComboBox cmbIcon;
+        private System.Windows.Forms.Label label3;
     }
 }
