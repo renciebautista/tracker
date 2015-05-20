@@ -18,6 +18,7 @@ namespace tracker.file
     public partial class frmMap : DockContent
     {
         internal readonly GMapOverlay objects = new GMapOverlay("objects");
+        internal readonly GMapOverlay radio_overlay = new GMapOverlay("radio_overlay");
         public frmMap()
         {
             InitializeComponent();
@@ -45,7 +46,7 @@ namespace tracker.file
             gMap.DragButton = MouseButtons.Left;
 
             gMap.Overlays.Add(objects);
-
+            gMap.Overlays.Add(radio_overlay);
             // set cache mode only if no internet avaible
             if (!Stuff.PingNetwork("pingtest.com"))
             {
@@ -62,6 +63,7 @@ namespace tracker.file
         private void timer_Tick(object sender, EventArgs e)
         {
             objects.Markers.Clear();
+            radio_overlay.Markers.Clear();
             plotTrain();
         }
         private void plotTrain()
@@ -70,11 +72,10 @@ namespace tracker.file
             timer.Enabled = false;
 
             List<PointLatLng> positions = new List<PointLatLng>();
-
             var list = Properties.Settings.Default.Trains.Cast<string>().ToList();
+            var radios = Properties.Settings.Default.Radios.Cast<string>().ToList();
 
             #region Read File Data
-
             if (list.Count > 0)
             {
                // DataTable dt = MysqlHelper.ExecuteDataTable("SELECT *" +
@@ -139,9 +140,61 @@ namespace tracker.file
 
                 }
             }
+
+
+            if (radios.Count > 0)
+            {
+                DataTable dt_radios = MysqlHelper.ExecuteDataTable("SELECT * FROM (SELECT radio_logs.radio_id, radio_logs.lat, radio_logs.lng, radio_logs.created_at,radio_logs.mnc,radio_logs.ssi, radios.image_index FROM radio_logs " +
+                    "JOIN radios ON radio_logs.radio_id = radios.id " +
+                    "WHERE radio_logs.radio_id IN(" + String.Join(",", radios.ToArray()) + ") " +
+                    "ORDER BY radio_logs.created_at DESC) as temp " +
+                    "GROUP BY radio_id");
+
+
+                foreach (DataRow row in dt_radios.Rows) // Loop over the rows.
+                {
+                    PointLatLng p = new PointLatLng
+                    {
+                        Lat = float.Parse(row["lat"].ToString()),
+                        Lng = float.Parse(row["lng"].ToString())
+                    };
+
+                    Image[] images = 
+                    {
+                        Properties.Resources.train_green,
+                        Properties.Resources.train_red,
+                        Properties.Resources.train_yellow,
+                        Properties.Resources.train_blue,
+                        Properties.Resources.train_brown,
+                    };
+                    Image image_marker;
+                    if (DateTime.Now.Subtract(Convert.ToDateTime(row["created_at"])).TotalSeconds > (int)Properties.Settings.Default.Limit)
+                    {
+                        image_marker = Properties.Resources.train_gray;
+                    }
+                    else
+                    {
+                        image_marker = images[(int)row["image_index"]];
+                    }
+
+
+                    Image markerImage = image_marker;
+                    GMapMarkerImage marker = new GMapMarkerImage(p, markerImage);
+                    radio_overlay.Markers.Add(marker);
+
+                    // marker.ToolTipMode = MarkerTooltipMode.Always; enable tooltip
+                    marker.ToolTipText = row["mnc"].ToString() + " - " + row["ssi"].ToString();
+
+                }
+            }
             gMap.Refresh();
             #endregion
             timer.Enabled = true;
+        }
+
+        private void frmMap_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

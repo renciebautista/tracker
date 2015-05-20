@@ -11,12 +11,12 @@ using tracker.maintenance;
 using tracker.file;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using tracker.reports;
 
 namespace tracker
 {
     public partial class frmMain : Form
     {
-        private Boolean msgShown;
         public frmMain()
         {
             InitializeComponent();
@@ -66,6 +66,7 @@ namespace tracker
         private void frmMain_Load(object sender, EventArgs e)
         {
             //ALTER TABLE `radios` ADD `image_index` INT NOT NULL AFTER `tracker_code`;
+            //CREATE TABLE IF NOT EXISTS `radio_logs` ( `id` bigint(200) NOT NULL, `radio_id` int(11) NOT NULL, `mcc` varchar(50) NOT NULL, `mnc` varchar(50) NOT NULL, `ssi` varchar(50) NOT NULL, `subscriber_name` varchar(255) NOT NULL, `uplink` int(11) NOT NULL, `speed` decimal(11,4) NOT NULL, `course` decimal(11,4) NOT NULL, `alt` decimal(11,4) NOT NULL, `max_pos_error` decimal(11,4) NOT NULL, `lat` decimal(16,13) NOT NULL, `lng` decimal(16,13) NOT NULL, `tracker_code` varchar(50) NOT NULL, `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1
             this.Hide();
 
             string filepath = Properties.Settings.Default.Wallpaper.ToString();
@@ -216,6 +217,24 @@ namespace tracker
         private void relogToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Restart();
+        }
+
+        private void trainLogsReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            using (frmTrainReport report = new frmTrainReport())
+            {
+                report.ShowDialog();
+            }
+           
+        }
+
+        private void radioLogsReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmRadioReport report = new frmRadioReport())
+            {
+                report.ShowDialog();
+            }
         }
     }
 }

@@ -59,6 +59,8 @@
     <Reference Include="GMap.NET.WindowsForms">
       <HintPath>..\..\..\gmap lib\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="MySql.Data, Version=6.9.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -66,6 +68,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -80,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComboBoxTools.cs" />
+    <Compile Include="csvUtility.cs" />
     <Compile Include="DemoStuff.cs" />
     <Compile Include="file\frmMapSettings.cs">
       <SubType>Form</SubType>
@@ -194,6 +198,18 @@
     <Compile Include="file\frmTrainlist.Designer.cs">
       <DependentUpon>frmTrainlist.cs</DependentUpon>
     </Compile>
+    <Compile Include="reports\frmRadioReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reports\frmRadioReport.Designer.cs">
+      <DependentUpon>frmRadioReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="reports\frmTrainReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reports\frmTrainReport.Designer.cs">
+      <DependentUpon>frmTrainReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="security.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="userdetails.cs" />
@@ -260,6 +276,12 @@
     </Compile>
     <EmbeddedResource Include="file\frmTrainlist.resx">
       <DependentUpon>frmTrainlist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\frmRadioReport.resx">
+      <DependentUpon>frmRadioReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\frmTrainReport.resx">
+      <DependentUpon>frmTrainReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest">
       <SubType>Designer</SubType>

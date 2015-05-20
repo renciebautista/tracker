@@ -42,6 +42,9 @@
             this.userMaintenanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.trainLogsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.radioLogsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,6 +73,7 @@
             this.monitoringToolStripMenuItem2,
             this.maintenanceToolStripMenuItem1,
             this.settingsToolStripMenuItem,
+            this.reportsToolStripMenuItem1,
             this.helpToolStripMenuItem1,
             this.aboutToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -162,6 +166,29 @@
             this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.backgroundToolStripMenuItem.Text = "Background";
             this.backgroundToolStripMenuItem.Click += new System.EventHandler(this.backgroundToolStripMenuItem_Click);
+            // 
+            // reportsToolStripMenuItem1
+            // 
+            this.reportsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.trainLogsReportToolStripMenuItem,
+            this.radioLogsReportToolStripMenuItem});
+            this.reportsToolStripMenuItem1.Name = "reportsToolStripMenuItem1";
+            this.reportsToolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
+            this.reportsToolStripMenuItem1.Text = "Reports";
+            // 
+            // trainLogsReportToolStripMenuItem
+            // 
+            this.trainLogsReportToolStripMenuItem.Name = "trainLogsReportToolStripMenuItem";
+            this.trainLogsReportToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.trainLogsReportToolStripMenuItem.Text = "Train Logs Report";
+            this.trainLogsReportToolStripMenuItem.Click += new System.EventHandler(this.trainLogsReportToolStripMenuItem_Click);
+            // 
+            // radioLogsReportToolStripMenuItem
+            // 
+            this.radioLogsReportToolStripMenuItem.Name = "radioLogsReportToolStripMenuItem";
+            this.radioLogsReportToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.radioLogsReportToolStripMenuItem.Text = "Radio Logs Report";
+            this.radioLogsReportToolStripMenuItem.Click += new System.EventHandler(this.radioLogsReportToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
@@ -355,6 +382,9 @@
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backgroundToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem trainLogsReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem radioLogsReportToolStripMenuItem;
     }
 }
 
