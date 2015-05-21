@@ -45,6 +45,12 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.s = new System.Windows.Forms.GroupBox();
+            this.cmbGroup = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtConfirm = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dgvUser = new System.Windows.Forms.DataGridView();
@@ -57,12 +63,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnFind = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtConfirm = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cmbGroup = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
             this.bdgNavigator.SuspendLayout();
             this.s.SuspendLayout();
@@ -219,6 +219,62 @@
             this.s.Size = new System.Drawing.Size(609, 139);
             this.s.TabIndex = 31;
             this.s.TabStop = false;
+            this.s.Enter += new System.EventHandler(this.s_Enter);
+            // 
+            // cmbGroup
+            // 
+            this.cmbGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGroup.Enabled = false;
+            this.cmbGroup.FormattingEnabled = true;
+            this.cmbGroup.Location = new System.Drawing.Point(131, 88);
+            this.cmbGroup.Name = "cmbGroup";
+            this.cmbGroup.Size = new System.Drawing.Size(202, 21);
+            this.cmbGroup.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(89, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Group";
+            // 
+            // txtConfirm
+            // 
+            this.txtConfirm.Enabled = false;
+            this.txtConfirm.Location = new System.Drawing.Point(131, 64);
+            this.txtConfirm.Name = "txtConfirm";
+            this.txtConfirm.PasswordChar = '*';
+            this.txtConfirm.Size = new System.Drawing.Size(202, 20);
+            this.txtConfirm.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(34, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Confirm Password";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Enabled = false;
+            this.txtPassword.Location = new System.Drawing.Point(131, 38);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(202, 20);
+            this.txtPassword.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(69, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Password";
             // 
             // btnEdit
             // 
@@ -344,61 +400,6 @@
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Enabled = false;
-            this.txtPassword.Location = new System.Drawing.Point(131, 38);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(202, 20);
-            this.txtPassword.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(69, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Password";
-            // 
-            // txtConfirm
-            // 
-            this.txtConfirm.Enabled = false;
-            this.txtConfirm.Location = new System.Drawing.Point(131, 64);
-            this.txtConfirm.Name = "txtConfirm";
-            this.txtConfirm.PasswordChar = '*';
-            this.txtConfirm.Size = new System.Drawing.Size(202, 20);
-            this.txtConfirm.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Confirm Password";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(89, 91);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Group";
-            // 
-            // cmbGroup
-            // 
-            this.cmbGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGroup.Enabled = false;
-            this.cmbGroup.FormattingEnabled = true;
-            this.cmbGroup.Location = new System.Drawing.Point(131, 88);
-            this.cmbGroup.Name = "cmbGroup";
-            this.cmbGroup.Size = new System.Drawing.Size(202, 21);
-            this.cmbGroup.TabIndex = 3;
             // 
             // frmUser
             // 

@@ -27,3 +27,7 @@ D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.pdb
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmBackground.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\10-20 Tracker.exe
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\10-20 Tracker.pdb
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmRadioList.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.reports.frmRadioReport.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.reports.frmSelection.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.reports.frmTrainReport.resources

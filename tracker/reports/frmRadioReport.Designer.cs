@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRadioReport));
             this.btnClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbRadio = new System.Windows.Forms.ComboBox();
             this.dtTo = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.dtFrom = new System.Windows.Forms.DateTimePicker();
@@ -87,7 +87,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbRadio);
             this.groupBox1.Controls.Add(this.dtTo);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dtFrom);
@@ -99,13 +99,19 @@
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             // 
-            // comboBox1
+            // cmbRadio
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(564, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(314, 21);
-            this.comboBox1.TabIndex = 33;
+            this.cmbRadio.AllowDrop = true;
+            this.cmbRadio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRadio.FormattingEnabled = true;
+            this.cmbRadio.Items.AddRange(new object[] {
+            "All Radio",
+            "Per Radio"});
+            this.cmbRadio.Location = new System.Drawing.Point(564, 19);
+            this.cmbRadio.Name = "cmbRadio";
+            this.cmbRadio.Size = new System.Drawing.Size(121, 21);
+            this.cmbRadio.TabIndex = 33;
+            this.cmbRadio.SelectedIndexChanged += new System.EventHandler(this.cmbRadio_SelectedIndexChanged);
             // 
             // dtTo
             // 
@@ -433,6 +439,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Radio Log Report";
+            this.Load += new System.EventHandler(this.frmRadioReport_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -456,7 +463,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnProcess;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.BindingNavigator bdgNavigator;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -485,5 +491,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tracker_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn created_at;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.ComboBox cmbRadio;
     }
 }

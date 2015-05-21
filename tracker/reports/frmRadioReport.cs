@@ -16,6 +16,7 @@ namespace tracker.reports
     {
         BindingSource bs = new BindingSource();
         DataTable dt = new DataTable();
+        DataTable selected;
         public frmRadioReport()
         {
             InitializeComponent();
@@ -29,8 +30,22 @@ namespace tracker.reports
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
+            dgvRadio.DataSource = null;
+            dgvRadio.Rows.Clear();
             dgvRadio.AutoGenerateColumns = false;
-            dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radio_logs");
+            if ((selected != null) && (selected.Rows.Count > 0))
+            {
+                var filter = string.Join(",", selected.AsEnumerable()
+                                 .Select(x => x["value"].ToString())
+                                 .ToArray());
+
+                dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radio_logs WHERE ssi IN (" + filter + ") AND date(created_at) BETWEEN '" + dtFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtTo.Value.ToString("yyyy-MM-dd") + "'");
+            }
+            else
+            {
+                dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radio_logs WHERE date(created_at) BETWEEN '" + dtFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtTo.Value.ToString("yyyy-MM-dd") + "'");
+            }
+           
             bs.DataSource = dt;
             bdgNavigator.BindingSource = bs;
             dgvRadio.DataSource = bs;
@@ -62,6 +77,40 @@ namespace tracker.reports
                 MessageBox.Show("Report successfully exported.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Process.Start(sf.FileName);
                 // Do whatever
+            }
+        }
+
+        private void frmRadioReport_Load(object sender, EventArgs e)
+        {
+
+            Dictionary<string, string> test = new Dictionary<string, string>();
+            test.Add("1", "All Radio");
+            test.Add("2", "Per Radio");
+            cmbRadio.DataSource = new BindingSource(test, null);
+            cmbRadio.DisplayMember = "Value";
+            cmbRadio.ValueMember = "Key";
+
+            cmbRadio.SelectedIndex = 0;
+        }
+
+        private void cmbRadio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbRadio.SelectedIndex)
+            {
+                case 1:  // ..... some code here...
+                    frmSelection select = new frmSelection();
+                    select.SourceDataSource = MysqlHelper.ExecuteDataTable("SELECT ssi as value FROM radio_logs GROUP BY ssi");
+                    select.SelectedDataSource = selected;
+                    select.ShowDialog();
+                    selected = select.SelectedDataSource;
+                    break;
+                default: // ..... some code here...
+                    if ((selected != null) && (selected.Rows.Count > 0))
+                    {
+                        selected.Clear();
+                    }
+                    
+                    break;
             }
         }
     }

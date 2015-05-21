@@ -1,3 +1,4 @@
+D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\10-20 Tracker.exe
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.file.frmMapSettings.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.file.frmRadioList.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.frmAbout.resources
@@ -18,8 +19,10 @@ D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.maintenance.frmUs
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.Properties.Resources.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.file.frmTrainlist.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.reports.frmRadioReport.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.reports.frmSelection.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.reports.frmTrainReport.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.csproj.GenerateResource.Cache
+D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\10-20 Tracker.pdb
 D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\10-20 Tracker.exe.config
 D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\10-20 Tracker.exe
 D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\10-20 Tracker.pdb
@@ -27,5 +30,3 @@ D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\GMap.NET.Core.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\GMap.NET.WindowsForms.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\MySql.Data.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
-D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\10-20 Tracker.exe
-D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\10-20 Tracker.pdb

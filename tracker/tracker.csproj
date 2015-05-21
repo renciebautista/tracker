@@ -204,6 +204,12 @@
     <Compile Include="reports\frmRadioReport.Designer.cs">
       <DependentUpon>frmRadioReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="reports\frmSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="reports\frmSelection.Designer.cs">
+      <DependentUpon>frmSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="reports\frmTrainReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="reports\frmRadioReport.resx">
       <DependentUpon>frmRadioReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="reports\frmSelection.resx">
+      <DependentUpon>frmSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="reports\frmTrainReport.resx">
       <DependentUpon>frmTrainReport.cs</DependentUpon>
