@@ -146,6 +146,7 @@
             this.MinimizeBox = false;
             this.Name = "frmSelection";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSelection";
             this.Load += new System.EventHandler(this.frmSelection_Load);

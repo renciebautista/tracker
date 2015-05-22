@@ -52,6 +52,7 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvRadio = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,7 +67,6 @@
             this.lng = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tracker_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.created_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExport = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
@@ -109,7 +109,7 @@
             "Per Radio"});
             this.cmbRadio.Location = new System.Drawing.Point(564, 19);
             this.cmbRadio.Name = "cmbRadio";
-            this.cmbRadio.Size = new System.Drawing.Size(121, 21);
+            this.cmbRadio.Size = new System.Drawing.Size(293, 21);
             this.cmbRadio.TabIndex = 33;
             this.cmbRadio.SelectedIndexChanged += new System.EventHandler(this.cmbRadio_SelectedIndexChanged);
             // 
@@ -119,6 +119,7 @@
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(200, 20);
             this.dtTo.TabIndex = 32;
+            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // label3
             // 
@@ -135,6 +136,7 @@
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(200, 20);
             this.dtFrom.TabIndex = 30;
+            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
             // label2
             // 
@@ -311,6 +313,17 @@
             this.dgvRadio.Size = new System.Drawing.Size(1032, 472);
             this.dgvRadio.TabIndex = 22;
             // 
+            // btnExport
+            // 
+            this.btnExport.Enabled = false;
+            this.btnExport.Location = new System.Drawing.Point(93, 599);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(95, 30);
+            this.btnExport.TabIndex = 35;
+            this.btnExport.Text = "Export to CSV";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // id
             // 
             this.id.DataPropertyName = "id";
@@ -346,6 +359,7 @@
             this.subscriber_name.HeaderText = "Subscriber Name";
             this.subscriber_name.Name = "subscriber_name";
             this.subscriber_name.ReadOnly = true;
+            this.subscriber_name.Width = 200;
             // 
             // uplink
             // 
@@ -410,17 +424,6 @@
             this.created_at.Name = "created_at";
             this.created_at.ReadOnly = true;
             // 
-            // btnExport
-            // 
-            this.btnExport.Enabled = false;
-            this.btnExport.Location = new System.Drawing.Point(93, 599);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(95, 30);
-            this.btnExport.TabIndex = 35;
-            this.btnExport.Text = "Export to CSV";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
             // frmRadioReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,6 +439,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmRadioReport";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Radio Log Report";
@@ -476,6 +480,8 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgvRadio;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.ComboBox cmbRadio;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn mcc;
         private System.Windows.Forms.DataGridViewTextBoxColumn mnc;
@@ -490,7 +496,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lng;
         private System.Windows.Forms.DataGridViewTextBoxColumn tracker_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn created_at;
-        private System.Windows.Forms.Button btnExport;
-        private System.Windows.Forms.ComboBox cmbRadio;
     }
 }

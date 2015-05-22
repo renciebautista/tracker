@@ -30,3 +30,4 @@ D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\GMap.NET.Core.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\GMap.NET.WindowsForms.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\MySql.Data.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+D:\visual studio.dev\syntech\tracker\tracker\obj\Debug\tracker.csprojResolveAssemblyReference.cache

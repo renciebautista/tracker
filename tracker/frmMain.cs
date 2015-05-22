@@ -65,10 +65,10 @@ namespace tracker
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //ALTER TABLE `radios` ADD `image_index` INT NOT NULL AFTER `tracker_code`;
-            //CREATE TABLE IF NOT EXISTS `radio_logs` ( `id` bigint(200) NOT NULL, `radio_id` int(11) NOT NULL, `mcc` varchar(50) NOT NULL, `mnc` varchar(50) NOT NULL, `ssi` varchar(50) NOT NULL, `subscriber_name` varchar(255) NOT NULL, `uplink` int(11) NOT NULL, `speed` decimal(11,4) NOT NULL, `course` decimal(11,4) NOT NULL, `alt` decimal(11,4) NOT NULL, `max_pos_error` decimal(11,4) NOT NULL, `lat` decimal(16,13) NOT NULL, `lng` decimal(16,13) NOT NULL, `tracker_code` varchar(50) NOT NULL, `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1
-            this.Hide();
+            migrate();
+           
 
+            this.Hide();
             string filepath = Properties.Settings.Default.Wallpaper.ToString();
             if (filepath != "")
             {
@@ -88,23 +88,22 @@ namespace tracker
                      
                         conn.Close();
 
-                        //DialogResult dr = new DialogResult();
-                        //frmLogin logIn = new frmLogin();
-                        //dr = logIn.ShowDialog();
+                        DialogResult dr = new DialogResult();
+                        frmLogin logIn = new frmLogin();
+                        dr = logIn.ShowDialog();
 
-                        //if (dr == DialogResult.OK)
-                        //{
-                        //    if (userdetails.GroupId == 2)
-                        //    {
-                        //        menuStrip1.Items[1].Visible = false;
-                        //    }
-                        //    this.Show();
-                        //    msgShown = false;
-                        //}
-                        //else
-                        //{
-                        //    this.Close();
-                        //}
+                        if (dr == DialogResult.OK)
+                        {
+                            if (userdetails.GroupId == 2)
+                            {
+                                menuStrip1.Items[1].Visible = false;
+                            }
+                            this.Show();
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
                         this.Show();
                     
                 }
@@ -235,6 +234,22 @@ namespace tracker
             {
                 report.ShowDialog();
             }
+        }
+
+        private void migrate()
+        {
+            // CREATE TABLE IF NOT EXISTS migration_version ( id bigint(200) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=latin1
+            // ALTER TABLE `radios` ADD `image_index` INT NOT NULL AFTER `tracker_code`;
+            // CREATE TABLE IF NOT EXISTS `radio_logs` ( `id` bigint(200) NOT NULL, `radio_id` int(11) NOT NULL, `mcc` varchar(50) NOT NULL, `mnc` varchar(50) NOT NULL, `ssi` varchar(50) NOT NULL, `subscriber_name` varchar(255) NOT NULL, `uplink` int(11) NOT NULL, `speed` decimal(11,4) NOT NULL, `course` decimal(11,4) NOT NULL, `alt` decimal(11,4) NOT NULL, `max_pos_error` decimal(11,4) NOT NULL, `lat` decimal(16,13) NOT NULL, `lng` decimal(16,13) NOT NULL, `tracker_code` varchar(50) NOT NULL, `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1
+
+            DataTable dt = MysqlHelper.ExecuteDataTable("SHOW columns from radios where field='image_index'");
+            if (dt.Rows.Count == 0)
+            {
+                MysqlHelper.ExecuteNonQuery("ALTER TABLE radios ADD image_index INT NOT NULL AFTER tracker_code");
+            }
+
+            MysqlHelper.ExecuteNonQuery("CREATE TABLE IF NOT EXISTS radio_logs ( id bigint(200) NOT NULL, radio_id int(11) NOT NULL, mcc varchar(50) NOT NULL, mnc varchar(50) NOT NULL, ssi varchar(50) NOT NULL, subscriber_name varchar(255) NOT NULL, uplink int(11) NOT NULL, speed decimal(11,4) NOT NULL, course decimal(11,4) NOT NULL, alt decimal(11,4) NOT NULL, max_pos_error decimal(11,4) NOT NULL, lat decimal(16,13) NOT NULL, lng decimal(16,13) NOT NULL, tracker_code varchar(50) NOT NULL, created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1");
+           
         }
     }
 }

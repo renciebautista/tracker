@@ -91,6 +91,10 @@ namespace tracker.reports
             cmbRadio.ValueMember = "Key";
 
             cmbRadio.SelectedIndex = 0;
+
+            
+            dtFrom.MaxDate = DateTime.Now;
+            dtTo.MaxDate = DateTime.Now;
         }
 
         private void cmbRadio_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,8 +105,10 @@ namespace tracker.reports
                     frmSelection select = new frmSelection();
                     select.SourceDataSource = MysqlHelper.ExecuteDataTable("SELECT ssi as value FROM radio_logs GROUP BY ssi");
                     select.SelectedDataSource = selected;
+                    select.FormHeader = this.Text;
                     select.ShowDialog();
                     selected = select.SelectedDataSource;
+
                     break;
                 default: // ..... some code here...
                     if ((selected != null) && (selected.Rows.Count > 0))
@@ -113,5 +119,16 @@ namespace tracker.reports
                     break;
             }
         }
+
+        private void dtFrom_ValueChanged(object sender, EventArgs e)
+        {
+            dtTo.MinDate = dtFrom.Value;
+        }
+
+        private void dtTo_ValueChanged(object sender, EventArgs e)
+        {
+            dtFrom.MaxDate = dtTo.Value;
+        }
+
     }
 }

@@ -72,8 +72,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.monitoringToolStripMenuItem2,
             this.maintenanceToolStripMenuItem1,
-            this.settingsToolStripMenuItem,
             this.reportsToolStripMenuItem1,
+            this.settingsToolStripMenuItem,
             this.helpToolStripMenuItem1,
             this.aboutToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);

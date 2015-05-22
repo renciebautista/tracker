@@ -16,6 +16,7 @@ namespace tracker.reports
         DataTable table1;
         DataTable table2;
         DataTable table3;
+        private string strHeader;
         public DataTable SourceDataSource
         {
             set { dtSource = value; }
@@ -34,6 +35,11 @@ namespace tracker.reports
            }
 
         }
+
+        public string FormHeader
+        {
+            set { strHeader = value; }
+        }
         public frmSelection()
         {
             InitializeComponent();
@@ -46,6 +52,7 @@ namespace tracker.reports
 
         private void frmSelection_Load(object sender, EventArgs e)
         {
+            this.Text = strHeader;
             table1 = dtSource;
             table2 = table1.Clone();
 

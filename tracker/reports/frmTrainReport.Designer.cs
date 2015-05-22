@@ -36,23 +36,6 @@
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.dgvTrain = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dtTo = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtFrom = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.bdgNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnProcess = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.train_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.train_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +53,23 @@
             this.tracker_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.head = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.created_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbTrain = new System.Windows.Forms.ComboBox();
+            this.dtTo = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtFrom = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.bdgNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnProcess = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrain)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -162,9 +162,131 @@
             this.dgvTrain.Size = new System.Drawing.Size(1032, 472);
             this.dgvTrain.TabIndex = 22;
             // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // train_code
+            // 
+            this.train_code.DataPropertyName = "train_code";
+            this.train_code.HeaderText = "Train Code";
+            this.train_code.Name = "train_code";
+            this.train_code.ReadOnly = true;
+            // 
+            // train_desc
+            // 
+            this.train_desc.DataPropertyName = "train_desc";
+            this.train_desc.HeaderText = "Train Description";
+            this.train_desc.Name = "train_desc";
+            this.train_desc.ReadOnly = true;
+            this.train_desc.Width = 200;
+            // 
+            // mcc
+            // 
+            this.mcc.DataPropertyName = "mcc";
+            this.mcc.HeaderText = "Mcc";
+            this.mcc.Name = "mcc";
+            this.mcc.ReadOnly = true;
+            // 
+            // mnc
+            // 
+            this.mnc.DataPropertyName = "mnc";
+            this.mnc.HeaderText = "Mnc";
+            this.mnc.Name = "mnc";
+            this.mnc.ReadOnly = true;
+            // 
+            // ssi
+            // 
+            this.ssi.DataPropertyName = "ssi";
+            this.ssi.HeaderText = "Ssi";
+            this.ssi.Name = "ssi";
+            this.ssi.ReadOnly = true;
+            // 
+            // subscriber_name
+            // 
+            this.subscriber_name.DataPropertyName = "subscriber_name";
+            this.subscriber_name.HeaderText = "Subscriber Name";
+            this.subscriber_name.Name = "subscriber_name";
+            this.subscriber_name.ReadOnly = true;
+            this.subscriber_name.Width = 200;
+            // 
+            // uplink
+            // 
+            this.uplink.DataPropertyName = "uplink";
+            this.uplink.HeaderText = "Uplink";
+            this.uplink.Name = "uplink";
+            this.uplink.ReadOnly = true;
+            // 
+            // speed
+            // 
+            this.speed.DataPropertyName = "speed";
+            this.speed.HeaderText = "Speed";
+            this.speed.Name = "speed";
+            this.speed.ReadOnly = true;
+            // 
+            // course
+            // 
+            this.course.DataPropertyName = "course";
+            this.course.HeaderText = "Course";
+            this.course.Name = "course";
+            this.course.ReadOnly = true;
+            // 
+            // alt
+            // 
+            this.alt.DataPropertyName = "alt";
+            this.alt.HeaderText = "Altitude";
+            this.alt.Name = "alt";
+            this.alt.ReadOnly = true;
+            // 
+            // max_pos_error
+            // 
+            this.max_pos_error.DataPropertyName = "max_pos_error";
+            this.max_pos_error.HeaderText = "Max Pos Error";
+            this.max_pos_error.Name = "max_pos_error";
+            this.max_pos_error.ReadOnly = true;
+            // 
+            // lat
+            // 
+            this.lat.DataPropertyName = "lat";
+            this.lat.HeaderText = "Latitude";
+            this.lat.Name = "lat";
+            this.lat.ReadOnly = true;
+            // 
+            // lng
+            // 
+            this.lng.DataPropertyName = "lng";
+            this.lng.HeaderText = "Longtitude";
+            this.lng.Name = "lng";
+            this.lng.ReadOnly = true;
+            // 
+            // tracker_code
+            // 
+            this.tracker_code.DataPropertyName = "tracker_code";
+            this.tracker_code.HeaderText = "Tracker Code";
+            this.tracker_code.Name = "tracker_code";
+            this.tracker_code.ReadOnly = true;
+            // 
+            // head
+            // 
+            this.head.DataPropertyName = "head";
+            this.head.HeaderText = "Head";
+            this.head.Name = "head";
+            this.head.ReadOnly = true;
+            // 
+            // created_at
+            // 
+            this.created_at.DataPropertyName = "created_at";
+            this.created_at.HeaderText = "Created At";
+            this.created_at.Name = "created_at";
+            this.created_at.ReadOnly = true;
+            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbTrain);
             this.groupBox1.Controls.Add(this.dtTo);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dtFrom);
@@ -176,13 +298,19 @@
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             // 
-            // comboBox1
+            // cmbTrain
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(564, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(314, 21);
-            this.comboBox1.TabIndex = 33;
+            this.cmbTrain.AllowDrop = true;
+            this.cmbTrain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTrain.FormattingEnabled = true;
+            this.cmbTrain.Items.AddRange(new object[] {
+            "All Radio",
+            "Per Radio"});
+            this.cmbTrain.Location = new System.Drawing.Point(563, 18);
+            this.cmbTrain.Name = "cmbTrain";
+            this.cmbTrain.Size = new System.Drawing.Size(293, 21);
+            this.cmbTrain.TabIndex = 34;
+            this.cmbTrain.SelectedIndexChanged += new System.EventHandler(this.cmbTrain_SelectedIndexChanged);
             // 
             // dtTo
             // 
@@ -190,6 +318,7 @@
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(200, 20);
             this.dtTo.TabIndex = 32;
+            this.dtTo.ValueChanged += new System.EventHandler(this.dtTo_ValueChanged);
             // 
             // label3
             // 
@@ -206,6 +335,7 @@
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(200, 20);
             this.dtFrom.TabIndex = 30;
+            this.dtFrom.ValueChanged += new System.EventHandler(this.dtFrom_ValueChanged);
             // 
             // label2
             // 
@@ -221,9 +351,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(522, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Radio";
+            this.label1.Text = "Train";
             // 
             // btnClose
             // 
@@ -322,126 +452,6 @@
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // train_code
-            // 
-            this.train_code.DataPropertyName = "train_code";
-            this.train_code.HeaderText = "Train Code";
-            this.train_code.Name = "train_code";
-            this.train_code.ReadOnly = true;
-            // 
-            // train_desc
-            // 
-            this.train_desc.DataPropertyName = "train_desc";
-            this.train_desc.HeaderText = "Train Description";
-            this.train_desc.Name = "train_desc";
-            this.train_desc.ReadOnly = true;
-            // 
-            // mcc
-            // 
-            this.mcc.DataPropertyName = "mcc";
-            this.mcc.HeaderText = "Mcc";
-            this.mcc.Name = "mcc";
-            this.mcc.ReadOnly = true;
-            // 
-            // mnc
-            // 
-            this.mnc.DataPropertyName = "mnc";
-            this.mnc.HeaderText = "Mnc";
-            this.mnc.Name = "mnc";
-            this.mnc.ReadOnly = true;
-            // 
-            // ssi
-            // 
-            this.ssi.DataPropertyName = "ssi";
-            this.ssi.HeaderText = "Ssi";
-            this.ssi.Name = "ssi";
-            this.ssi.ReadOnly = true;
-            // 
-            // subscriber_name
-            // 
-            this.subscriber_name.DataPropertyName = "subscriber_name";
-            this.subscriber_name.HeaderText = "Subscriber Name";
-            this.subscriber_name.Name = "subscriber_name";
-            this.subscriber_name.ReadOnly = true;
-            // 
-            // uplink
-            // 
-            this.uplink.DataPropertyName = "uplink";
-            this.uplink.HeaderText = "Uplink";
-            this.uplink.Name = "uplink";
-            this.uplink.ReadOnly = true;
-            // 
-            // speed
-            // 
-            this.speed.DataPropertyName = "speed";
-            this.speed.HeaderText = "Speed";
-            this.speed.Name = "speed";
-            this.speed.ReadOnly = true;
-            // 
-            // course
-            // 
-            this.course.DataPropertyName = "course";
-            this.course.HeaderText = "Course";
-            this.course.Name = "course";
-            this.course.ReadOnly = true;
-            // 
-            // alt
-            // 
-            this.alt.DataPropertyName = "alt";
-            this.alt.HeaderText = "Altitude";
-            this.alt.Name = "alt";
-            this.alt.ReadOnly = true;
-            // 
-            // max_pos_error
-            // 
-            this.max_pos_error.DataPropertyName = "max_pos_error";
-            this.max_pos_error.HeaderText = "Max Pos Error";
-            this.max_pos_error.Name = "max_pos_error";
-            this.max_pos_error.ReadOnly = true;
-            // 
-            // lat
-            // 
-            this.lat.DataPropertyName = "lat";
-            this.lat.HeaderText = "Latitude";
-            this.lat.Name = "lat";
-            this.lat.ReadOnly = true;
-            // 
-            // lng
-            // 
-            this.lng.DataPropertyName = "lng";
-            this.lng.HeaderText = "Longtitude";
-            this.lng.Name = "lng";
-            this.lng.ReadOnly = true;
-            // 
-            // tracker_code
-            // 
-            this.tracker_code.DataPropertyName = "tracker_code";
-            this.tracker_code.HeaderText = "Tracker Code";
-            this.tracker_code.Name = "tracker_code";
-            this.tracker_code.ReadOnly = true;
-            // 
-            // head
-            // 
-            this.head.DataPropertyName = "head";
-            this.head.HeaderText = "Head";
-            this.head.Name = "head";
-            this.head.ReadOnly = true;
-            // 
-            // created_at
-            // 
-            this.created_at.DataPropertyName = "created_at";
-            this.created_at.HeaderText = "Created At";
-            this.created_at.Name = "created_at";
-            this.created_at.ReadOnly = true;
-            // 
             // frmTrainReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -457,8 +467,11 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTrainReport";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Train Log Report";
+            this.Load += new System.EventHandler(this.frmTrainReport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrain)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -481,7 +494,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.DataGridView dgvTrain;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DateTimePicker dtTo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker dtFrom;
@@ -497,6 +509,7 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.Button btnProcess;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ComboBox cmbTrain;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn train_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn train_desc;
