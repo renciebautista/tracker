@@ -85,77 +85,85 @@ namespace tracker.maintenance
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (btnAdd.Text == "&Add")
+            if (MysqlHelper.TestConnection())
             {
-                toggleInput(true);
-                btnAdd.Text = "&Save";
-                btnEdit.Enabled = false;
-                btnDelete.Enabled = false;
-                btnFind.Enabled = false;
-                btnCancel.Enabled = true;
+                if (btnAdd.Text == "&Add")
+                {
+                    toggleInput(true);
+                    btnAdd.Text = "&Save";
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnFind.Enabled = false;
+                    btnCancel.Enabled = true;
 
-                txtUsername.Text = "";
-                txtPassword.Text = "";
-                txtConfirm.Text = "";
-
-                txtUsername.Focus();
-            }
-            else
-            {
-                if (txtUsername.Text == "")
-                {
-                    MessageBox.Show("Username is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtUsername.Focus();
-                }
-                else if (txtPassword.Text == "")
-                {
-                    MessageBox.Show("Password is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtPassword.Focus();
-                }
-                else if (txtPassword.Text.Trim() != txtConfirm.Text.Trim())
-                {
-                    MessageBox.Show("Password does not match!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtPassword.Focus();
+                    txtUsername.Text = "";
+                    txtPassword.Text = "";
                     txtConfirm.Text = "";
+
+                    txtUsername.Focus();
                 }
                 else
                 {
-                    DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM users where username ='" + txtUsername.Text.Trim().ToUpper()+"'");
-                    if (dt.Rows.Count > 0)
+                    if (txtUsername.Text == "")
                     {
-                        MessageBox.Show("Username already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Username is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtUsername.Focus();
-                        txtPassword.Text = "";
+                    }
+                    else if (txtPassword.Text == "")
+                    {
+                        MessageBox.Show("Password is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtPassword.Focus();
+                    }
+                    else if (txtPassword.Text.Trim() != txtConfirm.Text.Trim())
+                    {
+                        MessageBox.Show("Password does not match!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtPassword.Focus();
                         txtConfirm.Text = "";
                     }
                     else
                     {
-                        if (addUser() == 1)
+                        DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM users where username ='" + txtUsername.Text.Trim().ToUpper() + "'");
+                        if (dt.Rows.Count > 0)
                         {
-                            resetForm();
-
-                            dgvUser.ClearSelection();//If you want
-
-                            int nRowIndex = dgvUser.Rows.Count - 1;
-                            int nColumnIndex = 3;
-
-                            dgvUser.Rows[nRowIndex].Selected = true;
-                            dgvUser.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
-
-                            //In case if you want to scroll down as well.
-                            dgvUser.FirstDisplayedScrollingRowIndex = nRowIndex;
+                            MessageBox.Show("Username already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtUsername.Focus();
+                            txtPassword.Text = "";
+                            txtConfirm.Text = "";
                         }
                         else
                         {
-                            MessageBox.Show("Unable to save user.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtUsername.Focus();
+                            if (addUser() == 1)
+                            {
+                                resetForm();
+
+                                dgvUser.ClearSelection();//If you want
+
+                                int nRowIndex = dgvUser.Rows.Count - 1;
+                                int nColumnIndex = 3;
+
+                                dgvUser.Rows[nRowIndex].Selected = true;
+                                dgvUser.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
+
+                                //In case if you want to scroll down as well.
+                                dgvUser.FirstDisplayedScrollingRowIndex = nRowIndex;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Unable to save user.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtUsername.Focus();
+                            }
+                            //MessageBox.Show(addTrain().ToString());
+                            resetForm();
                         }
-                        //MessageBox.Show(addTrain().ToString());
-                        resetForm();
+
                     }
-                    
                 }
             }
+            else
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -165,121 +173,152 @@ namespace tracker.maintenance
 
         private void frmUser_Load(object sender, EventArgs e)
         {
-            loadGrid();
+            if (MysqlHelper.TestConnection())
+            {
+                loadGrid();
 
-            txtUsername.DataBindings.Add(new Binding("Text", bs, "username", true));
-            cmbGroup.DataBindings.Add(new Binding("SelectedValue", bs, "group_id", true));
-            chkActive.DataBindings.Add(new Binding("Checked", bs, "active", true));
+                txtUsername.DataBindings.Add(new Binding("Text", bs, "username", true));
+                cmbGroup.DataBindings.Add(new Binding("SelectedValue", bs, "group_id", true));
+                chkActive.DataBindings.Add(new Binding("Checked", bs, "active", true));
 
-            cmbGroup.ValueMember = "id";
-            cmbGroup.DisplayMember = "group";
-            cmbGroup.DataSource = MysqlHelper.ExecuteDataTable("SELECT * FROM groups");
+                cmbGroup.ValueMember = "id";
+                cmbGroup.DisplayMember = "group";
+                cmbGroup.DataSource = MysqlHelper.ExecuteDataTable("SELECT * FROM groups");
+            }
+            else
+            {
+                Application.Exit();
+            }
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", this.Text,
-               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (MysqlHelper.TestConnection())
             {
-                int id = Int32.Parse(dgvUser.CurrentRow.Cells["id"].Value.ToString());
-                int retVal = MysqlHelper.ExecuteNonQuery("DELETE FROM users where id ='" + id + "'");
-                if (retVal == 1)
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", this.Text,
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    loadGrid();
+                    int id = Int32.Parse(dgvUser.CurrentRow.Cells["id"].Value.ToString());
+                    int retVal = MysqlHelper.ExecuteNonQuery("DELETE FROM users where id ='" + id + "'");
+                    if (retVal == 1)
+                    {
+                        loadGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erorr deleting record.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Erorr deleting record.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
             }
+            else
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            int result;
-            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT users.id,username,groups.group FROM users INNER JOIN groups on users.group_id = groups.id");
-
-            string[] fields = new string[] { "ID", "USERNAME", "GROUP", };
-            string[] field_ids = new string[] { "id", "username", "group"};
-            int[] fieldsSize = new int[] { 50, 300, 300 };
-
-            frmFind frmFind = new frmFind();
-            frmFind.DataSource = dt;
-            frmFind.SearchFor = "Users";
-            frmFind.FieldId = "id";
-            frmFind.Fields = fields;
-            frmFind.FieldIds = field_ids;
-            frmFind.FieldsSize = fieldsSize;
-
-            if (frmFind.ShowDialog() == DialogResult.OK)
+            if (MysqlHelper.TestConnection())
             {
-                result = frmFind.FilterValue;
-                loadGrid();
-                frmFind.MoveCursor(result, dgvUser);
+                int result;
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT users.id,username,groups.group FROM users INNER JOIN groups on users.group_id = groups.id");
+
+                string[] fields = new string[] { "ID", "USERNAME", "GROUP", };
+                string[] field_ids = new string[] { "id", "username", "group" };
+                int[] fieldsSize = new int[] { 50, 300, 300 };
+
+                frmFind frmFind = new frmFind();
+                frmFind.DataSource = dt;
+                frmFind.SearchFor = "Users";
+                frmFind.FieldId = "id";
+                frmFind.Fields = fields;
+                frmFind.FieldIds = field_ids;
+                frmFind.FieldsSize = fieldsSize;
+
+                if (frmFind.ShowDialog() == DialogResult.OK)
+                {
+                    result = frmFind.FilterValue;
+                    loadGrid();
+                    frmFind.MoveCursor(result, dgvUser);
+                }
+                frmFind.Dispose();
+                btnAdd.Focus();
             }
-            frmFind.Dispose();
-            btnAdd.Focus();
+            else
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (btnEdit.Text == "&Edit")
+            if (MysqlHelper.TestConnection())
             {
-                toggleInput(true);
-                btnEdit.Text = "&Update";
-                btnAdd.Enabled = false;
-                btnDelete.Enabled = false;
-                btnFind.Enabled = false;
-                btnCancel.Enabled = true;
-                txtUsername.Focus();
-       
-            }
-            else
-            {
-                if (txtUsername.Text == "")
+                if (btnEdit.Text == "&Edit")
                 {
-                    MessageBox.Show("Username is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    toggleInput(true);
+                    btnEdit.Text = "&Update";
+                    btnAdd.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnFind.Enabled = false;
+                    btnCancel.Enabled = true;
                     txtUsername.Focus();
-                }
-                else if (txtPassword.Text == "")
-                {
-                    MessageBox.Show("Password is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtPassword.Focus();
-                }
-                else if (txtPassword.Text.Trim() != txtConfirm.Text.Trim())
-                {
-                    MessageBox.Show("Password does not match!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtPassword.Focus();
-                    txtConfirm.Text = "";
+
                 }
                 else
                 {
-                    DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM users where username ='" + txtUsername.Text.Trim().ToUpper() + "' AND id != '" + Convert.ToInt32(dgvUser.CurrentRow.Cells[0].Value.ToString())+"'");
-                    if (dt.Rows.Count > 0)
+                    if (txtUsername.Text == "")
                     {
-                        MessageBox.Show("Username already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Username is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtUsername.Focus();
-                        txtPassword.Text = "";
+                    }
+                    else if (txtPassword.Text == "")
+                    {
+                        MessageBox.Show("Password is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtPassword.Focus();
+                    }
+                    else if (txtPassword.Text.Trim() != txtConfirm.Text.Trim())
+                    {
+                        MessageBox.Show("Password does not match!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtPassword.Focus();
                         txtConfirm.Text = "";
                     }
                     else
                     {
-                        if (updateUser() == 1)
+                        DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM users where username ='" + txtUsername.Text.Trim().ToUpper() + "' AND id != '" + Convert.ToInt32(dgvUser.CurrentRow.Cells[0].Value.ToString()) + "'");
+                        if (dt.Rows.Count > 0)
                         {
-                            resetForm();
+                            MessageBox.Show("Username already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtUsername.Focus();
+                            txtPassword.Text = "";
+                            txtConfirm.Text = "";
                         }
                         else
                         {
-                            MessageBox.Show("Unable to save user.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            txtUsername.Focus();
+                            if (updateUser() == 1)
+                            {
+                                resetForm();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Unable to save user.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                txtUsername.Focus();
+                            }
                         }
+
                     }
-                    
+
                 }
-                
             }
+            else
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void s_Enter(object sender, EventArgs e)

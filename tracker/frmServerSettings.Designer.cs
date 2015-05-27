@@ -51,7 +51,7 @@
             this.txtSettings.Location = new System.Drawing.Point(119, 11);
             this.txtSettings.Name = "txtSettings";
             this.txtSettings.Size = new System.Drawing.Size(470, 20);
-            this.txtSettings.TabIndex = 1;
+            this.txtSettings.TabIndex = 0;
             // 
             // label1
             // 
@@ -67,7 +67,7 @@
             this.btnSave.Location = new System.Drawing.Point(459, 78);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 30);
-            this.btnSave.TabIndex = 31;
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -77,7 +77,7 @@
             this.btnCancel.Location = new System.Drawing.Point(540, 78);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 30);
-            this.btnCancel.TabIndex = 30;
+            this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -87,7 +87,7 @@
             this.btnTest.Location = new System.Drawing.Point(340, 78);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(113, 30);
-            this.btnTest.TabIndex = 32;
+            this.btnTest.TabIndex = 0;
             this.btnTest.Text = "&Test Connection";
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);

@@ -20,18 +20,23 @@ namespace tracker.maintenance
         }
         private void loadGrid()
         {
-            dgvRadio.AutoGenerateColumns = false;
-            bs.DataSource = MysqlHelper.ExecuteDataTable("SELECT * FROM radios");
-            bdgNavigator.BindingSource = bs;
-            dgvRadio.DataSource = bs;
-            if (dgvRadio.Rows.Count < 1)
+            if (MysqlHelper.TestConnection())
             {
-                btnEdit.Enabled = false;
-                btnDelete.Enabled = false;
-                btnFind.Enabled = false;
+                dgvRadio.AutoGenerateColumns = false;
+                bs.DataSource = MysqlHelper.ExecuteDataTable("SELECT * FROM radios");
+                bdgNavigator.BindingSource = bs;
+                dgvRadio.DataSource = bs;
+                if (dgvRadio.Rows.Count < 1)
+                {
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnFind.Enabled = false;
+                }
             }
-
-
+            else
+            {
+                Application.Exit();
+            }
         }
         private void toggleInput(bool value)
         {
@@ -117,140 +122,146 @@ namespace tracker.maintenance
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (btnAdd.Text == "&Add")
+            if (MysqlHelper.TestConnection())
             {
-                toggleInput(true);
-                btnAdd.Text = "&Save";
-                btnEdit.Enabled = false;
-                btnDelete.Enabled = false;
-                btnFind.Enabled = false;
-                btnCancel.Enabled = true;
-                chkRange.Enabled = true;
-
-                txtMcc.Text = "";
-                txtMnc.Text = "";
-                txtSsi.Text = "";
-                txtTrackerCode.Text = "";
-                txtMcc.Focus();
-
-            }
-            else
-            {
-
-                if (chkRange.Checked)
+                if (btnAdd.Text == "&Add")
                 {
-                    if (txtMcc.Text == "")
-                    {
-                        MessageBox.Show("Radio Mcc is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMcc.Focus();
-                    }
-                    else if (txtMnc.Text == "")
-                    {
-                        MessageBox.Show("Radio Mnc is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMnc.Focus();
-                    }
-                    else if (txtFrom.Text == "")
-                    {
-                        MessageBox.Show("Range from is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtFrom.Focus();
-                    }
-                    else if (txtTo.Text == "")
-                    {
-                        MessageBox.Show("Range to is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtTo.Focus();
-                    }
-                    else if (Convert.ToInt32(txtFrom.Text) >= Convert.ToInt32(txtTo.Text))
-                    {
-                        MessageBox.Show("Range is invalid!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtTo.Focus();
-                    }
-                    else
-                    {
-                        for (int i = Convert.ToInt32(txtFrom.Text); i <= Convert.ToInt32(txtTo.Text); i++)
-                        {
-                            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where ssi ='" + i.ToString() + "'");
-                            if (dt.Rows.Count > 0)
-                            {
-                                MessageBox.Show("Radio Ssi '"+i.ToString()+"' already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                //txtSsi.Focus();
-                            }
-                            else
-                            {
-                                MysqlHelper.ExecuteNonQuery("INSERT INTO radios (mcc, mnc, ssi, tracker_code, image_index, active) VALUES(@mcc, @mnc, @ssi, @tracker_code, @image_index, @active)",
-                               new MySqlParameter("@mcc", txtMcc.Text.Trim()),
-                               new MySqlParameter("@mnc", txtMnc.Text.Trim()),
-                               new MySqlParameter("@ssi", i.ToString()),
-                               new MySqlParameter("@tracker_code", ""),
-                               new MySqlParameter("@image_index", cmbIcon.SelectedIndex),
-                               new MySqlParameter("@active", chkActive.Checked ? 1 : 0));
-                            }
-                           
-                        }
-                            
-                        
-                        resetForm();
-                        txtSsi.Enabled = false;
-                        txtTrackerCode.Enabled = false;
-                    }
+                    toggleInput(true);
+                    btnAdd.Text = "&Save";
+                    btnEdit.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnFind.Enabled = false;
+                    btnCancel.Enabled = true;
+                    chkRange.Enabled = true;
+
+                    txtMcc.Text = "";
+                    txtMnc.Text = "";
+                    txtSsi.Text = "";
+                    txtTrackerCode.Text = "";
+                    txtMcc.Focus();
+
                 }
                 else
                 {
-                    if (txtMcc.Text == "")
+
+                    if (chkRange.Checked)
                     {
-                        MessageBox.Show("Radio Mcc is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMcc.Focus();
-                    }
-                    else if (txtMnc.Text == "")
-                    {
-                        MessageBox.Show("Radio Mnc is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtMnc.Focus();
-                    }
-                    else if (txtSsi.Text == "")
-                    {
-                        MessageBox.Show("Radio Ssi is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtSsi.Focus();
+                        if (txtMcc.Text == "")
+                        {
+                            MessageBox.Show("Radio Mcc is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMcc.Focus();
+                        }
+                        else if (txtMnc.Text == "")
+                        {
+                            MessageBox.Show("Radio Mnc is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMnc.Focus();
+                        }
+                        else if (txtFrom.Text == "")
+                        {
+                            MessageBox.Show("Range from is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtFrom.Focus();
+                        }
+                        else if (txtTo.Text == "")
+                        {
+                            MessageBox.Show("Range to is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtTo.Focus();
+                        }
+                        else if (Convert.ToInt32(txtFrom.Text) >= Convert.ToInt32(txtTo.Text))
+                        {
+                            MessageBox.Show("Range is invalid!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtTo.Focus();
+                        }
+                        else
+                        {
+                            for (int i = Convert.ToInt32(txtFrom.Text); i <= Convert.ToInt32(txtTo.Text); i++)
+                            {
+                                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where ssi ='" + i.ToString() + "'");
+                                if (dt.Rows.Count > 0)
+                                {
+                                    MessageBox.Show("Radio Ssi '" + i.ToString() + "' already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    //txtSsi.Focus();
+                                }
+                                else
+                                {
+                                    MysqlHelper.ExecuteNonQuery("INSERT INTO radios (mcc, mnc, ssi, tracker_code, image_index, active) VALUES(@mcc, @mnc, @ssi, @tracker_code, @image_index, @active)",
+                                   new MySqlParameter("@mcc", txtMcc.Text.Trim()),
+                                   new MySqlParameter("@mnc", txtMnc.Text.Trim()),
+                                   new MySqlParameter("@ssi", i.ToString()),
+                                   new MySqlParameter("@tracker_code", ""),
+                                   new MySqlParameter("@image_index", cmbIcon.SelectedIndex),
+                                   new MySqlParameter("@active", chkActive.Checked ? 1 : 0));
+                                }
+
+                            }
+
+
+                            resetForm();
+                            txtSsi.Enabled = false;
+                            txtTrackerCode.Enabled = false;
+                        }
                     }
                     else
                     {
-                        DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where ssi ='" + txtSsi.Text.Trim() + "'");
-                        if (dt.Rows.Count > 0)
+                        if (txtMcc.Text == "")
                         {
-                            MessageBox.Show("Radio Ssi already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Radio Mcc is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMcc.Focus();
+                        }
+                        else if (txtMnc.Text == "")
+                        {
+                            MessageBox.Show("Radio Mnc is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            txtMnc.Focus();
+                        }
+                        else if (txtSsi.Text == "")
+                        {
+                            MessageBox.Show("Radio Ssi is required!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             txtSsi.Focus();
                         }
                         else
                         {
-                            if (addRadio() == 1)
+                            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radios where ssi ='" + txtSsi.Text.Trim() + "'");
+                            if (dt.Rows.Count > 0)
                             {
-                                resetForm();
-
-
-                                dgvRadio.ClearSelection();//If you want
-
-                                int nRowIndex = dgvRadio.Rows.Count - 1;
-                                int nColumnIndex = 3;
-
-                                dgvRadio.Rows[nRowIndex].Selected = true;
-                                dgvRadio.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
-
-                                //In case if you want to scroll down as well.
-                                dgvRadio.FirstDisplayedScrollingRowIndex = nRowIndex;
+                                MessageBox.Show("Radio Ssi already exist.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtSsi.Focus();
                             }
                             else
                             {
-                                MessageBox.Show("Unable to save transaction!", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                txtMcc.Focus();
+                                if (addRadio() == 1)
+                                {
+                                    resetForm();
+
+
+                                    dgvRadio.ClearSelection();//If you want
+
+                                    int nRowIndex = dgvRadio.Rows.Count - 1;
+                                    int nColumnIndex = 3;
+
+                                    dgvRadio.Rows[nRowIndex].Selected = true;
+                                    dgvRadio.Rows[nRowIndex].Cells[nColumnIndex].Selected = true;
+
+                                    //In case if you want to scroll down as well.
+                                    dgvRadio.FirstDisplayedScrollingRowIndex = nRowIndex;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Unable to save transaction!", "Transaction Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    txtMcc.Focus();
+                                }
+                                //MessageBox.Show(addTrain().ToString());
+                                resetForm();
                             }
-                            //MessageBox.Show(addTrain().ToString());
-                            resetForm();
+
                         }
-                        
                     }
+
                 }
-
-
-
             }
+            else
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -263,94 +274,118 @@ namespace tracker.maintenance
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (btnEdit.Text == "&Edit")
+            if (MysqlHelper.TestConnection())
             {
-                toggleInput(true);
-                btnEdit.Text = "&Update";
-                btnAdd.Enabled = false;
-                btnDelete.Enabled = false;
-                btnFind.Enabled = false;
-                btnCancel.Enabled = true;
-                txtMcc.Focus();
-                int id = Int32.Parse(dgvRadio.CurrentRow.Cells["id"].Value.ToString());
-                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM train_radios WHERE radio_id ='" + id + "'");
-                if (dt.Rows.Count > 0)
+                if (btnEdit.Text == "&Edit")
                 {
-                    chkActive.Enabled = false;
+                    toggleInput(true);
+                    btnEdit.Text = "&Update";
+                    btnAdd.Enabled = false;
+                    btnDelete.Enabled = false;
+                    btnFind.Enabled = false;
+                    btnCancel.Enabled = true;
+                    txtMcc.Focus();
+                    int id = Int32.Parse(dgvRadio.CurrentRow.Cells["id"].Value.ToString());
+                    DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM train_radios WHERE radio_id ='" + id + "'");
+                    if (dt.Rows.Count > 0)
+                    {
+                        chkActive.Enabled = false;
+                    }
+                    else
+                    {
+                        chkActive.Enabled = true;
+                    }
                 }
                 else
                 {
-                    chkActive.Enabled = true;
+
+                    if (updateRadio() == 1)
+                    {
+                        resetForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Unable to save radio!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtMcc.Focus();
+                    }
                 }
             }
             else
             {
-
-                if (updateRadio() == 1)
-                {
-                    resetForm();
-                }
-                else
-                {
-                    MessageBox.Show("Unable to save radio!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtMcc.Focus();
-                }
+                Application.Exit();
             }
+            
         }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            int result;
-            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT id, mcc, mnc, ssi, tracker_code FROM radios");
-
-            string[] fields = new string[] { "ID", "MCC", "MNC", "SSI", "TRACKER CODE" };
-            string[] field_ids = new string[] { "id", "mcc", "mnc", "ssi", "tracker_code" };
-            int[] fieldsSize = new int[] { 50, 100, 100, 200, 200 };
-
-            frmFind frmFind = new frmFind();
-            frmFind.DataSource = dt;
-            frmFind.SearchFor = "Radios";
-            frmFind.FieldId = "id";
-            frmFind.Fields = fields;
-            frmFind.FieldIds = field_ids;
-            frmFind.FieldsSize = fieldsSize;
-
-            if (frmFind.ShowDialog() == DialogResult.OK)
+            if (MysqlHelper.TestConnection())
             {
-                result = frmFind.FilterValue;
-                loadGrid();
-                frmFind.MoveCursor(result, dgvRadio);
+                int result;
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT id, mcc, mnc, ssi, tracker_code FROM radios");
+
+                string[] fields = new string[] { "ID", "MCC", "MNC", "SSI", "TRACKER CODE" };
+                string[] field_ids = new string[] { "id", "mcc", "mnc", "ssi", "tracker_code" };
+                int[] fieldsSize = new int[] { 50, 100, 100, 200, 200 };
+
+                frmFind frmFind = new frmFind();
+                frmFind.DataSource = dt;
+                frmFind.SearchFor = "Radios";
+                frmFind.FieldId = "id";
+                frmFind.Fields = fields;
+                frmFind.FieldIds = field_ids;
+                frmFind.FieldsSize = fieldsSize;
+
+                if (frmFind.ShowDialog() == DialogResult.OK)
+                {
+                    result = frmFind.FilterValue;
+                    loadGrid();
+                    frmFind.MoveCursor(result, dgvRadio);
+                }
+                frmFind.Dispose();
+                btnAdd.Focus();
             }
-            frmFind.Dispose();
-            btnAdd.Focus();
+            else
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", this.Text,
-               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (MysqlHelper.TestConnection())
             {
-                int id = Int32.Parse(dgvRadio.CurrentRow.Cells["id"].Value.ToString());
-                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM train_radios WHERE radio_id ='" + id + "'");
-                if (dt.Rows.Count == 0)
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this record?", this.Text,
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    int retVal = MysqlHelper.ExecuteNonQuery("DELETE FROM radios where id ='" + id + "'");
-                    if (retVal == 1)
+                    int id = Int32.Parse(dgvRadio.CurrentRow.Cells["id"].Value.ToString());
+                    DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM train_radios WHERE radio_id ='" + id + "'");
+                    if (dt.Rows.Count == 0)
                     {
-                        loadGrid();
+                        int retVal = MysqlHelper.ExecuteNonQuery("DELETE FROM radios where id ='" + id + "'");
+                        if (retVal == 1)
+                        {
+                            loadGrid();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erorr deleting record.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Erorr deleting record.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Cannot delete radio it is currently assigned to a train.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
                 }
-                else
-                {
-                    MessageBox.Show("Cannot delete radio it is currently assigned to a train.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                
             }
+            else
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void chkRange_CheckedChanged(object sender, EventArgs e)

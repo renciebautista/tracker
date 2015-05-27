@@ -1,33 +1,35 @@
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmMapSettings.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmLogin.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmMain.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmMap.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmMonitoring.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmTest.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmAddTrain.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmFind.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmRadio.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmTrain.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmTrainRadio.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.Properties.Resources.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmTrainlist.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csproj.GenerateResource.Cache
+D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.exe.config
+D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.exe
+D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.pdb
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\GMap.NET.Core.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\GMap.NET.WindowsForms.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\MySql.Data.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\WeifenLuo.WinFormsUI.Docking.dll
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmAbout.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmServerSettings.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmInitDb.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmUser.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csprojResolveAssemblyReference.cache
-D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.exe.config
-D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.exe
-D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.pdb
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmBackground.resources
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\10-20 Tracker.exe
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\10-20 Tracker.pdb
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\Interop.NetFwTypeLib.dll
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csproj.ResolveComReference.cache
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmMapSettings.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmRadioList.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmAbout.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmBackground.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmLogin.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmMain.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmMap.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmMonitoring.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmServerSettings.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.frmTest.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmAddTrain.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmFind.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmInitDb.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmRadio.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmTrain.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmTrainRadio.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmUser.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.Properties.Resources.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmTrainlist.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.reports.frmAnimation.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.reports.frmRadioReport.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.reports.frmSelection.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.reports.frmTrainReport.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csproj.GenerateResource.Cache
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\10-20 Tracker.exe
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\10-20 Tracker.pdb

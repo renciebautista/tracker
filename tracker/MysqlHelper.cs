@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 public class MysqlHelper
 {
@@ -16,6 +17,8 @@ public class MysqlHelper
     public static string connectionString = ConfigurationManager.ConnectionStrings["default"].ConnectionString;
     //public string m = ConfigurationManager.AppSettings["MySQL"];
     public MysqlHelper() { }
+
+    
     #region ExecuteNonQuery
     //The number of records // execute SQL statements, the impact of return
     ///// <Summary>
@@ -352,4 +355,36 @@ public class MysqlHelper
         }
     }
     #endregion
+
+    public static bool TestConnection()
+    {
+        using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
+        {
+            try
+            {
+                conn.Open();
+                conn.Close();
+                return true;
+            }
+            catch (MySqlException ex)
+            {
+                switch (ex.Number)
+                {
+                    case 0:
+                        MessageBox.Show("Cannot connect to server.  Contact administrator", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 1045:
+                        MessageBox.Show("Invalid username/password, please try again", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    case 1042:
+                        MessageBox.Show("Unable to connect to any of the specified MySQL hosts.", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                    default:
+                        MessageBox.Show("Cannot connect to server.  Contact administrator", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+                return false;
+            }
+        }
+    }
 } 

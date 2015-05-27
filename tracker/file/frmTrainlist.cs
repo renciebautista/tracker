@@ -23,22 +23,30 @@ namespace tracker.file
         private void loadGrid()
         {
             dgvTrains.AutoGenerateColumns = false;
-            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT trains.id, train_code, train_desc" +
+            if (MysqlHelper.TestConnection())
+            {
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT trains.id, train_code, train_desc" +
                 " FROM train_radios " +
                 " INNER JOIN trains on train_radios.train_id = trains.id" +
                 " WHERE train_radios.head = 1");
 
-            dt.Columns.Add("chk", typeof(System.Boolean));
-            var list = Properties.Settings.Default.Trains.Cast<string>().ToList();
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (list.Contains(dr["id"].ToString()))
+                dt.Columns.Add("chk", typeof(System.Boolean));
+                var list = Properties.Settings.Default.Trains.Cast<string>().ToList();
+                foreach (DataRow dr in dt.Rows)
                 {
-                    dr["chk"] = true;   // or set it to some other value
+                    if (list.Contains(dr["id"].ToString()))
+                    {
+                        dr["chk"] = true;   // or set it to some other value
+                    }
+
                 }
-                
+                dgvTrains.DataSource = dt;
             }
-            dgvTrains.DataSource = dt;
+            else
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void frmTrainlist_Load(object sender, EventArgs e)

@@ -24,9 +24,6 @@ namespace tracker.file
             InitializeComponent();
 
             initMap();
-
-            
-            
         }
 
         public void initMap()
@@ -62,9 +59,20 @@ namespace tracker.file
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            objects.Markers.Clear();
-            radio_overlay.Markers.Clear();
-            plotTrain();
+            timer.Enabled = false;
+            if (MysqlHelper.TestConnection())
+            {
+                objects.Markers.Clear();
+                radio_overlay.Markers.Clear();
+                plotTrain();
+            }
+            else
+            {
+                Application.Exit();
+            }
+
+            timer.Enabled = true;
+           
         }
         private void plotTrain()
         {

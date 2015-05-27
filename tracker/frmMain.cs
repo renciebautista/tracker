@@ -12,7 +12,7 @@ using tracker.file;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using tracker.reports;
-
+using NetFwTypeLib;
 namespace tracker
 {
     public partial class frmMain : Form
@@ -20,6 +20,23 @@ namespace tracker
         public frmMain()
         {
             InitializeComponent();
+
+            INetFwRule firewallRule = (INetFwRule)Activator.CreateInstance(
+            Type.GetTypeFromProgID("HNetCfg.FWRule"));
+
+            INetFwPolicy2 firewallPolicy = (INetFwPolicy2)Activator.CreateInstance(
+                Type.GetTypeFromProgID("HNetCfg.FwPolicy2"));
+
+            firewallRule.ApplicationName = Application.ExecutablePath;
+
+            firewallRule.Action = NET_FW_ACTION_.NET_FW_ACTION_ALLOW;
+            firewallRule.Description = " 10-20 Tracker Windows Firewall Rule";
+            firewallRule.Enabled = true;
+            firewallRule.InterfaceTypes = "All";
+            firewallRule.Name = "Allow 10-20 Tracker";
+
+            // Should really check that rule is not already present before add in
+            firewallPolicy.Rules.Add(firewallRule); 
         }
 
         private void radioMaintenanceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,19 +72,12 @@ namespace tracker
                 monitoring.WindowState = FormWindowState.Maximized;
                 monitoring.ShowDialog();
             }
-            this.Show();
 
-            //frmMonitoring monitoring = new frmMonitoring();
-            //monitoring.MdiParent = this;
-            //monitoring.Show();
-            //monitoring.WindowState = FormWindowState.Maximized;
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            migrate();
-           
-
+            
             this.Hide();
             string filepath = Properties.Settings.Default.Wallpaper.ToString();
             if (filepath != "")
@@ -76,8 +86,16 @@ namespace tracker
             }
             else
             {
-                var path = Application.StartupPath +  @"\images\10-20 tracker background.png";
-                pictureBox1.Image = Image.FromFile(path);
+                try
+                {
+                    var path = Application.StartupPath + @"\images\10-20 tracker background.png";
+                    pictureBox1.Image = Image.FromFile(path);
+                }
+                catch
+                {
+
+                }
+                
             }
 
             using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["default"].ConnectionString))
@@ -87,7 +105,7 @@ namespace tracker
                         conn.Open();
                      
                         conn.Close();
-
+                        migrate();
                         DialogResult dr = new DialogResult();
                         frmLogin logIn = new frmLogin();
                         dr = logIn.ShowDialog();
@@ -99,12 +117,14 @@ namespace tracker
                                 menuStrip1.Items[1].Visible = false;
                             }
                             this.Show();
+                            timer1.Enabled = true;
+ 
                         }
                         else
                         {
-                            this.Close();
+                            Application.Exit();
                         }
-                        this.Show();
+                        
                     
                 }
                 catch (MySqlException ex)
@@ -124,6 +144,7 @@ namespace tracker
                             MessageBox.Show("Cannot connect to server.  Contact administrator", "Database Connection Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             break;
                     }
+
                     DialogResult dr = new DialogResult();
                     frmServerSettings settings = new frmServerSettings();
                     dr = settings.ShowDialog();
@@ -137,9 +158,6 @@ namespace tracker
                     }
                 }
            }
-
-            
-            
             
 
         }
@@ -178,24 +196,33 @@ namespace tracker
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
-            if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
+            timer1.Enabled = false;
+            if (MysqlHelper.TestConnection())
             {
-                // timer1.Enabled = false;
-                notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
-                notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
-                notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
+                if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
+                {
+                   
+                    notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
+                    notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
+                    notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
 
-                notifyIcon1.ShowBalloonTip(1000);
+                    notifyIcon1.ShowBalloonTip(1000);
 
-                //DialogResult result = MessageBox.Show("Tracker service is not running", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //if (result == DialogResult.OK)
-                //{
-                //    timer1.Enabled = true;
-                //}
-                
+                    //DialogResult result = MessageBox.Show("Tracker service is not running", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //if (result == DialogResult.OK)
+                    //{
+                    //    timer1.Enabled = true;
+                    //}
+
+                }
             }
-            
+            else
+            {
+                Application.Exit();
+            }
+
+            timer1.Enabled = true;
            
         }
 
@@ -242,6 +269,9 @@ namespace tracker
             // ALTER TABLE `radios` ADD `image_index` INT NOT NULL AFTER `tracker_code`;
             // CREATE TABLE IF NOT EXISTS `radio_logs` ( `id` bigint(200) NOT NULL, `radio_id` int(11) NOT NULL, `mcc` varchar(50) NOT NULL, `mnc` varchar(50) NOT NULL, `ssi` varchar(50) NOT NULL, `subscriber_name` varchar(255) NOT NULL, `uplink` int(11) NOT NULL, `speed` decimal(11,4) NOT NULL, `course` decimal(11,4) NOT NULL, `alt` decimal(11,4) NOT NULL, `max_pos_error` decimal(11,4) NOT NULL, `lat` decimal(16,13) NOT NULL, `lng` decimal(16,13) NOT NULL, `tracker_code` varchar(50) NOT NULL, `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1
 
+            // ALTER TABLE `radio_logs` ADD `image_index` INT NOT NULL AFTER `tracker_code`;
+            // ALTER TABLE `logs` ADD `image_index` INT NOT NULL AFTER `head`;
+
             DataTable dt = MysqlHelper.ExecuteDataTable("SHOW columns from radios where field='image_index'");
             if (dt.Rows.Count == 0)
             {
@@ -249,7 +279,22 @@ namespace tracker
             }
 
             MysqlHelper.ExecuteNonQuery("CREATE TABLE IF NOT EXISTS radio_logs ( id bigint(200) NOT NULL, radio_id int(11) NOT NULL, mcc varchar(50) NOT NULL, mnc varchar(50) NOT NULL, ssi varchar(50) NOT NULL, subscriber_name varchar(255) NOT NULL, uplink int(11) NOT NULL, speed decimal(11,4) NOT NULL, course decimal(11,4) NOT NULL, alt decimal(11,4) NOT NULL, max_pos_error decimal(11,4) NOT NULL, lat decimal(16,13) NOT NULL, lng decimal(16,13) NOT NULL, tracker_code varchar(50) NOT NULL, created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1");
+
+
+
+            DataTable dt2 = MysqlHelper.ExecuteDataTable("SHOW columns from radio_logs where field='image_index'");
+            if (dt2.Rows.Count == 0)
+            {
+                MysqlHelper.ExecuteNonQuery("ALTER TABLE radio_logs ADD image_index INT NOT NULL AFTER tracker_code");
+            }
+
+            DataTable dt3 = MysqlHelper.ExecuteDataTable("SHOW columns from logs where field='image_index'");
+            if (dt3.Rows.Count == 0)
+            {
+                MysqlHelper.ExecuteNonQuery("ALTER TABLE logs ADD image_index INT NOT NULL AFTER head");
+            }
            
         }
+
     }
 }

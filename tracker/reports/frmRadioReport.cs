@@ -30,33 +30,48 @@ namespace tracker.reports
 
         private void btnProcess_Click(object sender, EventArgs e)
         {
-            dgvRadio.DataSource = null;
-            dgvRadio.Rows.Clear();
-            dgvRadio.AutoGenerateColumns = false;
-            if ((selected != null) && (selected.Rows.Count > 0))
+            if (MysqlHelper.TestConnection())
             {
-                var filter = string.Join(",", selected.AsEnumerable()
-                                 .Select(x => x["value"].ToString())
-                                 .ToArray());
+                dgvRadio.DataSource = null;
+                dgvRadio.Rows.Clear();
+                dgvRadio.AutoGenerateColumns = false;
+                if ((selected != null) && (selected.Rows.Count > 0))
+                {
+                    var filter = string.Join(",", selected.AsEnumerable()
+                                     .Select(x => x["value"].ToString())
+                                     .ToArray());
 
-                dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radio_logs WHERE ssi IN (" + filter + ") AND date(created_at) BETWEEN '" + dtFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtTo.Value.ToString("yyyy-MM-dd") + "'");
+                    dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radio_logs WHERE ssi IN (" + filter + ") AND date(created_at) BETWEEN '" + dtFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtTo.Value.ToString("yyyy-MM-dd") + "'");
+                }
+                else
+                {
+                    dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radio_logs WHERE date(created_at) BETWEEN '" + dtFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtTo.Value.ToString("yyyy-MM-dd") + "'");
+                }
+
+                bs.DataSource = dt;
+                bdgNavigator.BindingSource = bs;
+                dgvRadio.DataSource = bs;
+                btnAnimate.Enabled = false;
+                if (dt.Rows.Count > 0)
+                {
+                    btnExport.Enabled = true;
+                    if ((selected != null) && (selected.Rows.Count == 1))
+                    {
+                        btnAnimate.Enabled = true;
+                    }
+                    MessageBox.Show(dt.Rows.Count.ToString() + " records found.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    btnExport.Enabled = false;
+                    MessageBox.Show("No record found.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             else
             {
-                dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radio_logs WHERE date(created_at) BETWEEN '" + dtFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtTo.Value.ToString("yyyy-MM-dd") + "'");
+                Application.Exit();
             }
-           
-            bs.DataSource = dt;
-            bdgNavigator.BindingSource = bs;
-            dgvRadio.DataSource = bs;
-            if (dt.Rows.Count > 0)
-            {
-                btnExport.Enabled = true;
-            }
-            else
-            {
-                btnExport.Enabled = false;
-            }
+            
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -82,7 +97,6 @@ namespace tracker.reports
 
         private void frmRadioReport_Load(object sender, EventArgs e)
         {
-
             Dictionary<string, string> test = new Dictionary<string, string>();
             test.Add("1", "All Radio");
             test.Add("2", "Per Radio");
@@ -92,32 +106,41 @@ namespace tracker.reports
 
             cmbRadio.SelectedIndex = 0;
 
-            
+
             dtFrom.MaxDate = DateTime.Now;
             dtTo.MaxDate = DateTime.Now;
+
         }
 
         private void cmbRadio_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (cmbRadio.SelectedIndex)
+            if (MysqlHelper.TestConnection())
             {
-                case 1:  // ..... some code here...
-                    frmSelection select = new frmSelection();
-                    select.SourceDataSource = MysqlHelper.ExecuteDataTable("SELECT ssi as value FROM radio_logs GROUP BY ssi");
-                    select.SelectedDataSource = selected;
-                    select.FormHeader = this.Text;
-                    select.ShowDialog();
-                    selected = select.SelectedDataSource;
+                switch (cmbRadio.SelectedIndex)
+                {
+                    case 1:  // ..... some code here...
+                        frmSelection select = new frmSelection();
+                        select.SourceDataSource = MysqlHelper.ExecuteDataTable("SELECT ssi as value FROM radio_logs GROUP BY ssi");
+                        select.SelectedDataSource = selected;
+                        select.FormHeader = this.Text;
+                        select.ShowDialog();
+                        selected = select.SelectedDataSource;
 
-                    break;
-                default: // ..... some code here...
-                    if ((selected != null) && (selected.Rows.Count > 0))
-                    {
-                        selected.Clear();
-                    }
-                    
-                    break;
+                        break;
+                    default: // ..... some code here...
+                        if ((selected != null) && (selected.Rows.Count > 0))
+                        {
+                            selected.Clear();
+                        }
+
+                        break;
+                }
             }
+            else
+            {
+                Application.Exit();
+            }
+            
         }
 
         private void dtFrom_ValueChanged(object sender, EventArgs e)
@@ -128,6 +151,18 @@ namespace tracker.reports
         private void dtTo_ValueChanged(object sender, EventArgs e)
         {
             dtFrom.MaxDate = dtTo.Value;
+        }
+
+        private void btnAnimate_Click(object sender, EventArgs e)
+        {
+            using (frmAnimation animate = new frmAnimation())
+            {
+                animate.DataSource = dt;
+                animate.Header = selected.Rows[0]["value"].ToString() +" - Radio Logs Animation";
+                animate.Id = "mnc";
+                animate.Name = "ssi";
+                animate.ShowDialog();
+            }
         }
 
     }

@@ -52,7 +52,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvRadio = new System.Windows.Forms.DataGridView();
-            this.btnExport = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +66,8 @@
             this.lng = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tracker_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.created_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnAnimate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
@@ -313,17 +314,6 @@
             this.dgvRadio.Size = new System.Drawing.Size(1032, 472);
             this.dgvRadio.TabIndex = 22;
             // 
-            // btnExport
-            // 
-            this.btnExport.Enabled = false;
-            this.btnExport.Location = new System.Drawing.Point(93, 599);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(95, 30);
-            this.btnExport.TabIndex = 35;
-            this.btnExport.Text = "Export to CSV";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
             // id
             // 
             this.id.DataPropertyName = "id";
@@ -424,11 +414,34 @@
             this.created_at.Name = "created_at";
             this.created_at.ReadOnly = true;
             // 
+            // btnExport
+            // 
+            this.btnExport.Enabled = false;
+            this.btnExport.Location = new System.Drawing.Point(93, 599);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(95, 30);
+            this.btnExport.TabIndex = 35;
+            this.btnExport.Text = "Export to CSV";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnAnimate
+            // 
+            this.btnAnimate.Enabled = false;
+            this.btnAnimate.Location = new System.Drawing.Point(194, 599);
+            this.btnAnimate.Name = "btnAnimate";
+            this.btnAnimate.Size = new System.Drawing.Size(73, 30);
+            this.btnAnimate.TabIndex = 36;
+            this.btnAnimate.Text = "Animation";
+            this.btnAnimate.UseVisualStyleBackColor = true;
+            this.btnAnimate.Click += new System.EventHandler(this.btnAnimate_Click);
+            // 
             // frmRadioReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 641);
+            this.Controls.Add(this.btnAnimate);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -496,5 +509,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lng;
         private System.Windows.Forms.DataGridViewTextBoxColumn tracker_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn created_at;
+        private System.Windows.Forms.Button btnAnimate;
     }
 }

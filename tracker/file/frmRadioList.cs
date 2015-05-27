@@ -22,21 +22,29 @@ namespace tracker.file
         private void loadGrid()
         {
             dgvRadios.AutoGenerateColumns = false;
-            DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from radios " +
+            if (MysqlHelper.TestConnection())
+            {
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from radios " +
                 "WHERE id NOT IN (SELECT radio_id FROM train_radios ) " +
                 "AND radios.active = 1");
 
-            dt.Columns.Add("chk", typeof(System.Boolean));
-            var list = Properties.Settings.Default.Radios.Cast<string>().ToList();
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (list.Contains(dr["id"].ToString()))
+                dt.Columns.Add("chk", typeof(System.Boolean));
+                var list = Properties.Settings.Default.Radios.Cast<string>().ToList();
+                foreach (DataRow dr in dt.Rows)
                 {
-                    dr["chk"] = true;   // or set it to some other value
-                }
+                    if (list.Contains(dr["id"].ToString()))
+                    {
+                        dr["chk"] = true;   // or set it to some other value
+                    }
 
+                }
+                dgvRadios.DataSource = dt;
             }
-            dgvRadios.DataSource = dt;
+            else
+            {
+                Application.Exit();
+            }
+            
         }
         private void frmRadioList_Load(object sender, EventArgs e)
         {

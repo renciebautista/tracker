@@ -70,6 +70,7 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnProcess = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAnimate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTrain)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -452,11 +453,23 @@
             this.groupBox2.TabIndex = 40;
             this.groupBox2.TabStop = false;
             // 
+            // btnAnimate
+            // 
+            this.btnAnimate.Enabled = false;
+            this.btnAnimate.Location = new System.Drawing.Point(194, 599);
+            this.btnAnimate.Name = "btnAnimate";
+            this.btnAnimate.Size = new System.Drawing.Size(73, 30);
+            this.btnAnimate.TabIndex = 42;
+            this.btnAnimate.Text = "Animation";
+            this.btnAnimate.UseVisualStyleBackColor = true;
+            this.btnAnimate.Click += new System.EventHandler(this.btnAnimate_Click);
+            // 
             // frmTrainReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 641);
+            this.Controls.Add(this.btnAnimate);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClose);
@@ -527,5 +540,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tracker_code;
         private System.Windows.Forms.DataGridViewTextBoxColumn head;
         private System.Windows.Forms.DataGridViewTextBoxColumn created_at;
+        private System.Windows.Forms.Button btnAnimate;
     }
 }

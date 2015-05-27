@@ -40,11 +40,11 @@
             this.trainMaintenanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.trainRadioAssignmentToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.userMaintenanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.trainLogsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.radioLogsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,21 +95,21 @@
             // mapToolStripMenuItem
             // 
             this.mapToolStripMenuItem.Name = "mapToolStripMenuItem";
-            this.mapToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.mapToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.mapToolStripMenuItem.Text = "Map View";
             this.mapToolStripMenuItem.Click += new System.EventHandler(this.monitoringToolStripMenuItem1_Click);
             // 
             // relogToolStripMenuItem
             // 
             this.relogToolStripMenuItem.Name = "relogToolStripMenuItem";
-            this.relogToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.relogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.relogToolStripMenuItem.Text = "Relog";
             this.relogToolStripMenuItem.Click += new System.EventHandler(this.relogToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -152,6 +152,29 @@
             this.userMaintenanceToolStripMenuItem1.Text = "User Maintenance";
             this.userMaintenanceToolStripMenuItem1.Click += new System.EventHandler(this.userMaintenanceToolStripMenuItem_Click);
             // 
+            // reportsToolStripMenuItem1
+            // 
+            this.reportsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.radioLogsReportToolStripMenuItem,
+            this.trainLogsReportToolStripMenuItem});
+            this.reportsToolStripMenuItem1.Name = "reportsToolStripMenuItem1";
+            this.reportsToolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
+            this.reportsToolStripMenuItem1.Text = "Reports";
+            // 
+            // trainLogsReportToolStripMenuItem
+            // 
+            this.trainLogsReportToolStripMenuItem.Name = "trainLogsReportToolStripMenuItem";
+            this.trainLogsReportToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.trainLogsReportToolStripMenuItem.Text = "Train Logs Report";
+            this.trainLogsReportToolStripMenuItem.Click += new System.EventHandler(this.trainLogsReportToolStripMenuItem_Click);
+            // 
+            // radioLogsReportToolStripMenuItem
+            // 
+            this.radioLogsReportToolStripMenuItem.Name = "radioLogsReportToolStripMenuItem";
+            this.radioLogsReportToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.radioLogsReportToolStripMenuItem.Text = "Radio Logs Report";
+            this.radioLogsReportToolStripMenuItem.Click += new System.EventHandler(this.radioLogsReportToolStripMenuItem_Click);
+            // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -166,29 +189,6 @@
             this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.backgroundToolStripMenuItem.Text = "Background";
             this.backgroundToolStripMenuItem.Click += new System.EventHandler(this.backgroundToolStripMenuItem_Click);
-            // 
-            // reportsToolStripMenuItem1
-            // 
-            this.reportsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.trainLogsReportToolStripMenuItem,
-            this.radioLogsReportToolStripMenuItem});
-            this.reportsToolStripMenuItem1.Name = "reportsToolStripMenuItem1";
-            this.reportsToolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
-            this.reportsToolStripMenuItem1.Text = "Reports";
-            // 
-            // trainLogsReportToolStripMenuItem
-            // 
-            this.trainLogsReportToolStripMenuItem.Name = "trainLogsReportToolStripMenuItem";
-            this.trainLogsReportToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.trainLogsReportToolStripMenuItem.Text = "Train Logs Report";
-            this.trainLogsReportToolStripMenuItem.Click += new System.EventHandler(this.trainLogsReportToolStripMenuItem_Click);
-            // 
-            // radioLogsReportToolStripMenuItem
-            // 
-            this.radioLogsReportToolStripMenuItem.Name = "radioLogsReportToolStripMenuItem";
-            this.radioLogsReportToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.radioLogsReportToolStripMenuItem.Text = "Radio Logs Report";
-            this.radioLogsReportToolStripMenuItem.Click += new System.EventHandler(this.radioLogsReportToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
@@ -315,7 +315,6 @@
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
