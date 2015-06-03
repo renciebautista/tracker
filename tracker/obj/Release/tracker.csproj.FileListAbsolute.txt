@@ -5,6 +5,7 @@ D:\visual studio.dev\syntech\tracker\tracker\bin\Release\GMap.NET.Core.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\GMap.NET.WindowsForms.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\MySql.Data.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\WeifenLuo.WinFormsUI.Docking.dll
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csprojResolveAssemblyReference.cache
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\Interop.NetFwTypeLib.dll
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csproj.ResolveComReference.cache
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmMapSettings.resources

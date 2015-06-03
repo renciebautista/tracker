@@ -52,7 +52,10 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvRadio = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnAnimate = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.created_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mnc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ssi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,9 +68,6 @@
             this.lat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lng = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tracker_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.created_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnAnimate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
@@ -290,6 +290,7 @@
             this.dgvRadio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRadio.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
+            this.created_at,
             this.mcc,
             this.mnc,
             this.ssi,
@@ -301,8 +302,7 @@
             this.max_pos_error,
             this.lat,
             this.lng,
-            this.tracker_code,
-            this.created_at});
+            this.tracker_code});
             this.dgvRadio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRadio.Location = new System.Drawing.Point(3, 16);
             this.dgvRadio.MultiSelect = false;
@@ -313,106 +313,6 @@
             this.dgvRadio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRadio.Size = new System.Drawing.Size(1032, 472);
             this.dgvRadio.TabIndex = 22;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // mcc
-            // 
-            this.mcc.DataPropertyName = "mcc";
-            this.mcc.HeaderText = "Mcc";
-            this.mcc.Name = "mcc";
-            this.mcc.ReadOnly = true;
-            // 
-            // mnc
-            // 
-            this.mnc.DataPropertyName = "mnc";
-            this.mnc.HeaderText = "Mnc";
-            this.mnc.Name = "mnc";
-            this.mnc.ReadOnly = true;
-            // 
-            // ssi
-            // 
-            this.ssi.DataPropertyName = "ssi";
-            this.ssi.HeaderText = "Ssi";
-            this.ssi.Name = "ssi";
-            this.ssi.ReadOnly = true;
-            // 
-            // subscriber_name
-            // 
-            this.subscriber_name.DataPropertyName = "subscriber_name";
-            this.subscriber_name.HeaderText = "Subscriber Name";
-            this.subscriber_name.Name = "subscriber_name";
-            this.subscriber_name.ReadOnly = true;
-            this.subscriber_name.Width = 200;
-            // 
-            // uplink
-            // 
-            this.uplink.DataPropertyName = "uplink";
-            this.uplink.HeaderText = "Uplink";
-            this.uplink.Name = "uplink";
-            this.uplink.ReadOnly = true;
-            // 
-            // speed
-            // 
-            this.speed.DataPropertyName = "speed";
-            this.speed.HeaderText = "Speed";
-            this.speed.Name = "speed";
-            this.speed.ReadOnly = true;
-            // 
-            // course
-            // 
-            this.course.DataPropertyName = "course";
-            this.course.HeaderText = "Course";
-            this.course.Name = "course";
-            this.course.ReadOnly = true;
-            // 
-            // alt
-            // 
-            this.alt.DataPropertyName = "alt";
-            this.alt.HeaderText = "Altitude";
-            this.alt.Name = "alt";
-            this.alt.ReadOnly = true;
-            // 
-            // max_pos_error
-            // 
-            this.max_pos_error.DataPropertyName = "max_pos_error";
-            this.max_pos_error.HeaderText = "Max Pos Error";
-            this.max_pos_error.Name = "max_pos_error";
-            this.max_pos_error.ReadOnly = true;
-            // 
-            // lat
-            // 
-            this.lat.DataPropertyName = "lat";
-            this.lat.HeaderText = "Latitude";
-            this.lat.Name = "lat";
-            this.lat.ReadOnly = true;
-            // 
-            // lng
-            // 
-            this.lng.DataPropertyName = "lng";
-            this.lng.HeaderText = "Longtitude";
-            this.lng.Name = "lng";
-            this.lng.ReadOnly = true;
-            // 
-            // tracker_code
-            // 
-            this.tracker_code.DataPropertyName = "tracker_code";
-            this.tracker_code.HeaderText = "Tracker Code";
-            this.tracker_code.Name = "tracker_code";
-            this.tracker_code.ReadOnly = true;
-            // 
-            // created_at
-            // 
-            this.created_at.DataPropertyName = "created_at";
-            this.created_at.HeaderText = "Created At";
-            this.created_at.Name = "created_at";
-            this.created_at.ReadOnly = true;
             // 
             // btnExport
             // 
@@ -435,6 +335,117 @@
             this.btnAnimate.Text = "Animation";
             this.btnAnimate.UseVisualStyleBackColor = true;
             this.btnAnimate.Click += new System.EventHandler(this.btnAnimate_Click);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // created_at
+            // 
+            this.created_at.DataPropertyName = "created_at";
+            this.created_at.HeaderText = "Timestamps";
+            this.created_at.Name = "created_at";
+            this.created_at.ReadOnly = true;
+            this.created_at.Width = 150;
+            // 
+            // mcc
+            // 
+            this.mcc.DataPropertyName = "mcc";
+            this.mcc.HeaderText = "Mcc";
+            this.mcc.Name = "mcc";
+            this.mcc.ReadOnly = true;
+            this.mcc.Visible = false;
+            // 
+            // mnc
+            // 
+            this.mnc.DataPropertyName = "mnc";
+            this.mnc.HeaderText = "Mnc";
+            this.mnc.Name = "mnc";
+            this.mnc.ReadOnly = true;
+            this.mnc.Visible = false;
+            // 
+            // ssi
+            // 
+            this.ssi.DataPropertyName = "ssi";
+            this.ssi.HeaderText = "Ssi";
+            this.ssi.Name = "ssi";
+            this.ssi.ReadOnly = true;
+            // 
+            // subscriber_name
+            // 
+            this.subscriber_name.DataPropertyName = "subscriber_name";
+            this.subscriber_name.HeaderText = "Subscriber Name";
+            this.subscriber_name.Name = "subscriber_name";
+            this.subscriber_name.ReadOnly = true;
+            this.subscriber_name.Width = 200;
+            // 
+            // uplink
+            // 
+            this.uplink.DataPropertyName = "uplink";
+            this.uplink.HeaderText = "Uplink";
+            this.uplink.Name = "uplink";
+            this.uplink.ReadOnly = true;
+            this.uplink.Visible = false;
+            // 
+            // speed
+            // 
+            this.speed.DataPropertyName = "speed";
+            this.speed.HeaderText = "Speed";
+            this.speed.Name = "speed";
+            this.speed.ReadOnly = true;
+            this.speed.Visible = false;
+            // 
+            // course
+            // 
+            this.course.DataPropertyName = "course";
+            this.course.HeaderText = "Course";
+            this.course.Name = "course";
+            this.course.ReadOnly = true;
+            this.course.Visible = false;
+            // 
+            // alt
+            // 
+            this.alt.DataPropertyName = "alt";
+            this.alt.HeaderText = "Altitude";
+            this.alt.Name = "alt";
+            this.alt.ReadOnly = true;
+            this.alt.Visible = false;
+            // 
+            // max_pos_error
+            // 
+            this.max_pos_error.DataPropertyName = "max_pos_error";
+            this.max_pos_error.HeaderText = "Max Pos Error";
+            this.max_pos_error.Name = "max_pos_error";
+            this.max_pos_error.ReadOnly = true;
+            this.max_pos_error.Visible = false;
+            // 
+            // lat
+            // 
+            this.lat.DataPropertyName = "lat";
+            this.lat.HeaderText = "Latitude";
+            this.lat.Name = "lat";
+            this.lat.ReadOnly = true;
+            this.lat.Width = 150;
+            // 
+            // lng
+            // 
+            this.lng.DataPropertyName = "lng";
+            this.lng.HeaderText = "Longtitude";
+            this.lng.Name = "lng";
+            this.lng.ReadOnly = true;
+            this.lng.Width = 150;
+            // 
+            // tracker_code
+            // 
+            this.tracker_code.DataPropertyName = "tracker_code";
+            this.tracker_code.HeaderText = "Tracker Code";
+            this.tracker_code.Name = "tracker_code";
+            this.tracker_code.ReadOnly = true;
+            this.tracker_code.Visible = false;
             // 
             // frmRadioReport
             // 
@@ -495,7 +506,9 @@
         private System.Windows.Forms.DataGridView dgvRadio;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ComboBox cmbRadio;
+        private System.Windows.Forms.Button btnAnimate;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn created_at;
         private System.Windows.Forms.DataGridViewTextBoxColumn mcc;
         private System.Windows.Forms.DataGridViewTextBoxColumn mnc;
         private System.Windows.Forms.DataGridViewTextBoxColumn ssi;
@@ -508,7 +521,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lat;
         private System.Windows.Forms.DataGridViewTextBoxColumn lng;
         private System.Windows.Forms.DataGridViewTextBoxColumn tracker_code;
-        private System.Windows.Forms.DataGridViewTextBoxColumn created_at;
-        private System.Windows.Forms.Button btnAnimate;
     }
 }

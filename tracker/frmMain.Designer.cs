@@ -41,8 +41,8 @@
             this.trainRadioAssignmentToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.userMaintenanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.trainLogsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.radioLogsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trainLogsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,8 +63,18 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.ver = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusVersion = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusTnx = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusLbl = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusIp = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -95,21 +105,21 @@
             // mapToolStripMenuItem
             // 
             this.mapToolStripMenuItem.Name = "mapToolStripMenuItem";
-            this.mapToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mapToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.mapToolStripMenuItem.Text = "Map View";
             this.mapToolStripMenuItem.Click += new System.EventHandler(this.monitoringToolStripMenuItem1_Click);
             // 
             // relogToolStripMenuItem
             // 
             this.relogToolStripMenuItem.Name = "relogToolStripMenuItem";
-            this.relogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.relogToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.relogToolStripMenuItem.Text = "Relog";
             this.relogToolStripMenuItem.Click += new System.EventHandler(this.relogToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(126, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -161,19 +171,19 @@
             this.reportsToolStripMenuItem1.Size = new System.Drawing.Size(59, 20);
             this.reportsToolStripMenuItem1.Text = "Reports";
             // 
-            // trainLogsReportToolStripMenuItem
-            // 
-            this.trainLogsReportToolStripMenuItem.Name = "trainLogsReportToolStripMenuItem";
-            this.trainLogsReportToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.trainLogsReportToolStripMenuItem.Text = "Train Logs Report";
-            this.trainLogsReportToolStripMenuItem.Click += new System.EventHandler(this.trainLogsReportToolStripMenuItem_Click);
-            // 
             // radioLogsReportToolStripMenuItem
             // 
             this.radioLogsReportToolStripMenuItem.Name = "radioLogsReportToolStripMenuItem";
-            this.radioLogsReportToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.radioLogsReportToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.radioLogsReportToolStripMenuItem.Text = "Radio Logs Report";
             this.radioLogsReportToolStripMenuItem.Click += new System.EventHandler(this.radioLogsReportToolStripMenuItem_Click);
+            // 
+            // trainLogsReportToolStripMenuItem
+            // 
+            this.trainLogsReportToolStripMenuItem.Name = "trainLogsReportToolStripMenuItem";
+            this.trainLogsReportToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.trainLogsReportToolStripMenuItem.Text = "Train Logs Report";
+            this.trainLogsReportToolStripMenuItem.Click += new System.EventHandler(this.trainLogsReportToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -324,11 +334,82 @@
             this.notifyIcon1.Text = "10-20 Tracker";
             this.notifyIcon1.Visible = true;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ver,
+            this.statusVersion,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel3,
+            this.statusTnx,
+            this.toolStripStatusLabel1,
+            this.statusLbl,
+            this.statusIp});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 497);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(779, 22);
+            this.statusStrip1.TabIndex = 7;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // ver
+            // 
+            this.ver.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.ver.Name = "ver";
+            this.ver.Size = new System.Drawing.Size(54, 17);
+            this.ver.Text = "Version :";
+            // 
+            // statusVersion
+            // 
+            this.statusVersion.Name = "statusVersion";
+            this.statusVersion.Size = new System.Drawing.Size(45, 17);
+            this.statusVersion.Text = "version";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(37, 17);
+            this.toolStripStatusLabel2.Text = "TNX :";
+            // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 17);
+            // 
+            // statusTnx
+            // 
+            this.statusTnx.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.statusTnx.ForeColor = System.Drawing.Color.Red;
+            this.statusTnx.Name = "statusTnx";
+            this.statusTnx.Size = new System.Drawing.Size(124, 17);
+            this.statusTnx.Text = "Server is not running";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(425, 17);
+            this.toolStripStatusLabel1.Spring = true;
+            // 
+            // statusLbl
+            // 
+            this.statusLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.statusLbl.Name = "statusLbl";
+            this.statusLbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.statusLbl.Size = new System.Drawing.Size(31, 17);
+            this.statusLbl.Text = "user";
+            // 
+            // statusIp
+            // 
+            this.statusIp.Name = "statusIp";
+            this.statusIp.Size = new System.Drawing.Size(17, 17);
+            this.statusIp.Text = "ip";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 519);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -344,6 +425,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,6 +467,15 @@
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem trainLogsReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem radioLogsReportToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel statusLbl;
+        private System.Windows.Forms.ToolStripStatusLabel statusIp;
+        private System.Windows.Forms.ToolStripStatusLabel statusVersion;
+        private System.Windows.Forms.ToolStripStatusLabel ver;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
+        private System.Windows.Forms.ToolStripStatusLabel statusTnx;
     }
 }
 

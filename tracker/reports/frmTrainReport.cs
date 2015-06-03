@@ -53,11 +53,11 @@ namespace tracker.reports
                 if (dt.Rows.Count > 0)
                 {
                     btnExport.Enabled = true;
-                    btnExport.Enabled = true;
-                    if ((selected != null) && (selected.Rows.Count == 1))
-                    {
-                        btnAnimate.Enabled = true;
-                    }
+                    btnAnimate.Enabled = true;
+                    //if ((selected != null) && (selected.Rows.Count == 1))
+                    //{
+                    //    btnAnimate.Enabled = true;
+                    //}
                     MessageBox.Show(dt.Rows.Count.ToString() + " records found.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -79,6 +79,8 @@ namespace tracker.reports
             // Prepare a dummy string, thos would appear in the dialog
             string dummyFileName = "Train Log";
 
+
+
             SaveFileDialog sf = new SaveFileDialog();
             sf.DefaultExt = ".csv";
             // Feed the dummy name to the save dialog
@@ -88,7 +90,9 @@ namespace tracker.reports
             {
                 // Now here's our save folder
                 // string savePath = Path.GetDirectoryName(sf.FileName);
-                csvUtility.ToCSV(dt, sf.FileName);
+                DataView view = new DataView(dt);
+                DataTable dtSpecificCols = view.ToTable(false, new string[] { "created_at", "train_code", "train_desc", "lat", "lng" });
+                csvUtility.ToCSV(dtSpecificCols, sf.FileName);
                 MessageBox.Show("Report successfully exported.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Process.Start(sf.FileName);
                 // Do whatever
@@ -153,13 +157,23 @@ namespace tracker.reports
 
         private void btnAnimate_Click(object sender, EventArgs e)
         {
-            using (frmAnimation animate = new frmAnimation())
+            using (frmAnimation animate = new frmAnimation(frmAnimation.ReportType.Train))
             {
+                string header_text = "";
                 animate.DataSource = dt;
-                animate.Header = selected.Rows[0]["value"].ToString() + " - Train Logs Animation";
-                animate.Id = "train_code";
-                animate.Name = "train_desc";
+                if (((selected != null) && (selected.Rows.Count > 0)) || (cmbTrain.SelectedIndex == 0))
+                {
+                    header_text = " Multiple Train Logs Animation";
+                }
+                else
+                {
+                    header_text = selected.Rows[0]["value"].ToString() + " - Train Logs Animation";
+                }
+                animate.Header = header_text;
+                animate.Id = "mnc";
+                animate.Name = "ssi";
                 animate.ShowDialog();
+
             }
         }
     }

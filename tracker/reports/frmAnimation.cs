@@ -1,6 +1,7 @@
 ﻿using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
+using GMap.NET.WindowsForms.Markers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,11 +17,52 @@ namespace tracker.reports
     public partial class frmAnimation : Form
     {
         internal readonly GMapOverlay objects = new GMapOverlay("objects");
+        internal readonly GMapOverlay traces = new GMapOverlay("traces");
         private DataTable dtLogs;
         private string header;
         private string id;
         private string name;
         int lastCount;
+        private ReportType _type;
+
+        readonly Dictionary<string, GMapMarkerImage> objectMarkers = new Dictionary<string, GMapMarkerImage>();
+        Image[] images = 
+            {
+                Properties.Resources.train_green,
+                Properties.Resources.train_red,
+                Properties.Resources.train_yellow,
+                Properties.Resources.train_blue,
+                Properties.Resources.train_brown,
+            };
+
+        Image[] radio_images = 
+            {
+                Properties.Resources.BLUE_HILITED,
+                Properties.Resources.RED_HILITED,
+                Properties.Resources.FIRE_BLUE_HILITED,
+                Properties.Resources.FIRE_GREY_HILITED,
+                Properties.Resources.FIRE_RED_HILITED,
+                Properties.Resources.INDIE_BLUE_HILITED,
+                Properties.Resources.INDIE_GREY_HILITED,
+                Properties.Resources.INDIE_RED_HILITED,
+                Properties.Resources.MEDIC_BLUE_HILITED,
+                Properties.Resources.MEDIC_GREY_HILITED,
+                Properties.Resources.MEDIC_RED_HILITED,
+                Properties.Resources.PET_BLUE_HILITED,
+                Properties.Resources.PET_GREY_HILITED,
+                Properties.Resources.PET_RED_HILITED,
+                Properties.Resources.POLICE_BLUE_HILITED,
+                Properties.Resources.POLICE_GREY_HILITED,
+                Properties.Resources.POLICE_RED_HILITED,
+                Properties.Resources.VEHICLE_BLUE_HILITED,
+                Properties.Resources.VEHICLE_GRE_HILITED,
+                Properties.Resources.VEHICLE_RED_HILITED
+            };
+
+        public enum ReportType
+        {
+            Train, Radio
+        };
         public DataTable DataSource
         {
             set { dtLogs = value; }
@@ -39,10 +81,10 @@ namespace tracker.reports
             set { name = value; }
         }
 
-        public frmAnimation()
+        public frmAnimation(ReportType type)
         {
             InitializeComponent();
-
+            _type = type;
             initMap();
         }
 
@@ -62,7 +104,9 @@ namespace tracker.reports
             gMap.Zoom = 13;
             gMap.DragButton = MouseButtons.Left;
 
+            gMap.Overlays.Add(traces);
             gMap.Overlays.Add(objects);
+
             // set cache mode only if no internet avaible
             if (!Stuff.PingNetwork("pingtest.com"))
             {
@@ -86,8 +130,6 @@ namespace tracker.reports
         {
             if (lastCount < dtLogs.Rows.Count)
             {
-                objects.Markers.Clear();
-                List<PointLatLng> positions = new List<PointLatLng>();
 
                 PointLatLng p = new PointLatLng
                 {
@@ -95,25 +137,53 @@ namespace tracker.reports
                     Lng = float.Parse(dtLogs.Rows[lastCount]["lng"].ToString())
                 };
 
-                Image[] images = 
-                    {
-                        Properties.Resources.train_green,
-                        Properties.Resources.train_red,
-                        Properties.Resources.train_yellow,
-                        Properties.Resources.train_blue,
-                        Properties.Resources.train_brown,
-                    };
+                GMapMarkerImage trace_marker;
+                Image trace_image_marker;
+                trace_image_marker = (Image)Properties.Resources.trace;
+                Image imagemarkerImage = trace_image_marker;
+
+                trace_marker = new GMapMarkerImage(p, imagemarkerImage); ;
+
+
+               
+                traces.Markers.Add(trace_marker);
+
+
+                GMapMarkerImage marker;
                 Image image_marker;
-                image_marker = images[(int)dtLogs.Rows[lastCount]["image_index"]];
+                if (_type == ReportType.Radio)
+                {
+                    image_marker = radio_images[(int)dtLogs.Rows[lastCount]["image_index"]];
+                }
+                else
+                {
+                    image_marker = images[(int)dtLogs.Rows[lastCount]["image_index"]];
+                }
+                
 
+                string id = dtLogs.Rows[lastCount][name].ToString();
+                if (!objectMarkers.TryGetValue(id, out marker))
+                {
+                    if (_type == ReportType.Radio)
+                    {
+                        marker = new GMapMarkerImage(p, image_marker,32,32);
+                    }
+                    else
+                    {
+                        marker = new GMapMarkerImage(p, image_marker);
+                    }
+                    
+                    marker.Tag = id;
 
-                Image markerImage = image_marker;
+                    objectMarkers[id] = marker;
+                    objects.Markers.Add(marker);
+                }
+                else
+                {
+                    marker.Position = p;
+                }
 
-                GMapMarkerImage marker = new GMapMarkerImage(p, markerImage);
                 objects.Markers.Add(marker);
-                marker.ToolTipText = dtLogs.Rows[lastCount][id].ToString() + " - " + dtLogs.Rows[lastCount][name].ToString();
-
-                gMap.Refresh();
                 lastCount++;
             }
             else
@@ -131,6 +201,8 @@ namespace tracker.reports
 
         private void btnReload_Click(object sender, EventArgs e)
         {
+            objects.Markers.Clear();
+            traces.Markers.Clear();
             timer1.Enabled = true;
             lastCount = 0;
         }

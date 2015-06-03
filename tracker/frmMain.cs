@@ -13,6 +13,8 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using tracker.reports;
 using NetFwTypeLib;
+using System.Data.SqlClient;
+using System.Reflection;
 namespace tracker
 {
     public partial class frmMain : Form
@@ -38,6 +40,87 @@ namespace tracker
             // Should really check that rule is not already present before add in
             firewallPolicy.Rules.Add(firewallRule); 
         }
+
+        #region Assembly Attribute Accessors
+
+        public string AssemblyTitle
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                if (attributes.Length > 0)
+                {
+                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
+                    if (titleAttribute.Title != "")
+                    {
+                        return titleAttribute.Title;
+                    }
+                }
+                return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+            }
+        }
+
+        public string AssemblyVersion
+        {
+            get
+            {
+                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+        }
+
+        public string AssemblyDescription
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return "";
+                }
+                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+            }
+        }
+
+        public string AssemblyProduct
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return "";
+                }
+                return ((AssemblyProductAttribute)attributes[0]).Product;
+            }
+        }
+
+        public string AssemblyCopyright
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return "";
+                }
+                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+            }
+        }
+
+        public string AssemblyCompany
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return "";
+                }
+                return ((AssemblyCompanyAttribute)attributes[0]).Company;
+            }
+        }
+        #endregion
+
 
         private void radioMaintenanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -66,12 +149,16 @@ namespace tracker
 
         private void monitoringToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
             using (frmMonitoring monitoring = new frmMonitoring())
             {
-                this.Hide();
+                monitoring.ip = statusIp.Text;
+                monitoring.username = statusLbl.Text;
+                monitoring.version = statusVersion.Text;
                 monitoring.WindowState = FormWindowState.Maximized;
                 monitoring.ShowDialog();
             }
+            timer1.Enabled = true;
 
         }
 
@@ -117,6 +204,14 @@ namespace tracker
                                 menuStrip1.Items[1].Visible = false;
                             }
                             this.Show();
+                            string connectString = ConfigurationManager.ConnectionStrings["default"].ToString();
+                            MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder(connectString);
+                            // Retrieve the DataSource property.    
+                            string IPAddress = builder.Server;
+                            statusLbl.Text = logIn.username;
+                            statusIp.Text = "@" +IPAddress;
+
+                            statusVersion.Text = AssemblyVersion;
                             timer1.Enabled = true;
  
                         }
@@ -202,12 +297,13 @@ namespace tracker
                 DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
                 if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
                 {
-                   
-                    notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
-                    notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
-                    notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
+                    statusTnx.Text = "Server is not running";
+                    statusTnx.ForeColor = Color.Red;
+                    //notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
+                    //notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
+                    //notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
 
-                    notifyIcon1.ShowBalloonTip(1000);
+                    //notifyIcon1.ShowBalloonTip(1000);
 
                     //DialogResult result = MessageBox.Show("Tracker service is not running", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //if (result == DialogResult.OK)
@@ -215,6 +311,11 @@ namespace tracker
                     //    timer1.Enabled = true;
                     //}
 
+                }
+                else
+                {
+                    statusTnx.Text = "Server is running";
+                    statusTnx.ForeColor = Color.Green;
                 }
             }
             else

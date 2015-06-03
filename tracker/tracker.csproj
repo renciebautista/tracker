@@ -11,6 +11,7 @@
     <AssemblyName>10-20 Tracker</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -23,8 +24,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -51,6 +52,21 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>2E47CAA1A5F19295069C583079B15221A90583DB</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>tracker_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GMap.NET.Core">
@@ -314,6 +330,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="tracker_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -354,6 +371,28 @@
     <Content Include="Resources\10-20 tracker background.png" />
     <Content Include="Resources\10-20-mobile-icon.ico" />
     <Content Include="Resources\10-20LOGO.ico" />
+    <Content Include="Resources\BLUE-HILITED.png" />
+    <Content Include="Resources\FIRE-BLUE-HILITED.png" />
+    <Content Include="Resources\FIRE-GREY-HILITED.png" />
+    <Content Include="Resources\FIRE-RED-HILITED.png" />
+    <Content Include="Resources\GREY-HILITED.png" />
+    <Content Include="Resources\INDIE-BLUE-HILITED.png" />
+    <Content Include="Resources\INDIE-GREY-HILITED.png" />
+    <Content Include="Resources\INDIE-RED-HILITED.png" />
+    <Content Include="Resources\MEDIC-BLUE-HILITED.png" />
+    <Content Include="Resources\MEDIC-GREY-HILITED.png" />
+    <Content Include="Resources\MEDIC-RED-HILITED.png" />
+    <Content Include="Resources\PET-BLUE-HILITED.png" />
+    <Content Include="Resources\PET-GREY-HILITED.png" />
+    <Content Include="Resources\PET-RED-HILITED.png" />
+    <Content Include="Resources\POLICE-BLUE-HILITED.png" />
+    <Content Include="Resources\POLICE-GREY-HILITED.png" />
+    <Content Include="Resources\POLICE-RED-HILITED.png" />
+    <Content Include="Resources\RED-HILITED.png" />
+    <Content Include="Resources\trace.png" />
+    <Content Include="Resources\VEHICLE-BLUE-HILITED.png" />
+    <Content Include="Resources\VEHICLE-GRE-HILITED.png" />
+    <Content Include="Resources\VEHICLE-RED-HILITED.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

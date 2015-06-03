@@ -17,6 +17,32 @@ namespace tracker.file
         frmTrainlist m_trainList = new frmTrainlist();
         frmRadioList m_radioList = new frmRadioList();
         frmMap m_map = new frmMap();
+        private string _ip;
+        private string _username;
+        private string _version;
+        public string ip
+        {
+            set
+            {
+                _ip = value;
+            }
+        }
+
+        public string username
+        {
+            set
+            {
+                _username = value;
+            }
+        }
+
+        public string version
+        {
+            set
+            {
+                _version = value;
+            }
+        }
         public frmMonitoring()
         {
             InitializeComponent();
@@ -24,6 +50,9 @@ namespace tracker.file
 
         private void frmMonitoring_Load(object sender, EventArgs e)
         {
+            statusLbl.Text = _username;
+            statusIp.Text =  _ip;
+            statusVersion.Text = _version;
             openTrainlist();
         }
 
@@ -67,6 +96,31 @@ namespace tracker.file
         private void dockPanel_ActiveContentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Enabled = false;
+            if (MysqlHelper.TestConnection())
+            {
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
+                if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
+                {
+                    statusTnx.Text = "Server is not running";
+                    statusTnx.ForeColor = Color.Red;
+                }
+                else
+                {
+                    statusTnx.Text = "Server is running";
+                    statusTnx.ForeColor = Color.Green;
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
+
+            timer1.Enabled = true;
         }
 
     }

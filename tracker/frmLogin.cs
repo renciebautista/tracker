@@ -15,10 +15,22 @@ namespace tracker
 {
     public partial class frmLogin : Form
     {
+        private string _username;
+        public string username
+        {
+            get
+            {
+                return _username;
+            }
+            
+
+        }
+
         public frmLogin()
         {
             InitializeComponent();
         }
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -76,6 +88,7 @@ namespace tracker
                             txtUsername.Focus();
                             break;
                         case 1:
+                            this._username = txtUsername.Text.Trim();
                             this.DialogResult = DialogResult.OK;
                             break;
                     }

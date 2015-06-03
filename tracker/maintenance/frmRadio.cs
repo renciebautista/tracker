@@ -14,6 +14,29 @@ namespace tracker.maintenance
     public partial class frmRadio : Form
     {
         BindingSource bs = new BindingSource();
+        Image[] images = 
+            {
+                Properties.Resources.BLUE_HILITED,
+                Properties.Resources.RED_HILITED,
+                Properties.Resources.FIRE_BLUE_HILITED,
+                Properties.Resources.FIRE_GREY_HILITED,
+                Properties.Resources.FIRE_RED_HILITED,
+                Properties.Resources.INDIE_BLUE_HILITED,
+                Properties.Resources.INDIE_GREY_HILITED,
+                Properties.Resources.INDIE_RED_HILITED,
+                Properties.Resources.MEDIC_BLUE_HILITED,
+                Properties.Resources.MEDIC_GREY_HILITED,
+                Properties.Resources.MEDIC_RED_HILITED,
+                Properties.Resources.PET_BLUE_HILITED,
+                Properties.Resources.PET_GREY_HILITED,
+                Properties.Resources.PET_RED_HILITED,
+                Properties.Resources.POLICE_BLUE_HILITED,
+                Properties.Resources.POLICE_GREY_HILITED,
+                Properties.Resources.POLICE_RED_HILITED,
+                Properties.Resources.VEHICLE_BLUE_HILITED,
+                Properties.Resources.VEHICLE_GRE_HILITED,
+                Properties.Resources.VEHICLE_RED_HILITED
+            };
         public frmRadio()
         {
             InitializeComponent();
@@ -101,14 +124,7 @@ namespace tracker.maintenance
             txtTrackerCode.DataBindings.Add(new Binding("Text", bs, "tracker_code", true));
             chkActive.DataBindings.Add(new Binding("Checked", bs, "active", true));
             cmbIcon.DataBindings.Add(new Binding("SelectedIndex", bs, "image_index", true));
-            Image[] images = 
-            {
-                Properties.Resources.train_green,
-                Properties.Resources.train_red,
-                Properties.Resources.train_yellow,
-                Properties.Resources.train_blue,
-                Properties.Resources.train_brown,
-            };
+           
 
             cmbIcon.DisplayImages(images);
             cmbIcon.SelectedIndex = 0;
@@ -416,6 +432,11 @@ namespace tracker.maintenance
         private void txtTo_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

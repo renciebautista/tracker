@@ -39,6 +39,16 @@ namespace tracker
             set;
         }
 
+        public GMapMarkerImage(GMap.NET.PointLatLng p, Image image,int width, int height)
+            : base(p)
+        {
+            Size = new System.Drawing.Size(width,height);
+            Offset = new System.Drawing.Point(-Size.Width / 2, -Size.Height);
+            this.image = image;
+            Pen = null;
+            OutPen = null;
+        }
+
         public GMapMarkerImage(GMap.NET.PointLatLng p, Image image)
             : base(p)
         {

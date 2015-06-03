@@ -19,6 +19,30 @@ namespace tracker.file
     {
         internal readonly GMapOverlay objects = new GMapOverlay("objects");
         internal readonly GMapOverlay radio_overlay = new GMapOverlay("radio_overlay");
+
+        Image[] radio_images = 
+            {
+                Properties.Resources.BLUE_HILITED,
+                Properties.Resources.RED_HILITED,
+                Properties.Resources.FIRE_BLUE_HILITED,
+                Properties.Resources.FIRE_GREY_HILITED,
+                Properties.Resources.FIRE_RED_HILITED,
+                Properties.Resources.INDIE_BLUE_HILITED,
+                Properties.Resources.INDIE_GREY_HILITED,
+                Properties.Resources.INDIE_RED_HILITED,
+                Properties.Resources.MEDIC_BLUE_HILITED,
+                Properties.Resources.MEDIC_GREY_HILITED,
+                Properties.Resources.MEDIC_RED_HILITED,
+                Properties.Resources.PET_BLUE_HILITED,
+                Properties.Resources.PET_GREY_HILITED,
+                Properties.Resources.PET_RED_HILITED,
+                Properties.Resources.POLICE_BLUE_HILITED,
+                Properties.Resources.POLICE_GREY_HILITED,
+                Properties.Resources.POLICE_RED_HILITED,
+                Properties.Resources.VEHICLE_BLUE_HILITED,
+                Properties.Resources.VEHICLE_GRE_HILITED,
+                Properties.Resources.VEHICLE_RED_HILITED
+            };
         public frmMap()
         {
             InitializeComponent();
@@ -92,7 +116,7 @@ namespace tracker.file
                //" AND train_id IN(" + String.Join(",", list.ToArray()) +  ") " +
                //" GROUP BY train_id ORDER BY created_at DESC LIMIT 1");
 
-                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM (SELECT logs.train_code,logs.train_desc,train_id, lat,lng, image_index,created_at FROM logs " +
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM (SELECT logs.train_code,logs.train_desc,train_id, lat,lng, logs.image_index,created_at FROM logs " +
                     "JOIN trains ON logs.train_id = trains.id " +
                     "WHERE logs.head = 1 " +
                     "AND logs.train_id IN(" + String.Join(",", list.ToArray()) + ") " +
@@ -152,7 +176,7 @@ namespace tracker.file
 
             if (radios.Count > 0)
             {
-                DataTable dt_radios = MysqlHelper.ExecuteDataTable("SELECT * FROM (SELECT radio_logs.radio_id, radio_logs.lat, radio_logs.lng, radio_logs.created_at,radio_logs.mnc,radio_logs.ssi, radios.image_index FROM radio_logs " +
+                DataTable dt_radios = MysqlHelper.ExecuteDataTable("SELECT * FROM (SELECT radio_logs.radio_id, radio_logs.lat, radio_logs.lng, radio_logs.created_at,radio_logs.mnc,radio_logs.ssi, radio_logs.image_index FROM radio_logs " +
                     "JOIN radios ON radio_logs.radio_id = radios.id " +
                     "WHERE radio_logs.radio_id IN(" + String.Join(",", radios.ToArray()) + ") " +
                     "ORDER BY radio_logs.created_at DESC) as temp " +
@@ -167,27 +191,18 @@ namespace tracker.file
                         Lng = float.Parse(row["lng"].ToString())
                     };
 
-                    Image[] images = 
-                    {
-                        Properties.Resources.train_green,
-                        Properties.Resources.train_red,
-                        Properties.Resources.train_yellow,
-                        Properties.Resources.train_blue,
-                        Properties.Resources.train_brown,
-                    };
                     Image image_marker;
+                    
                     if (DateTime.Now.Subtract(Convert.ToDateTime(row["created_at"])).TotalSeconds > (int)Properties.Settings.Default.Limit)
                     {
-                        image_marker = Properties.Resources.train_gray;
+                        image_marker = Properties.Resources.GREY_HILITED;
                     }
                     else
                     {
-                        image_marker = images[(int)row["image_index"]];
+                        image_marker = radio_images[(int)row["image_index"]];
                     }
 
-
-                    Image markerImage = image_marker;
-                    GMapMarkerImage marker = new GMapMarkerImage(p, markerImage);
+                    GMapMarkerImage marker = new GMapMarkerImage(p, image_marker,32,32);
                     radio_overlay.Markers.Add(marker);
 
                     // marker.ToolTipMode = MarkerTooltipMode.Always; enable tooltip

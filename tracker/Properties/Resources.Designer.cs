@@ -63,6 +63,196 @@ namespace tracker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BLUE_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("BLUE_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FIRE_BLUE_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("FIRE_BLUE_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FIRE_GREY_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("FIRE_GREY_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FIRE_RED_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("FIRE_RED_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GREY_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("GREY_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap INDIE_BLUE_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("INDIE_BLUE_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap INDIE_GREY_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("INDIE_GREY_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap INDIE_RED_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("INDIE_RED_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MEDIC_BLUE_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("MEDIC_BLUE_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MEDIC_GREY_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("MEDIC_GREY_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MEDIC_RED_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("MEDIC_RED_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PET_BLUE_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("PET_BLUE_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PET_GREY_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("PET_GREY_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PET_RED_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("PET_RED_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap POLICE_BLUE_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("POLICE_BLUE_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap POLICE_GREY_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("POLICE_GREY_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap POLICE_RED_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("POLICE_RED_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RED_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("RED_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trace {
+            get {
+                object obj = ResourceManager.GetObject("trace", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap train_black {
             get {
                 object obj = ResourceManager.GetObject("train_black", resourceCulture);
@@ -136,6 +326,36 @@ namespace tracker.Properties {
         internal static System.Drawing.Bitmap train_yellow {
             get {
                 object obj = ResourceManager.GetObject("train_yellow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VEHICLE_BLUE_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("VEHICLE_BLUE_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VEHICLE_GRE_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("VEHICLE_GRE_HILITED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VEHICLE_RED_HILITED {
+            get {
+                object obj = ResourceManager.GetObject("VEHICLE_RED_HILITED", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
