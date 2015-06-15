@@ -52,8 +52,6 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvRadio = new System.Windows.Forms.DataGridView();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnAnimate = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.created_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mcc = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +66,8 @@
             this.lat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lng = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tracker_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnAnimate = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdgNavigator)).BeginInit();
@@ -88,15 +88,18 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAnimate);
             this.groupBox1.Controls.Add(this.cmbRadio);
+            this.groupBox1.Controls.Add(this.btnExport);
             this.groupBox1.Controls.Add(this.dtTo);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dtFrom);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.btnProcess);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1035, 53);
+            this.groupBox1.Size = new System.Drawing.Size(277, 617);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             // 
@@ -108,15 +111,15 @@
             this.cmbRadio.Items.AddRange(new object[] {
             "All Radio",
             "Per Radio"});
-            this.cmbRadio.Location = new System.Drawing.Point(564, 19);
+            this.cmbRadio.Location = new System.Drawing.Point(55, 78);
             this.cmbRadio.Name = "cmbRadio";
-            this.cmbRadio.Size = new System.Drawing.Size(293, 21);
+            this.cmbRadio.Size = new System.Drawing.Size(200, 21);
             this.cmbRadio.TabIndex = 33;
             this.cmbRadio.SelectedIndexChanged += new System.EventHandler(this.cmbRadio_SelectedIndexChanged);
             // 
             // dtTo
             // 
-            this.dtTo.Location = new System.Drawing.Point(306, 19);
+            this.dtTo.Location = new System.Drawing.Point(55, 45);
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(200, 20);
             this.dtTo.TabIndex = 32;
@@ -125,7 +128,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(280, 22);
+            this.label3.Location = new System.Drawing.Point(29, 48);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(20, 13);
             this.label3.TabIndex = 31;
@@ -151,7 +154,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(522, 22);
+            this.label1.Location = new System.Drawing.Point(13, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 2;
@@ -159,7 +162,7 @@
             // 
             // btnProcess
             // 
-            this.btnProcess.Location = new System.Drawing.Point(12, 599);
+            this.btnProcess.Location = new System.Drawing.Point(10, 581);
             this.btnProcess.Name = "btnProcess";
             this.btnProcess.Size = new System.Drawing.Size(75, 30);
             this.btnProcess.TabIndex = 28;
@@ -170,7 +173,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.bdgNavigator);
-            this.groupBox3.Location = new System.Drawing.Point(12, 563);
+            this.groupBox3.Location = new System.Drawing.Point(295, 593);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(221, 30);
             this.groupBox3.TabIndex = 34;
@@ -274,9 +277,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvRadio);
-            this.groupBox2.Location = new System.Drawing.Point(12, 71);
+            this.groupBox2.Location = new System.Drawing.Point(295, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1038, 491);
+            this.groupBox2.Size = new System.Drawing.Size(755, 580);
             this.groupBox2.TabIndex = 34;
             this.groupBox2.TabStop = false;
             // 
@@ -311,30 +314,8 @@
             this.dgvRadio.RowHeadersVisible = false;
             this.dgvRadio.RowTemplate.Height = 25;
             this.dgvRadio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRadio.Size = new System.Drawing.Size(1032, 472);
+            this.dgvRadio.Size = new System.Drawing.Size(749, 561);
             this.dgvRadio.TabIndex = 22;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Enabled = false;
-            this.btnExport.Location = new System.Drawing.Point(93, 599);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(95, 30);
-            this.btnExport.TabIndex = 35;
-            this.btnExport.Text = "Export to CSV";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // btnAnimate
-            // 
-            this.btnAnimate.Enabled = false;
-            this.btnAnimate.Location = new System.Drawing.Point(194, 599);
-            this.btnAnimate.Name = "btnAnimate";
-            this.btnAnimate.Size = new System.Drawing.Size(73, 30);
-            this.btnAnimate.TabIndex = 36;
-            this.btnAnimate.Text = "Animation";
-            this.btnAnimate.UseVisualStyleBackColor = true;
-            this.btnAnimate.Click += new System.EventHandler(this.btnAnimate_Click);
             // 
             // id
             // 
@@ -447,18 +428,37 @@
             this.tracker_code.ReadOnly = true;
             this.tracker_code.Visible = false;
             // 
+            // btnExport
+            // 
+            this.btnExport.Enabled = false;
+            this.btnExport.Location = new System.Drawing.Point(91, 581);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(95, 30);
+            this.btnExport.TabIndex = 35;
+            this.btnExport.Text = "Export to CSV";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnAnimate
+            // 
+            this.btnAnimate.Enabled = false;
+            this.btnAnimate.Location = new System.Drawing.Point(192, 581);
+            this.btnAnimate.Name = "btnAnimate";
+            this.btnAnimate.Size = new System.Drawing.Size(73, 30);
+            this.btnAnimate.TabIndex = 36;
+            this.btnAnimate.Text = "Animation";
+            this.btnAnimate.UseVisualStyleBackColor = true;
+            this.btnAnimate.Click += new System.EventHandler(this.btnAnimate_Click);
+            // 
             // frmRadioReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 641);
-            this.Controls.Add(this.btnAnimate);
-            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnProcess);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

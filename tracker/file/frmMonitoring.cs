@@ -20,6 +20,10 @@ namespace tracker.file
         private string _ip;
         private string _username;
         private string _version;
+        private int counter;
+        private DateTime previous;
+        private DateTime latest;
+
         public string ip
         {
             set
@@ -104,16 +108,31 @@ namespace tracker.file
             if (MysqlHelper.TestConnection())
             {
                 DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
-                if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
+                if (counter == 1)
                 {
-                    statusTnx.Text = "Server is not running";
-                    statusTnx.ForeColor = Color.Red;
+                    previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
                 }
-                else
+
+
+                if (counter == 3)
                 {
-                    statusTnx.Text = "Server is running";
-                    statusTnx.ForeColor = Color.Green;
+                    latest = Convert.ToDateTime(dt.Rows[0]["last_update"]);
+
+                    if (previous == latest)
+                    {
+                        previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
+                        statusTnx.Text = "Server is not running";
+                        statusTnx.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        statusTnx.Text = "Server is running";
+                        statusTnx.ForeColor = Color.Green;
+                    }
+
+                    counter = 0;
                 }
+                counter++;
             }
             else
             {

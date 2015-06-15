@@ -19,6 +19,9 @@ namespace tracker
 {
     public partial class frmMain : Form
     {
+        private int counter;
+        private DateTime previous;
+        private DateTime latest;
         public frmMain()
         {
             InitializeComponent();
@@ -164,7 +167,7 @@ namespace tracker
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            
+            counter = 0;
             this.Hide();
             string filepath = Properties.Settings.Default.Wallpaper.ToString();
             if (filepath != "")
@@ -291,32 +294,66 @@ namespace tracker
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            
             timer1.Enabled = false;
             if (MysqlHelper.TestConnection())
             {
                 DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
-                if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
+
+                if (counter == 1)
                 {
-                    statusTnx.Text = "Server is not running";
-                    statusTnx.ForeColor = Color.Red;
-                    //notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
-                    //notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
-                    //notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
-
-                    //notifyIcon1.ShowBalloonTip(1000);
-
-                    //DialogResult result = MessageBox.Show("Tracker service is not running", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //if (result == DialogResult.OK)
-                    //{
-                    //    timer1.Enabled = true;
-                    //}
-
+                    previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
                 }
-                else
+               
+
+                if (counter == 3)
                 {
-                    statusTnx.Text = "Server is running";
-                    statusTnx.ForeColor = Color.Green;
+                    latest = Convert.ToDateTime(dt.Rows[0]["last_update"]);
+
+                    if (previous == latest)
+                    {
+                        previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
+                        statusTnx.Text = "Server is not running";
+                        statusTnx.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        statusTnx.Text = "Server is running";
+                        statusTnx.ForeColor = Color.Green;
+                    }
+
+                    counter = 0;
                 }
+                counter++;
+
+ 
+
+                
+                
+
+                //if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
+                //{
+                //    statusTnx.Text = "Server is not running";
+                //    statusTnx.ForeColor = Color.Red;
+
+                //    //notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
+                //    //notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
+                //    //notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
+
+                //    //notifyIcon1.ShowBalloonTip(1000);
+
+                //    //DialogResult result = MessageBox.Show("Tracker service is not running", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    //if (result == DialogResult.OK)
+                //    //{
+                //    //    timer1.Enabled = true;
+                //    //}
+
+                //}
+                //else
+                //{
+                //    statusTnx.Text = "Server is running";
+                //    statusTnx.ForeColor = Color.Green;
+                //}
             }
             else
             {

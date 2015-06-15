@@ -68,7 +68,7 @@ namespace tracker
         {
             if (MysqlHelper.TestConnection())
             {
-                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM users ");
+                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * FROM users WHERE group_id = '1' and active = '1'");
                 if (dt.Rows.Count > 0)
                 {
                     int rtnType = Authenticated(txtUsername.Text.Trim().ToLower(), txtPassword.Text.Trim());
@@ -98,6 +98,7 @@ namespace tracker
                     if ((txtUsername.Text == "admin") && (txtPassword.Text == "password"))
                     {
                         this.DialogResult = DialogResult.OK;
+                        this._username = "admin";
                         this.Close();
                     }
                     else
