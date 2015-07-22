@@ -187,6 +187,12 @@
     <Compile Include="maintenance\frmRadio.Designer.cs">
       <DependentUpon>frmRadio.cs</DependentUpon>
     </Compile>
+    <Compile Include="maintenance\frmServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="maintenance\frmServer.Designer.cs">
+      <DependentUpon>frmServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="maintenance\frmTrain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="maintenance\frmRadio.resx">
       <DependentUpon>frmRadio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="maintenance\frmServer.resx">
+      <DependentUpon>frmServer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="maintenance\frmTrain.resx">
       <DependentUpon>frmTrain.cs</DependentUpon>

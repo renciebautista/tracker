@@ -1,10 +1,9 @@
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.exe.config
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.exe
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\10-20 Tracker.pdb
-D:\visual studio.dev\syntech\tracker\tracker\bin\Release\GMap.NET.Core.dll
-D:\visual studio.dev\syntech\tracker\tracker\bin\Release\GMap.NET.WindowsForms.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\MySql.Data.dll
 D:\visual studio.dev\syntech\tracker\tracker\bin\Release\WeifenLuo.WinFormsUI.Docking.dll
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csprojResolveAssemblyReference.cache
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\Interop.NetFwTypeLib.dll
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csproj.ResolveComReference.cache
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.file.frmMapSettings.resources
@@ -21,6 +20,7 @@ D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frm
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmFind.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmInitDb.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmRadio.resources
+D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmServer.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmTrain.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmTrainRadio.resources
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.maintenance.frmUser.resources

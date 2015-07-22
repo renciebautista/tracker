@@ -21,10 +21,32 @@ namespace tracker.maintenance
 
         private void loadGrid()
         {
-            dgvUser.AutoGenerateColumns = false;
-            bs.DataSource = MysqlHelper.ExecuteDataTable("SELECT users.id,username,group_id,groups.group,active FROM users INNER JOIN groups on users.group_id = groups.id");
-            bdgNavigator.BindingSource = bs;
-            dgvUser.DataSource = bs;
+            if (MysqlHelper.TestConnection())
+            {
+
+                dgvUser.AutoGenerateColumns = false;
+                bs.DataSource = MysqlHelper.ExecuteDataTable("SELECT users.id,username,group_id,groups.group,active FROM users INNER JOIN groups on users.group_id = groups.id");
+                bdgNavigator.BindingSource = bs;
+                dgvUser.DataSource = bs;
+
+                if (dgvUser.Rows.Count < 1)
+                {
+                    btnDelete.Enabled = false;
+                    btnFind.Enabled = false;
+                    btnEdit.Enabled = false;
+                }
+                else
+                {
+                    btnDelete.Enabled = true;
+                    btnFind.Enabled = true;
+                    btnEdit.Enabled = true;
+                }
+            }
+            else
+            {
+                Application.Exit();
+            }
+
 
 
         }

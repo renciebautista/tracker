@@ -15,6 +15,9 @@ using tracker.reports;
 using NetFwTypeLib;
 using System.Data.SqlClient;
 using System.Reflection;
+using System.Net.Sockets;
+using System.Net;
+using System.Threading;
 namespace tracker
 {
     public partial class frmMain : Form
@@ -22,6 +25,7 @@ namespace tracker
         private int counter;
         private DateTime previous;
         private DateTime latest;
+        public frmMonitoring m_monitoring;
         public frmMain()
         {
             InitializeComponent();
@@ -152,21 +156,28 @@ namespace tracker
 
         private void monitoringToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            timer1.Enabled = false;
+            //timer1.Enabled = false;
             using (frmMonitoring monitoring = new frmMonitoring())
             {
                 monitoring.ip = statusIp.Text;
-                monitoring.username = statusLbl.Text;
+                //monitoring.username = statusLbl.Text;
                 monitoring.version = statusVersion.Text;
                 monitoring.WindowState = FormWindowState.Maximized;
+                m_monitoring = monitoring;
                 monitoring.ShowDialog();
+                m_monitoring = null;
             }
-            timer1.Enabled = true;
+           
+            //.Enabled = true;
 
         }
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            Thread thdUDPServer = new Thread(new ThreadStart(serverThread));
+            thdUDPServer.IsBackground = true;
+            thdUDPServer.Start();
+
             counter = 0;
             this.Hide();
             string filepath = Properties.Settings.Default.Wallpaper.ToString();
@@ -210,12 +221,12 @@ namespace tracker
                             string connectString = ConfigurationManager.ConnectionStrings["default"].ToString();
                             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder(connectString);
                             // Retrieve the DataSource property.    
-                            string IPAddress = builder.Server;
-                            statusLbl.Text = logIn.username;
-                            statusIp.Text = "@" +IPAddress;
+                           // string IPAddress = builder.Server;
+                            //statusLbl.Text = logIn.username;
+                            //statusIp.Text = "@" +IPAddress;
 
                             statusVersion.Text = AssemblyVersion;
-                            timer1.Enabled = true;
+                            //timer1.Enabled = true;
  
                         }
                         else
@@ -294,73 +305,75 @@ namespace tracker
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
-            timer1.Enabled = false;
-            if (MysqlHelper.TestConnection())
-            {
-                DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
 
-                if (counter == 1)
-                {
-                    previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
-                }
+            statusTnx.Text = "Server is not running";
+            statusTnx.ForeColor = Color.Red;
+            //timer1.Enabled = false;
+            //if (MysqlHelper.TestConnection())
+            //{
+            //    DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
+
+            //    if (counter == 1)
+            //    {
+            //        previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
+            //    }
                
 
-                if (counter == 3)
-                {
-                    latest = Convert.ToDateTime(dt.Rows[0]["last_update"]);
+            //    if (counter == 5)
+            //    {
+            //        latest = Convert.ToDateTime(dt.Rows[0]["last_update"]);
 
-                    if (previous == latest)
-                    {
-                        previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
-                        statusTnx.Text = "Server is not running";
-                        statusTnx.ForeColor = Color.Red;
-                    }
-                    else
-                    {
-                        statusTnx.Text = "Server is running";
-                        statusTnx.ForeColor = Color.Green;
-                    }
+            //        if (previous == latest)
+            //        {
+            //            previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
+            //            statusTnx.Text = "Server is not running";
+            //            statusTnx.ForeColor = Color.Red;
+            //        }
+            //        else
+            //        {
+            //            statusTnx.Text = "Server is running";
+            //            statusTnx.ForeColor = Color.Green;
+            //        }
 
-                    counter = 0;
-                }
-                counter++;
+            //        counter = 0;
+            //    }
+            //    counter++;
 
  
 
                 
                 
 
-                //if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
-                //{
-                //    statusTnx.Text = "Server is not running";
-                //    statusTnx.ForeColor = Color.Red;
+            //    //if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
+            //    //{
+            //    //    statusTnx.Text = "Server is not running";
+            //    //    statusTnx.ForeColor = Color.Red;
 
-                //    //notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
-                //    //notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
-                //    //notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
+            //    //    //notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
+            //    //    //notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
+            //    //    //notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
 
-                //    //notifyIcon1.ShowBalloonTip(1000);
+            //    //    //notifyIcon1.ShowBalloonTip(1000);
 
-                //    //DialogResult result = MessageBox.Show("Tracker service is not running", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    //if (result == DialogResult.OK)
-                //    //{
-                //    //    timer1.Enabled = true;
-                //    //}
+            //    //    //DialogResult result = MessageBox.Show("Tracker service is not running", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    //    //if (result == DialogResult.OK)
+            //    //    //{
+            //    //    //    timer1.Enabled = true;
+            //    //    //}
 
-                //}
-                //else
-                //{
-                //    statusTnx.Text = "Server is running";
-                //    statusTnx.ForeColor = Color.Green;
-                //}
-            }
-            else
-            {
-                Application.Exit();
-            }
+            //    //}
+            //    //else
+            //    //{
+            //    //    statusTnx.Text = "Server is running";
+            //    //    statusTnx.ForeColor = Color.Green;
+            //    //}
+            //}
+            //else
+            //{
+            //    Application.Exit();
+            //}
 
-            timer1.Enabled = true;
+            //timer1.Enabled = true;
            
         }
 
@@ -431,8 +444,80 @@ namespace tracker
             {
                 MysqlHelper.ExecuteNonQuery("ALTER TABLE logs ADD image_index INT NOT NULL AFTER head");
             }
+
+            DataTable dt4 = MysqlHelper.ExecuteDataTable("SHOW tables like 'servers'");
+            if (dt4.Rows.Count == 0)
+            {
+                MysqlHelper.ExecuteNonQuery("CREATE TABLE `servers` (`id` int(11) NOT NULL AUTO_INCREMENT,`ip` varchar(45) DEFAULT NULL,PRIMARY KEY (`id`)) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;");
+            }
            
         }
 
+        private void radioServeMaintenanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmServer server = new frmServer())
+            {
+                server.ShowDialog();
+            }
+        }
+
+        private void proccessConnection(string ip, bool status)
+        {
+            if (!status)
+            {
+                statusTnx.Text = "Server is not running";
+                statusTnx.ForeColor = Color.Red;
+            }
+            else
+            {
+                statusTnx.Text = "Server is running";
+                statusTnx.ForeColor = Color.Green;
+            }
+            statusIp.Text = ip;
+        }
+        public void serverThread()
+        {
+            UdpClient client = new UdpClient();
+
+            client.ExclusiveAddressUse = false;
+            IPEndPoint localEp = new IPEndPoint(IPAddress.Any, 5000);
+
+            client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+            client.ExclusiveAddressUse = false;
+
+            client.Client.Bind(localEp);
+
+            IPAddress multicastaddress = IPAddress.Parse("225.4.5.6");
+            client.JoinMulticastGroup(multicastaddress);
+
+            //Console.WriteLine("Listening this will never quit so you will need to ctrl-c it");
+
+            while (true)
+            {
+                Byte[] data = client.Receive(ref localEp);
+                string strData = Encoding.ASCII.GetString(data);
+                //Console.WriteLine(strData);
+                this.Invoke((MethodInvoker)delegate
+                {
+                    string[] rxdata = strData.Split('|');
+                    bool status = false;
+                    if (rxdata[0] == "tnx")
+                    {
+                        timer1.Enabled = false;
+                        if(rxdata[2] == "1"){
+                            status = true;
+                        }
+
+                        if (m_monitoring != null)
+                        {
+                            m_monitoring.proccessConnection(rxdata[1], status);
+                        }
+                        proccessConnection(rxdata[1], status);
+                        timer1.Enabled = true;
+                    }
+                   
+                });
+            }
+        }
     }
 }

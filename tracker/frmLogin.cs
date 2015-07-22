@@ -95,6 +95,7 @@ namespace tracker
                 }
                 else
                 {
+
                     if ((txtUsername.Text == "admin") && (txtPassword.Text == "password"))
                     {
                         this.DialogResult = DialogResult.OK;
@@ -103,9 +104,27 @@ namespace tracker
                     }
                     else
                     {
-                        MessageBox.Show("Invalid login credentials.", "Log On", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        txtPassword.Text = "";
-                        txtUsername.Focus();
+                        int rtnType = Authenticated(txtUsername.Text.Trim().ToLower(), txtPassword.Text.Trim());
+
+                        switch (rtnType)
+                        {
+                            case -1:
+                                MessageBox.Show("User access is disabled.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtUsername.Text = "";
+                                txtPassword.Text = "";
+                                txtUsername.Focus();
+                                break;
+                            case 0:
+                                MessageBox.Show("Invalid username or password.", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtUsername.Text = "";
+                                txtPassword.Text = "";
+                                txtUsername.Focus();
+                                break;
+                            case 1:
+                                this._username = txtUsername.Text.Trim();
+                                this.DialogResult = DialogResult.OK;
+                                break;
+                        }
                     }
                 }
             }

@@ -54,7 +54,6 @@ namespace tracker.file
 
         private void frmMonitoring_Load(object sender, EventArgs e)
         {
-            statusLbl.Text = _username;
             statusIp.Text =  _ip;
             statusVersion.Text = _version;
             openTrainlist();
@@ -114,7 +113,7 @@ namespace tracker.file
                 }
 
 
-                if (counter == 3)
+                if (counter == 5)
                 {
                     latest = Convert.ToDateTime(dt.Rows[0]["last_update"]);
 
@@ -140,6 +139,21 @@ namespace tracker.file
             }
 
             timer1.Enabled = true;
+        }
+
+        public void proccessConnection(string ip, bool status)
+        {
+            if (!status)
+            {
+                statusTnx.Text = "Server is not running";
+                statusTnx.ForeColor = Color.Red;
+            }
+            else
+            {
+                statusTnx.Text = "Server is running";
+                statusTnx.ForeColor = Color.Green;
+            }
+            statusIp.Text = ip;
         }
 
     }

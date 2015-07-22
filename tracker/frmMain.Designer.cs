@@ -40,6 +40,7 @@
             this.trainMaintenanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.trainRadioAssignmentToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.userMaintenanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.radioServeMaintenanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.radioLogsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.trainLogsReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,6 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewHelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -70,11 +70,11 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusTnx = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusIp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -129,7 +129,8 @@
             this.radioMaintenanceToolStripMenuItem1,
             this.trainMaintenanceToolStripMenuItem1,
             this.trainRadioAssignmentToolStripMenuItem1,
-            this.userMaintenanceToolStripMenuItem1});
+            this.userMaintenanceToolStripMenuItem1,
+            this.radioServeMaintenanceToolStripMenuItem});
             this.maintenanceToolStripMenuItem1.Name = "maintenanceToolStripMenuItem1";
             this.maintenanceToolStripMenuItem1.Size = new System.Drawing.Size(88, 20);
             this.maintenanceToolStripMenuItem1.Text = "Maintenance";
@@ -137,30 +138,37 @@
             // radioMaintenanceToolStripMenuItem1
             // 
             this.radioMaintenanceToolStripMenuItem1.Name = "radioMaintenanceToolStripMenuItem1";
-            this.radioMaintenanceToolStripMenuItem1.Size = new System.Drawing.Size(208, 22);
+            this.radioMaintenanceToolStripMenuItem1.Size = new System.Drawing.Size(211, 22);
             this.radioMaintenanceToolStripMenuItem1.Text = "Radio Maintenance";
             this.radioMaintenanceToolStripMenuItem1.Click += new System.EventHandler(this.radioMaintenanceToolStripMenuItem_Click);
             // 
             // trainMaintenanceToolStripMenuItem1
             // 
             this.trainMaintenanceToolStripMenuItem1.Name = "trainMaintenanceToolStripMenuItem1";
-            this.trainMaintenanceToolStripMenuItem1.Size = new System.Drawing.Size(208, 22);
+            this.trainMaintenanceToolStripMenuItem1.Size = new System.Drawing.Size(211, 22);
             this.trainMaintenanceToolStripMenuItem1.Text = "Train Maintenance";
             this.trainMaintenanceToolStripMenuItem1.Click += new System.EventHandler(this.trainMaintenanceToolStripMenuItem_Click);
             // 
             // trainRadioAssignmentToolStripMenuItem1
             // 
             this.trainRadioAssignmentToolStripMenuItem1.Name = "trainRadioAssignmentToolStripMenuItem1";
-            this.trainRadioAssignmentToolStripMenuItem1.Size = new System.Drawing.Size(208, 22);
+            this.trainRadioAssignmentToolStripMenuItem1.Size = new System.Drawing.Size(211, 22);
             this.trainRadioAssignmentToolStripMenuItem1.Text = "Train / Radio Assignment";
             this.trainRadioAssignmentToolStripMenuItem1.Click += new System.EventHandler(this.trainRadioAssignmentToolStripMenuItem_Click);
             // 
             // userMaintenanceToolStripMenuItem1
             // 
             this.userMaintenanceToolStripMenuItem1.Name = "userMaintenanceToolStripMenuItem1";
-            this.userMaintenanceToolStripMenuItem1.Size = new System.Drawing.Size(208, 22);
+            this.userMaintenanceToolStripMenuItem1.Size = new System.Drawing.Size(211, 22);
             this.userMaintenanceToolStripMenuItem1.Text = "User Maintenance";
             this.userMaintenanceToolStripMenuItem1.Click += new System.EventHandler(this.userMaintenanceToolStripMenuItem_Click);
+            // 
+            // radioServeMaintenanceToolStripMenuItem
+            // 
+            this.radioServeMaintenanceToolStripMenuItem.Name = "radioServeMaintenanceToolStripMenuItem";
+            this.radioServeMaintenanceToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.radioServeMaintenanceToolStripMenuItem.Text = "Radio Server Maintenance";
+            this.radioServeMaintenanceToolStripMenuItem.Click += new System.EventHandler(this.radioServeMaintenanceToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem1
             // 
@@ -312,20 +320,10 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(779, 495);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // notifyIcon1
@@ -339,12 +337,11 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ver,
             this.statusVersion,
-            this.toolStripStatusLabel2,
             this.toolStripStatusLabel3,
-            this.statusTnx,
             this.toolStripStatusLabel1,
-            this.statusLbl,
-            this.statusIp});
+            this.toolStripStatusLabel2,
+            this.statusIp,
+            this.statusTnx});
             this.statusStrip1.Location = new System.Drawing.Point(0, 497);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(779, 22);
@@ -387,22 +384,25 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(425, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(456, 17);
             this.toolStripStatusLabel1.Spring = true;
-            // 
-            // statusLbl
-            // 
-            this.statusLbl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.statusLbl.Name = "statusLbl";
-            this.statusLbl.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.statusLbl.Size = new System.Drawing.Size(31, 17);
-            this.statusLbl.Text = "user";
             // 
             // statusIp
             // 
             this.statusIp.Name = "statusIp";
             this.statusIp.Size = new System.Drawing.Size(17, 17);
             this.statusIp.Text = "ip";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.White;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(779, 495);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // frmMain
             // 
@@ -424,9 +424,9 @@
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -468,7 +468,6 @@
         private System.Windows.Forms.ToolStripMenuItem trainLogsReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem radioLogsReportToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel statusLbl;
         private System.Windows.Forms.ToolStripStatusLabel statusIp;
         private System.Windows.Forms.ToolStripStatusLabel statusVersion;
         private System.Windows.Forms.ToolStripStatusLabel ver;
@@ -476,6 +475,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ToolStripStatusLabel statusTnx;
+        private System.Windows.Forms.ToolStripMenuItem radioServeMaintenanceToolStripMenuItem;
     }
 }
 
