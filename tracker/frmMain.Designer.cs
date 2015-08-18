@@ -66,11 +66,11 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ver = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusVersion = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusTnx = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusIp = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusTnx = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -361,6 +361,17 @@
             this.statusVersion.Size = new System.Drawing.Size(45, 17);
             this.statusVersion.Text = "version";
             // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 17);
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(487, 17);
+            this.toolStripStatusLabel1.Spring = true;
+            // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -368,10 +379,11 @@
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(37, 17);
             this.toolStripStatusLabel2.Text = "TNX :";
             // 
-            // toolStripStatusLabel3
+            // statusIp
             // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(0, 17);
+            this.statusIp.Name = "statusIp";
+            this.statusIp.Size = new System.Drawing.Size(17, 17);
+            this.statusIp.Text = "ip";
             // 
             // statusTnx
             // 
@@ -380,18 +392,6 @@
             this.statusTnx.Name = "statusTnx";
             this.statusTnx.Size = new System.Drawing.Size(124, 17);
             this.statusTnx.Text = "Server is not running";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(456, 17);
-            this.toolStripStatusLabel1.Spring = true;
-            // 
-            // statusIp
-            // 
-            this.statusIp.Name = "statusIp";
-            this.statusIp.Size = new System.Drawing.Size(17, 17);
-            this.statusIp.Text = "ip";
             // 
             // pictureBox1
             // 

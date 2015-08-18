@@ -308,72 +308,6 @@ namespace tracker
 
             statusTnx.Text = "Server is not running";
             statusTnx.ForeColor = Color.Red;
-            //timer1.Enabled = false;
-            //if (MysqlHelper.TestConnection())
-            //{
-            //    DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
-
-            //    if (counter == 1)
-            //    {
-            //        previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
-            //    }
-               
-
-            //    if (counter == 5)
-            //    {
-            //        latest = Convert.ToDateTime(dt.Rows[0]["last_update"]);
-
-            //        if (previous == latest)
-            //        {
-            //            previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
-            //            statusTnx.Text = "Server is not running";
-            //            statusTnx.ForeColor = Color.Red;
-            //        }
-            //        else
-            //        {
-            //            statusTnx.Text = "Server is running";
-            //            statusTnx.ForeColor = Color.Green;
-            //        }
-
-            //        counter = 0;
-            //    }
-            //    counter++;
-
- 
-
-                
-                
-
-            //    //if (DateTime.Now.Subtract(Convert.ToDateTime(dt.Rows[0]["last_update"])).TotalSeconds > 5)
-            //    //{
-            //    //    statusTnx.Text = "Server is not running";
-            //    //    statusTnx.ForeColor = Color.Red;
-
-            //    //    //notifyIcon1.BalloonTipIcon = ToolTipIcon.Warning;
-            //    //    //notifyIcon1.BalloonTipText = "Please check 10-20 Tracker server.";
-            //    //    //notifyIcon1.BalloonTipTitle = "10-20 Tracker Server is not running";
-
-            //    //    //notifyIcon1.ShowBalloonTip(1000);
-
-            //    //    //DialogResult result = MessageBox.Show("Tracker service is not running", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    //    //if (result == DialogResult.OK)
-            //    //    //{
-            //    //    //    timer1.Enabled = true;
-            //    //    //}
-
-            //    //}
-            //    //else
-            //    //{
-            //    //    statusTnx.Text = "Server is running";
-            //    //    statusTnx.ForeColor = Color.Green;
-            //    //}
-            //}
-            //else
-            //{
-            //    Application.Exit();
-            //}
-
-            //timer1.Enabled = true;
            
         }
 
@@ -504,6 +438,7 @@ namespace tracker
                     if (rxdata[0] == "tnx")
                     {
                         timer1.Enabled = false;
+                        timer1.Interval = 1000 * (Convert.ToInt32(rxdata[3])) + 500;
                         if(rxdata[2] == "1"){
                             status = true;
                         }

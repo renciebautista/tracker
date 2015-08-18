@@ -119,6 +119,7 @@ namespace tracker.reports
         {
             this.Text = header;
             lastCount = 0;
+            timer1.Enabled = true;
         }
 
         private void trackBar_ValueChanged(object sender, EventArgs e)
