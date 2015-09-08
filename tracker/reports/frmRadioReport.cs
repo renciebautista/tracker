@@ -37,11 +37,11 @@ namespace tracker.reports
                 dgvRadio.AutoGenerateColumns = false;
                 if ((selected != null) && (selected.Rows.Count > 0))
                 {
-                    var filter = string.Join(",", selected.AsEnumerable()
+                    var filter = string.Join("','", selected.AsEnumerable()
                                      .Select(x => x["value"].ToString())
                                      .ToArray());
 
-                    dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radio_logs WHERE ssi IN (" + filter + ") AND date(created_at) BETWEEN '" + dtFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtTo.Value.ToString("yyyy-MM-dd") + "'");
+                    dt = MysqlHelper.ExecuteDataTable("SELECT * FROM radio_logs WHERE ssi IN ('" + filter + "') AND date(created_at) BETWEEN '" + dtFrom.Value.ToString("yyyy-MM-dd") + "' and '" + dtTo.Value.ToString("yyyy-MM-dd") + "'");
                 }
                 else
                 {

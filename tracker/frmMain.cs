@@ -401,13 +401,15 @@ namespace tracker
             {
                 statusTnx.Text = "Server is not running";
                 statusTnx.ForeColor = Color.Red;
+                statusIp.Text = "Connecting ...";
             }
             else
             {
                 statusTnx.Text = "Server is running";
                 statusTnx.ForeColor = Color.Green;
+                statusIp.Text = ip;
             }
-            statusIp.Text = ip;
+            
         }
         public void serverThread()
         {
