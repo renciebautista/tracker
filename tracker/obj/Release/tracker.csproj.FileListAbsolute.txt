@@ -32,4 +32,3 @@ D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.reports.frmTrai
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csproj.GenerateResource.Cache
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\10-20 Tracker.exe
 D:\visual studio.dev\syntech\tracker\tracker\obj\Release\10-20 Tracker.pdb
-D:\visual studio.dev\syntech\tracker\tracker\obj\Release\tracker.csprojResolveAssemblyReference.cache

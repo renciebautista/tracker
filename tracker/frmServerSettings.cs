@@ -51,7 +51,7 @@ namespace tracker
                 {
                     conn.Open();
                     conn.Close();
-                    MessageBox.Show("Conection Succesfull", "Database Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Connection Succesful", "Database Connection", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
                 catch (MySqlException ex)

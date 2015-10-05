@@ -69,7 +69,6 @@
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.statusIp = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusTnx = new System.Windows.Forms.ToolStripStatusLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
@@ -340,7 +339,6 @@
             this.toolStripStatusLabel3,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2,
-            this.statusIp,
             this.statusTnx});
             this.statusStrip1.Location = new System.Drawing.Point(0, 497);
             this.statusStrip1.Name = "statusStrip1";
@@ -369,7 +367,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(487, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(504, 17);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // toolStripStatusLabel2
@@ -378,12 +376,6 @@
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             this.toolStripStatusLabel2.Size = new System.Drawing.Size(37, 17);
             this.toolStripStatusLabel2.Text = "TNX :";
-            // 
-            // statusIp
-            // 
-            this.statusIp.Name = "statusIp";
-            this.statusIp.Size = new System.Drawing.Size(17, 17);
-            this.statusIp.Text = "ip";
             // 
             // statusTnx
             // 
@@ -468,7 +460,6 @@
         private System.Windows.Forms.ToolStripMenuItem trainLogsReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem radioLogsReportToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel statusIp;
         private System.Windows.Forms.ToolStripStatusLabel statusVersion;
         private System.Windows.Forms.ToolStripStatusLabel ver;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;

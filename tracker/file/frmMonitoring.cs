@@ -54,7 +54,7 @@ namespace tracker.file
 
         private void frmMonitoring_Load(object sender, EventArgs e)
         {
-            statusIp.Text =  _ip;
+           // statusIp.Text =  _ip;
             statusVersion.Text = _version;
             openTrainlist();
         }
@@ -103,7 +103,9 @@ namespace tracker.file
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Enabled = false;
+            statusTnx.Text = "Connecting to server...";
+            statusTnx.ForeColor = Color.Red;
+            /*timer1.Enabled = false;
             if (MysqlHelper.TestConnection())
             {
                 DataTable dt = MysqlHelper.ExecuteDataTable("SELECT * from settings WHERE id = 1");
@@ -120,12 +122,12 @@ namespace tracker.file
                     if (previous == latest)
                     {
                         previous = Convert.ToDateTime(dt.Rows[0]["last_update"]);
-                        statusTnx.Text = "Server is not running";
+                        statusTnx.Text = "Connecting to server...";
                         statusTnx.ForeColor = Color.Red;
                     }
                     else
                     {
-                        statusTnx.Text = "Server is running";
+                        statusTnx.Text = "Connected to " + _ip.ToString();
                         statusTnx.ForeColor = Color.Green;
                     }
 
@@ -138,22 +140,22 @@ namespace tracker.file
                 Application.Exit();
             }
 
-            timer1.Enabled = true;
+            timer1.Enabled = true;*/
         }
 
         public void proccessConnection(string ip, bool status)
         {
             if (!status)
             {
-                statusTnx.Text = "Server is not running";
+                statusTnx.Text = "Connecting to server...";
                 statusTnx.ForeColor = Color.Red;
-                statusIp.Text = "Connecting ...";
+                //statusIp.Text = "Connecting ...";
             }
             else
             {
-                statusTnx.Text = "Server is running";
+                statusTnx.Text = "Connected to " + ip.ToString();
                 statusTnx.ForeColor = Color.Green;
-                statusIp.Text = ip;
+                //statusIp.Text = ip;
             }
             
         }

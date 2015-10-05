@@ -159,7 +159,7 @@ namespace tracker
             //timer1.Enabled = false;
             using (frmMonitoring monitoring = new frmMonitoring())
             {
-                monitoring.ip = statusIp.Text;
+                //monitoring.ip = statusIp.Text;
                 //monitoring.username = statusLbl.Text;
                 monitoring.version = statusVersion.Text;
                 monitoring.WindowState = FormWindowState.Maximized;
@@ -305,9 +305,15 @@ namespace tracker
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
-            statusTnx.Text = "Server is not running";
+            statusTnx.Text = "Connecting to server...";
             statusTnx.ForeColor = Color.Red;
+
+            if (m_monitoring != null)
+            {
+                m_monitoring.proccessConnection("0.0.0.0", false);
+            }
+
+            
            
         }
 
@@ -399,15 +405,15 @@ namespace tracker
         {
             if (!status)
             {
-                statusTnx.Text = "Server is not running";
+                statusTnx.Text = "Connecting to server...";
                 statusTnx.ForeColor = Color.Red;
-                statusIp.Text = "Connecting ...";
+                ///statusIp.Text = "Connecting ...";
             }
             else
             {
-                statusTnx.Text = "Server is running";
+                statusTnx.Text = "Connected to " + ip.ToString();
                 statusTnx.ForeColor = Color.Green;
-                statusIp.Text = ip;
+                //statusIp.Text = ip;
             }
             
         }
