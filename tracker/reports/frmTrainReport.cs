@@ -171,7 +171,7 @@ namespace tracker.reports
                 }
                 animate.Header = header_text;
                 animate.Id = "mnc";
-                animate.Name = "ssi";
+                animate.Name = "train_code";
                 animate.ShowDialog();
 
             }

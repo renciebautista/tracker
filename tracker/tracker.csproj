@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -381,10 +381,51 @@
     <Content Include="Resources\10-20-mobile-icon.ico" />
     <Content Include="Resources\10-20LOGO.ico" />
     <Content Include="Resources\BLUE-HILITED.png" />
+    <None Include="Resources\b_unit1.png" />
+    <None Include="Resources\b_unit2.png" />
+    <None Include="Resources\b_unit3.png" />
+    <None Include="Resources\b_unit4.png" />
+    <None Include="Resources\b_unit5.png" />
+    <None Include="Resources\b_unit6.png" />
+    <None Include="Resources\b_unit7.png" />
+    <None Include="Resources\b_unit8.png" />
+    <None Include="Resources\b_unit9.png" />
+    <None Include="Resources\b_unit10.png" />
+    <None Include="Resources\b_unit11.png" />
+    <None Include="Resources\b_unit12.png" />
+    <None Include="Resources\b_unit13.png" />
+    <None Include="Resources\b_unit14.png" />
+    <None Include="Resources\b_unit15.png" />
+    <None Include="Resources\b_unit16.png" />
+    <None Include="Resources\b_unit17.png" />
+    <None Include="Resources\b_unit18.png" />
+    <None Include="Resources\b_unit19.png" />
+    <None Include="Resources\b_unit20.png" />
     <Content Include="Resources\FIRE-BLUE-HILITED.png" />
     <Content Include="Resources\FIRE-GREY-HILITED.png" />
     <Content Include="Resources\FIRE-RED-HILITED.png" />
     <Content Include="Resources\GREY-HILITED.png" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\g_unit1.png" />
+    <None Include="Resources\g_unit2.png" />
+    <None Include="Resources\g_unit3.png" />
+    <None Include="Resources\g_unit4.png" />
+    <None Include="Resources\g_unit5.png" />
+    <None Include="Resources\g_unit6.png" />
+    <None Include="Resources\g_unit7.png" />
+    <None Include="Resources\g_unit8.png" />
+    <None Include="Resources\g_unit9.png" />
+    <None Include="Resources\g_unit10.png" />
+    <None Include="Resources\g_unit11.png" />
+    <None Include="Resources\g_unit12.png" />
+    <None Include="Resources\g_unit13.png" />
+    <None Include="Resources\g_unit14.png" />
+    <None Include="Resources\g_unit15.png" />
+    <None Include="Resources\g_unit16.png" />
+    <None Include="Resources\g_unit17.png" />
+    <None Include="Resources\g_unit18.png" />
+    <None Include="Resources\g_unit19.png" />
+    <None Include="Resources\g_unit20.png" />
     <Content Include="Resources\INDIE-BLUE-HILITED.png" />
     <Content Include="Resources\INDIE-GREY-HILITED.png" />
     <Content Include="Resources\INDIE-RED-HILITED.png" />
@@ -398,6 +439,26 @@
     <Content Include="Resources\POLICE-GREY-HILITED.png" />
     <Content Include="Resources\POLICE-RED-HILITED.png" />
     <Content Include="Resources\RED-HILITED.png" />
+    <None Include="Resources\r_unit1.png" />
+    <None Include="Resources\r_unit2.png" />
+    <None Include="Resources\r_unit3.png" />
+    <None Include="Resources\r_unit4.png" />
+    <None Include="Resources\r_unit5.png" />
+    <None Include="Resources\r_unit6.png" />
+    <None Include="Resources\r_unit7.png" />
+    <None Include="Resources\r_unit8.png" />
+    <None Include="Resources\r_unit9.png" />
+    <None Include="Resources\r_unit10.png" />
+    <None Include="Resources\r_unit11.png" />
+    <None Include="Resources\r_unit12.png" />
+    <None Include="Resources\r_unit13.png" />
+    <None Include="Resources\r_unit14.png" />
+    <None Include="Resources\r_unit15.png" />
+    <None Include="Resources\r_unit16.png" />
+    <None Include="Resources\r_unit17.png" />
+    <None Include="Resources\r_unit18.png" />
+    <None Include="Resources\r_unit19.png" />
+    <None Include="Resources\r_unit20.png" />
     <Content Include="Resources\trace.png" />
     <Content Include="Resources\VEHICLE-BLUE-HILITED.png" />
     <Content Include="Resources\VEHICLE-GRE-HILITED.png" />

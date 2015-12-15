@@ -422,7 +422,7 @@ namespace tracker
             UdpClient client = new UdpClient();
 
             client.ExclusiveAddressUse = false;
-            IPEndPoint localEp = new IPEndPoint(IPAddress.Any, 5000);
+            IPEndPoint localEp = new IPEndPoint(IPAddress.Any, 49452);
 
             client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             client.ExclusiveAddressUse = false;
